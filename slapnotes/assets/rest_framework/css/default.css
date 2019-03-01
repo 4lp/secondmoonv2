@@ -1,0 +1,82 @@
+/* The navbar is fixed at >= 980px wide, so add padding to the body to prevent
+content running up underneath it. */
+
+h1 ***REMOVED***
+  font-weight: 300;
+***REMOVED***
+
+h2, h3 ***REMOVED***
+  font-weight: 300;
+***REMOVED***
+
+.resource-description, .response-info ***REMOVED***
+  margin-bottom: 2em;
+***REMOVED***
+
+.version:before ***REMOVED***
+  content: "v";
+  opacity: 0.6;
+  padding-right: 0.25em;
+***REMOVED***
+
+.version ***REMOVED***
+  font-size: 70%;
+***REMOVED***
+
+.format-option ***REMOVED***
+  font-family: Menlo, Consolas, "Andale Mono", "Lucida Console", monospace;
+***REMOVED***
+
+.button-form ***REMOVED***
+  float: right;
+  margin-right: 1em;
+***REMOVED***
+
+td.nested ***REMOVED***
+  padding: 0 !important;
+***REMOVED***
+
+td.nested > table ***REMOVED***
+  margin: 0;
+***REMOVED***
+
+form select, form input, form textarea ***REMOVED***
+  width: 90%;
+***REMOVED***
+
+form select[multiple] ***REMOVED***
+  height: 150px;
+***REMOVED***
+
+/* To allow tooltips to work on disabled elements */
+.disabled-tooltip-shield ***REMOVED***
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+***REMOVED***
+
+.errorlist ***REMOVED***
+  margin-top: 0.5em;
+***REMOVED***
+
+pre ***REMOVED***
+  overflow: auto;
+  word-wrap: normal;
+  white-space: pre;
+  font-size: 12px;
+***REMOVED***
+
+.page-header ***REMOVED***
+  border-bottom: none;
+  padding-bottom: 0px;
+***REMOVED***
+
+#filtersModal form input[type=submit] ***REMOVED***
+    width: auto;
+***REMOVED***
+
+#filtersModal .modal-body h2 ***REMOVED***
+    margin-top: 0
+***REMOVED***

@@ -1,0 +1,233 @@
+/*
+
+This CSS file contains some tweaks specific to the included Bootstrap theme.
+It's separate from `style.css` so that it can be easily overridden by replacing
+a single block in the template.
+
+*/
+
+.form-actions ***REMOVED***
+  background: transparent;
+  border-top-color: transparent;
+  padding-top: 0;
+  text-align: right;
+***REMOVED***
+
+#generic-content-form textarea ***REMOVED***
+  font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
+  font-size: 80%;
+***REMOVED***
+
+.navbar-inverse .brand a ***REMOVED***
+  color: #999999;
+***REMOVED***
+.navbar-inverse .brand:hover a ***REMOVED***
+  color: white;
+  text-decoration: none;
+***REMOVED***
+
+/* custom navigation styles */
+.navbar ***REMOVED***
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+***REMOVED***
+
+.navbar ***REMOVED***
+  background: #2C2C2C;
+  color: white;
+  border: none;
+  border-top: 5px solid #A30000;
+  border-radius: 0px;
+***REMOVED***
+
+.navbar .nav li, .navbar .nav li a, .navbar .brand:hover ***REMOVED***
+  color: white;
+***REMOVED***
+
+.nav-list > .active > a, .nav-list > .active > a:hover ***REMOVED***
+  background: #2C2C2C;
+***REMOVED***
+
+.navbar .dropdown-menu li a, .navbar .dropdown-menu li ***REMOVED***
+  color: #A30000;
+***REMOVED***
+
+.navbar .dropdown-menu li a:hover ***REMOVED***
+  background: #EEEEEE;
+  color: #C20000;
+***REMOVED***
+
+ul.breadcrumb ***REMOVED***
+  margin: 70px 0 0 0;
+***REMOVED***
+
+.breadcrumb li.active a ***REMOVED***
+  color: #777;
+***REMOVED***
+
+.pagination>.disabled>a,
+.pagination>.disabled>a:hover,
+.pagination>.disabled>a:focus ***REMOVED***
+  cursor: not-allowed;
+  pointer-events: none;
+***REMOVED***
+
+.pager>.disabled>a,
+.pager>.disabled>a:hover,
+.pager>.disabled>a:focus ***REMOVED***
+  pointer-events: none;
+***REMOVED***
+
+.pager .next ***REMOVED***
+  margin-left: 10px;
+***REMOVED***
+
+/*=== dabapps bootstrap styles ====*/
+
+html ***REMOVED***
+  width:100%;
+  background: none;
+***REMOVED***
+
+/*body, .navbar .container-fluid ***REMOVED***
+  max-width: 1150px;
+  margin: 0 auto;
+***REMOVED****/
+
+body ***REMOVED***
+  background: url("../img/grid.png") repeat-x;
+  background-attachment: fixed;
+***REMOVED***
+
+#content ***REMOVED***
+  margin: 0;
+  padding-bottom: 60px;
+***REMOVED***
+
+/* sticky footer and footer */
+html, body ***REMOVED***
+  height: 100%;
+***REMOVED***
+
+.wrapper ***REMOVED***
+  position: relative;
+  top: 0;
+  left: 0;
+  padding-top: 60px;
+  margin: -60px 0;
+  min-height: 100%;
+***REMOVED***
+
+.form-switcher ***REMOVED***
+  margin-bottom: 0;
+***REMOVED***
+
+.well ***REMOVED***
+  -webkit-box-shadow: none;
+     -moz-box-shadow: none;
+          box-shadow: none;
+***REMOVED***
+
+.well .form-actions ***REMOVED***
+  padding-bottom: 0;
+  margin-bottom: 0;
+***REMOVED***
+
+.well form ***REMOVED***
+  margin-bottom: 0;
+***REMOVED***
+
+.nav-tabs ***REMOVED***
+  border: 0;
+***REMOVED***
+
+.nav-tabs > li ***REMOVED***
+  float: right;
+***REMOVED***
+
+.nav-tabs li a ***REMOVED***
+  margin-right: 0;
+***REMOVED***
+
+.nav-tabs > .active > a ***REMOVED***
+  background: #F5F5F5;
+***REMOVED***
+
+.nav-tabs > .active > a:hover ***REMOVED***
+  background: #F5F5F5;
+***REMOVED***
+
+.tabbable.first-tab-active .tab-content ***REMOVED***
+  border-top-right-radius: 0;
+***REMOVED***
+
+footer ***REMOVED***
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  clear: both;
+  z-index: 10;
+  height: 60px;
+  width: 95%;
+  margin: 0 2.5%;
+***REMOVED***
+
+footer p ***REMOVED***
+  text-align: center;
+  color: gray;
+  border-top: 1px solid #DDDDDD;
+  padding-top: 10px;
+***REMOVED***
+
+footer a ***REMOVED***
+  color: gray !important;
+  font-weight: bold;
+***REMOVED***
+
+footer a:hover ***REMOVED***
+  color: gray;
+***REMOVED***
+
+.page-header ***REMOVED***
+  border-bottom: none;
+  padding-bottom: 0px;
+  margin: 0;
+***REMOVED***
+
+/* custom general page styles */
+.hero-unit h1, .hero-unit h2 ***REMOVED***
+  color: #A30000;
+***REMOVED***
+
+body a ***REMOVED***
+  color: #A30000;
+***REMOVED***
+
+body a:hover ***REMOVED***
+  color: #c20000;
+***REMOVED***
+
+.request-info ***REMOVED***
+  clear:both;
+***REMOVED***
+
+.horizontal-checkbox label ***REMOVED***
+  padding-top: 0;
+***REMOVED***
+
+.horizontal-checkbox label ***REMOVED***
+  padding-top: 0 !important;
+***REMOVED***
+
+.horizontal-checkbox input ***REMOVED***
+  float: left;
+  width: 20px;
+  margin-top: 3px;
+***REMOVED***
+
+.modal-footer form ***REMOVED***
+  margin-left: 5px;
+  margin-right: 5px;
+***REMOVED***

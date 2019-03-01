@@ -1,0 +1,348 @@
+h1 ***REMOVED***
+    font-size: 45px;
+***REMOVED***
+
+.intro-code ***REMOVED***
+    margin-top: 20px;
+***REMOVED***
+
+pre.highlight code * ***REMOVED***
+  white-space: nowrap;    // this sets all children inside to nowrap
+***REMOVED***
+
+pre.highlight ***REMOVED***
+  overflow-x: auto;       // this sets the scrolling in x
+***REMOVED***
+
+pre.highlight code ***REMOVED***
+  white-space: pre;       // forces <code> to respect <pre> formatting
+***REMOVED***
+
+.main-container ***REMOVED***
+  padding-left: 30px;
+  padding-right: 30px;
+***REMOVED***
+
+.btn:focus,
+.btn:focus:active ***REMOVED***
+  outline: none;
+***REMOVED***
+
+.sidebar ***REMOVED***
+  overflow: auto;
+  font-family: verdana;
+  font-size: 12px;
+  font-weight: 200;
+  background-color: #2e353d;
+  position: fixed;
+  top: 0px;
+  width: 225px;
+  height: 100%;
+  color: #FFF;
+***REMOVED***
+
+.sidebar .brand ***REMOVED***
+    background-color: #23282e;
+    display: block;
+    text-align: center;
+    padding: 25px 0;
+    margin-top: 0;
+    margin-bottom: 0;
+***REMOVED***
+
+.sidebar .brand a ***REMOVED***
+    color: #FFF;
+***REMOVED***
+
+.sidebar .brand a:hover,
+.sidebar .brand a:active,
+.sidebar .brand a:focus ***REMOVED***
+  text-decoration: none;
+***REMOVED***
+
+.sidebar .toggle-btn ***REMOVED***
+  display: none;
+***REMOVED***
+
+.sidebar .menu-list ***REMOVED***
+  width: inherit;
+***REMOVED***
+
+.sidebar .menu-list ul,
+.sidebar .menu-list li ***REMOVED***
+  background: #2e353d;
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+  line-height: 35px;
+  cursor: pointer;
+***REMOVED***
+
+.sidebar .menu-list ul :not(collapsed) .arrow:before,
+.sidebar .menu-list li :not(collapsed) .arrow:before ***REMOVED***
+  font-family: FontAwesome;
+  content: "\f078";
+  display: inline-block;
+  padding-left: 10px;
+  padding-right: 10px;
+  vertical-align: middle;
+  float: right;
+***REMOVED***
+
+.sidebar .menu-list ul .active,
+.sidebar .menu-list li .active ***REMOVED***
+  border-left: 3px solid #d19b3d;
+  background-color: #4f5b69;
+***REMOVED***
+
+.sidebar .menu-list ul .sub-menu li.active,
+.sidebar .menu-list li .sub-menu li.active ***REMOVED***
+  color: #d19b3d;
+***REMOVED***
+
+.sidebar .menu-list ul .sub-menu li.active a,
+.sidebar .menu-list li .sub-menu li.active a ***REMOVED***
+  color: #d19b3d;
+***REMOVED***
+
+.sidebar .menu-list ul .sub-menu li,
+.sidebar .menu-list li .sub-menu li ***REMOVED***
+  background-color: #181c20;
+  border: none;
+  border-bottom: 1px solid #23282e;
+  margin-left: 0px;
+  text-indent: 10px;
+***REMOVED***
+
+.sidebar .menu-list ul .sub-menu li:hover,
+.sidebar .menu-list li .sub-menu li:hover ***REMOVED***
+  background-color: #020203;
+***REMOVED***
+
+
+.sidebar .menu-list ul .sub-menu li a,
+.sidebar .menu-list li .sub-menu li a ***REMOVED***
+  display: block;
+***REMOVED***
+
+.sidebar .menu-list ul .sub-menu li a:before,
+.sidebar .menu-list li .sub-menu li a:before ***REMOVED***
+  font-family: FontAwesome;
+  content: "\f105";
+  display: inline-block;
+  padding-left: 10px;
+  padding-right: 10px;
+  vertical-align: middle;
+***REMOVED***
+
+.sidebar .menu-list li ***REMOVED***
+  padding-left: 0px;
+  border-left: 3px solid #2e353d;
+  border-bottom: 1px solid #23282e;
+***REMOVED***
+
+.sidebar .menu-list li a ***REMOVED***
+  text-decoration: none;
+  color: white;
+***REMOVED***
+
+.sidebar .menu-list li a i ***REMOVED***
+  padding-left: 10px;
+  width: 20px;
+  padding-right: 20px;
+***REMOVED***
+
+.sidebar .menu-list li:hover ***REMOVED***
+  border-left: 3px solid #d19b3d;
+  background-color: #4f5b69;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  transition: all 1s ease;
+***REMOVED***
+
+body ***REMOVED***
+  margin: 0px;
+  padding: 0px;
+***REMOVED***
+
+.coredocs-section-title ***REMOVED***
+    margin-top: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid lightgrey;
+***REMOVED***
+
+.coredocs-link-title a,
+.coredocs-section-title a ***REMOVED***
+  display: none;
+***REMOVED***
+
+.coredocs-link-title a,
+.coredocs-section-title a ***REMOVED***
+  text-decoration: none;
+***REMOVED***
+
+.coredocs-link-title:hover a,
+.coredocs-section-title:hover a ***REMOVED***
+  display: inline;
+  font-size: 20px;
+***REMOVED***
+
+.coredocs-section-title:last-child ***REMOVED***
+    margin-top: 0;
+***REMOVED***
+
+
+/* @group Language Switcher */
+
+.sidebar .menu-list.menu-list-bottom ***REMOVED***
+    margin-bottom: 0;
+    position: fixed;
+    width: inherit;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-top: 1px solid #23282e;
+***REMOVED***
+
+.sidebar .menu-list-bottom li span ***REMOVED***
+  float: right;
+  margin-right: 20px;
+  color: #d19b3d;
+***REMOVED***
+
+/* @end Language Switcher */
+
+
+/* @group Docs Content */
+
+.docs-content .meta .label ***REMOVED***
+    vertical-align: middle;
+    font-size: 14px;
+    font-weight: normal;
+***REMOVED***
+
+.docs-content .meta code ***REMOVED***
+    vertical-align: middle;
+    padding: .2em .6em .3em;
+    font-size: 14px;
+***REMOVED***
+
+.docs-content .btn ***REMOVED***
+  font-size: inherit;
+***REMOVED***
+
+.code-samples pre ***REMOVED***
+  margin-top: 20px;
+***REMOVED***
+
+/* @end Docs Content */
+
+
+@media (max-width: 767px) ***REMOVED***
+  .main-container ***REMOVED***
+    padding-left: 15px;
+    padding-right: 15px;
+  ***REMOVED***
+
+  .sidebar ***REMOVED***
+    position: relative;
+    width: 100%;
+    margin-bottom: 10px;
+    overflow: visible;
+  ***REMOVED***
+
+  .sidebar .toggle-btn ***REMOVED***
+    display: block;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 10 !important;
+    padding: 3px;
+    width: 40px;
+    text-align: center;
+  ***REMOVED***
+
+  .sidebar .menu-list.menu-list-bottom ***REMOVED***
+    position: static;
+  ***REMOVED***
+
+  .sidebar .brand ***REMOVED***
+    margin-top: 0;
+    margin-bottom: 0;
+
+    text-align: left !important;
+    font-size: 22px;
+    padding: 0;
+    padding-left: 20px;
+    line-height: 50px !important;
+  ***REMOVED***
+***REMOVED***
+
+@media (min-width: 767px) ***REMOVED***
+  .sidebar .menu-list .menu-content ***REMOVED***
+    display: block;
+  ***REMOVED***
+  #main ***REMOVED***
+    width:calc(100% - 225px);
+    float: right;
+  ***REMOVED***
+***REMOVED***
+
+@media (min-width: 992px) ***REMOVED***
+  .modal-lg ***REMOVED***
+      width: 980px;
+  ***REMOVED***
+***REMOVED***
+
+.api-modal .modal-title .fa ***REMOVED***
+  color: #93c54b;
+***REMOVED***
+
+.api-modal .modal-body .request-awaiting ***REMOVED***
+  padding: 35px 10px;
+  color: #7F8177;
+  text-align: center;
+***REMOVED***
+
+.api-modal .modal-body .meta ***REMOVED***
+  margin-bottom: 20px;
+***REMOVED***
+
+.api-modal .modal-body .meta .label ***REMOVED***
+    vertical-align: middle;
+    font-size: 14px;
+    font-weight: normal;
+***REMOVED***
+
+.api-modal .modal-body .meta code ***REMOVED***
+    vertical-align: middle;
+    padding: .2em .6em .3em;
+    font-size: 14px;
+***REMOVED***
+
+.api-modal .modal-content .toggle-view ***REMOVED***
+  text-align: right;
+  float: right;
+***REMOVED***
+
+.api-modal .modal-content .response .well ***REMOVED***
+  margin: 0;
+  max-height: 550px;
+***REMOVED***
+
+.highlight ***REMOVED***
+    background-color: #f7f7f9
+***REMOVED***
+
+.checkbox label.control-label ***REMOVED***
+    font-weight: bold
+***REMOVED***
+
+@media (min-width: 768px) ***REMOVED***
+    .navbar-nav.navbar-right:last-child ***REMOVED***
+        margin-right: 0 !important;
+    ***REMOVED***
+***REMOVED***

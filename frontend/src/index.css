@@ -1,0 +1,251 @@
+@import url('../node_modules/react-mde/lib/styles/css/react-mde-all.css');
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:300');
+@import url('https://fonts.googleapis.com/css?family=Comfortaa');
+
+:root ***REMOVED***
+	--accent: #DCAE1D;
+	--primary: #00303F;
+	--secondary: #7A9D96;
+	--tertiary: #CAE4DB;
+	--accenttwo: #F7F9FB;
+***REMOVED***
+
+section::before,
+section::after ***REMOVED***
+	position: absolute;
+	content: '';
+	pointer-events: none;
+***REMOVED***
+
+section ***REMOVED***
+	position: relative;
+	padding: 10em 10%;
+	color: #fff;
+	text-align: center;
+***REMOVED***
+
+
+body ***REMOVED***
+	margin: 0;
+	padding: 0;
+    font-family: 'Josefin Sans', sans-serif;
+	min-width: 100%;
+	color: #010;
+	font-size: 1.1em;
+	/* background: linear-gradient(-45deg, var(--accent),var(--accenttwo)); */
+***REMOVED***
+
+.background-div***REMOVED***
+	background-image: url('https://www.rpnation.com/gallery/parchment-paper-div-test.33588/full');
+	background-repeat: repeat;
+***REMOVED***
+
+.color-div-1***REMOVED***
+	background-color: var(--secondary);
+***REMOVED***
+
+hr ***REMOVED***
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0; 
+***REMOVED***
+
+h1,h2,h3,h4,h5,h6***REMOVED***
+	color: var(--primary);
+	font-family: 'Comfortaa', sans-serif;
+***REMOVED***
+
+a ***REMOVED***
+	color: var(--primary); 
+***REMOVED***
+
+a:hover ***REMOVED***
+	color: var(--secondary);
+	text-decoration: none;
+	transition: .5s;
+***REMOVED***
+
+input ***REMOVED***
+	border: none;
+	font-size: 1.5em !important;
+***REMOVED***
+
+svg ***REMOVED***
+	color: gray
+***REMOVED***
+
+ul ***REMOVED***
+	list-style: none;
+***REMOVED***
+
+table ***REMOVED***
+	table-layout: fixed;
+	width: 100%
+***REMOVED***
+
+td ***REMOVED***
+	overflow-wrap: break-word;
+***REMOVED***
+
+p***REMOVED***
+    background-color: rgb(255,255,255,0.5);
+    padding: 20px;
+	border-radius: 10px;
+	border: 1px lightgrey solid;
+***REMOVED***
+
+img ***REMOVED***
+	border-radius: 10px;
+	/* border: 1px lightgrey solid; */
+***REMOVED***
+
+#header img***REMOVED***
+	/* max-height: 50%; */
+	display: inline;
+***REMOVED***
+
+/* helper classes */
+
+.m0***REMOVED***
+	margin: 0;
+***REMOVED***
+
+.p0***REMOVED***
+	padding: 0;
+***REMOVED***
+
+.category-list***REMOVED***
+    background-color: rgb(255,255,255,0.5);
+	border: 1px lightgrey solid;
+	border-radius: 10px;
+    padding: 0 20px 20px 20px;
+    margin-top: 3%;
+***REMOVED***
+
+.category-list h4***REMOVED***
+	padding: 10px;
+	text-align: center;
+***REMOVED***
+.promo ***REMOVED***
+	font-size: .75em;
+***REMOVED***
+
+.promo .alert ***REMOVED***
+	padding: 0;
+	background-color: var(--tertiary);
+	border-color: var(--tertiary);
+	border-radius: 0;
+***REMOVED***
+.main-photo ***REMOVED***
+	background-image: url("https://img1.wsimg.com/isteam/ip/450350c3-44ea-4c81-be69-6dae3eaed7d9/bf7496f8-01c1-44d4-b534-d19796038d65.jpg/:/rs=w:1600,h:600,cg:true,m/cr=w:1600,h:600,a:cc");
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin-top: -30px;
+***REMOVED***
+
+.close ***REMOVED***
+	margin: 5px;
+***REMOVED***
+
+.main-photo-text ***REMOVED***
+	padding: 200px 0 200px 0;
+	text-align: center;
+***REMOVED***
+
+.main-photo-text h1 span, .main-photo-text h4 span***REMOVED***
+	color: var(--accent);
+	background-color: rgb(80, 80, 80, 0.5);
+	padding: 7px;
+	border-radius: 10px;
+***REMOVED***
+.narrow-section ***REMOVED***
+	padding: 0 10% 0 10%;
+	min-height: 200px;
+***REMOVED***
+
+.svg-inline--fa***REMOVED***
+	margin-left: 5px;
+***REMOVED***
+
+#header, #footer, .made-by***REMOVED***
+	background-color: white;
+***REMOVED***
+
+#header ***REMOVED***
+	min-height: 85px;
+***REMOVED***
+
+#footer ***REMOVED***
+	margin-top: 50px;
+	padding: 20px 20px 0 20px;
+***REMOVED***
+
+#footer p ***REMOVED***
+	border: none;
+***REMOVED***
+
+.carousel***REMOVED***
+	padding-left: 100px;
+	padding-right: 100px;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	/* max-width: 500px; */
+	/* max-height: 500px; */
+***REMOVED***
+
+.home-container ***REMOVED***
+	margin-top: -1.5%;
+***REMOVED***
+
+.product-image img***REMOVED***
+	max-width: 100%;
+***REMOVED***
+
+.product-image ***REMOVED***
+	padding: 0 10px 50px 10px;
+***REMOVED***
+
+.pagination ***REMOVED***
+	margin: 5px;
+	display: inline;
+***REMOVED***
+
+.made-by***REMOVED***
+	font-size: .7em;
+***REMOVED***
+
+.btn-primary***REMOVED***
+	background-color: var(--accent);
+	color: var(--primary);
+	border: none;
+***REMOVED***
+
+.btn-primary:hover***REMOVED***
+	background-color: var(--accenttwo);
+	color: var(--primary);
+***REMOVED***
+
+.btn-primary:focus***REMOVED***
+	background-color: var(--tertiary);
+	color: var(--primary);
+***REMOVED***
+/*.dropdown:hover > .dropdown-menu ***REMOVED****/
+/*    display: block;*/
+/****REMOVED****/
+/*.dropdown > .dropdown-toggle:active ***REMOVED****/
+/*    /*Without this, clicking will make it sticky*/
+/*    pointer-events: none;*/
+/****REMOVED****/
+
+/* >:( stupid recaptcha lib... */
+.recaptcha-wrapper > div > div > div ***REMOVED***
+	height: auto !important;
+	width: auto !important;
+***REMOVED***
+
+
