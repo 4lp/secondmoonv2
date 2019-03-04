@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import Collapsible from 'react-collapsible';
 import {connect} from 'react-redux';
-import {products} from "../actions";
 import {settings} from "../actions";
 
 class Header extends Component {
@@ -61,18 +60,12 @@ class Header extends Component {
 
 const mapStateToProps = state => {
 	let errors = [];
-	if (state.products.errors) {
-		errors = Object.keys(state.products.errors).map(field => {
-			return {field, message: state.products.errors[field]};
-		});
-	}
 	if (state.settings.errors) {
 		errors = [...errors, Object.keys(state.settings.errors).map(field => {
 			return {field, message: state.settings.errors[field]};
 		})];
 	}
 	return {
-		products: state.products,
 		settings: state.settings,
 		errors
 	}
@@ -80,10 +73,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		fetchProducts: () => {
-			dispatch(products.fetchProducts());
-	    },
-			fetchSettings: () => {
+		fetchSettings: () => {
 			dispatch(settings.fetchSettings());
 	    },
 	}

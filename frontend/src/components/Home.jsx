@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {carouselImages} from "../actions";
 import {settings} from "../actions";
 import {instagram} from "../actions";
+import Masonry from 'react-masonry-component';
 {/*import InstagramCarousel from "./InstagramCarousel"
 import Register from "./Register";
 import Footer from "./Footer";
@@ -22,17 +23,37 @@ class Home extends Component {
 	}	
 
 	render(){
-			return(
-				<div>
-					<div className="container-fluid home-container">
-						<div className="row">
-							<div className="col-12">
-								<img src="https://i.imgur.com/WYKw9jWm.png"/>
-							</div>
+		const masonryOptions = {
+			transitionDuration: 0
+	  	};
+		const imagesLoadedOptions = { background: '.my-bg-image-el' };
+		return(
+			<div>
+				<div className="container-fluid home-container">
+					<div className="row">
+						<div className="col-12">
+							<Masonry
+								className={'grid'} // default ''
+								elementType={'div'} // default 'div'
+								options={masonryOptions} // default {}
+								disableImagesLoaded={false} // default false
+								updateOnEachImageLoad={false} // default false and works only if disableImagesLoaded is false
+								imagesLoadedOptions={imagesLoadedOptions} // default {}
+								isFitWidth={true}
+							>
+								{this.props.posts.posts.map((post) => {
+									return (
+										<Link to={"/tag/"+post.path}>
+											<img src={post.image}/>
+										</Link>
+									)
+								})}
+							</Masonry>
 						</div>
 					</div>
 				</div>
-			)
+			</div>
+		)
 	}
 }
 

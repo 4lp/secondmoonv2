@@ -12,28 +12,22 @@ import 'react-router-modal/css/react-router-modal.css';
 import { ModalContainer, ModalRoute } from 'react-router-modal';
 import { LastLocationProvider, withLastLocation } from 'react-router-last-location';
 import Blog from "./components/Blog";
-import Products from "./components/Products";
-import MissionStatement from "./components/MissionStatement";
-import Experience from "./components/Experience";
-import Faq from "./components/Faq";
-import WhoCanUse from "./components/WhoCanUse";
-import Benefits from "./components/Benefits";
-import WhatIsCBD from "./components/WhatIsCBD";
-import WhyWereDoingThis from "./components/WhyWereDoingThis";
-import ProductDetail from "./components/ProductDetail";
+import TagDetail from "./components/TagDetail";
 import Template from "./components/Template";
-import {products} from "./actions";
+import {posts} from "./actions";
 
 let store = createStore(gaiasApp, applyMiddleware(thunk));
 
 class RootContainerComponent extends Component {
 
 	componentDidMount() {
+		if(this.props.posts){
+			this.props.fetchPosts();
+		}
 	}	
 
 	render() {
-		let {AsyncRoute} = this;
-		if (!this.props.products.isLoading){
+		if (!this.props.posts.isLoading){
 			return (
 				<BrowserRouter>
 					<div>
@@ -41,8 +35,8 @@ class RootContainerComponent extends Component {
 							<Switch>
 								<Route exact path="/contact" render={(props) => ( <Template component={<ContactPage/>} /> )} />
 								<Route exact path="/blog" render={(props) => ( <Template component={<Blog />} /> )} />
-								<Route path="/tag/:tagname" render={(props) => ( <Template component={<ProductDetail />} {...props}/> )} />
-								<Route path="/" render={(props) => ( <Template component={<Home/>} /> )} />
+								<Route path="/tag/:tagname" render={(props) => ( <Template component={<TagDetail posts={this.props.posts}/>} {...props}/> )} />
+								<Route path="/" render={(props) => ( <Template component={<Home posts={this.props.posts} />} /> )} />
 								<Route component={NotFound} />
 							</Switch>
 						</div>
@@ -61,21 +55,21 @@ class RootContainerComponent extends Component {
 
 const mapStateToProps = state => {
 	let errors = [];
-	if (state.products.errors) {
-		errors = Object.keys(state.products.errors).map(field => {
-			return {field, message: state.products.errors[field]};
+	if (state.posts.errors) {
+		errors = Object.keys(state.posts.errors).map(field => {
+			return {field, message: state.posts.errors[field]};
 		});
 	}
 	return {
-		products: state.products,
+		posts: state.posts,
 		errors
 	}
 }
 
 const mapDispatchToProps = dispatch => {
 	return {
-		fetchProducts: () => {
-			dispatch(products.fetchProducts());
+		fetchPosts: () => {
+			dispatch(posts.fetchPosts());
 	    },
 	}
 }

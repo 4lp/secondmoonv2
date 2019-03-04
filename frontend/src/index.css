@@ -90,16 +90,14 @@ td {
 	overflow-wrap: break-word;
 }
 
-p{
-    background-color: rgb(255,255,255,0.5);
-    padding: 20px;
-	border-radius: 10px;
-	border: 1px lightgrey solid;
+.home-container img {
+	max-width: 500px;
+	max-height: 500px;
 }
 
-img {
-	border-radius: 10px;
-	/* border: 1px lightgrey solid; */
+.post-image img{
+	max-width: 500px;
+	max-height: 500px;
 }
 
 #header img{

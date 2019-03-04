@@ -13,13 +13,13 @@ function getCookie(name) {
 	return cookieValue;
 }
 
-export const fetchProducts = () => {
+export const fetchPosts = () => {
 	return (dispatch, getState) => {
 		let csrftoken = getCookie('csrftoken');
 		
 		let headers = {"Content-Type": "application/json", "X-CSRFToken": csrftoken};
 
-		return fetch("/api/product/", {headers, })
+		return fetch("/api/post/", {headers, })
 			.then(res => {
 				if (res.status < 499) {
 					return res.json().then(data => {
@@ -32,7 +32,7 @@ export const fetchProducts = () => {
 			})
 			.then(res => {
 				if (res.status === 200) {
-					return dispatch({type: 'FETCH_PRODUCTS', products: res.data});
+					return dispatch({type: 'FETCH_POSTS', posts: res.data});
 				} else if (res.status === 401 || res.status === 403) {
 					dispatch({type: "AUTHENTICATION_ERROR", data: res.data});
 	  				throw res.data;
