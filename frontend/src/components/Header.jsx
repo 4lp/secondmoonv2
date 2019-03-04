@@ -2,7 +2,6 @@ import React, ***REMOVED*** Component ***REMOVED*** from 'react';
 import ***REMOVED***Link***REMOVED*** from 'react-router-dom';
 import Collapsible from 'react-collapsible';
 import ***REMOVED***connect***REMOVED*** from 'react-redux';
-import ***REMOVED***products***REMOVED*** from "../actions";
 import ***REMOVED***settings***REMOVED*** from "../actions";
 
 class Header extends Component ***REMOVED***
@@ -61,18 +60,12 @@ class Header extends Component ***REMOVED***
 
 const mapStateToProps = state => ***REMOVED***
 	let errors = [];
-	if (state.products.errors) ***REMOVED***
-		errors = Object.keys(state.products.errors).map(field => ***REMOVED***
-			return ***REMOVED***field, message: state.products.errors[field]***REMOVED***;
-		***REMOVED***);
-	***REMOVED***
 	if (state.settings.errors) ***REMOVED***
 		errors = [...errors, Object.keys(state.settings.errors).map(field => ***REMOVED***
 			return ***REMOVED***field, message: state.settings.errors[field]***REMOVED***;
 		***REMOVED***)];
 	***REMOVED***
 	return ***REMOVED***
-		products: state.products,
 		settings: state.settings,
 		errors
 	***REMOVED***
@@ -80,10 +73,7 @@ const mapStateToProps = state => ***REMOVED***
 
 const mapDispatchToProps = dispatch => ***REMOVED***
 	return ***REMOVED***
-		fetchProducts: () => ***REMOVED***
-			dispatch(products.fetchProducts());
-	    ***REMOVED***,
-			fetchSettings: () => ***REMOVED***
+		fetchSettings: () => ***REMOVED***
 			dispatch(settings.fetchSettings());
 	    ***REMOVED***,
 	***REMOVED***

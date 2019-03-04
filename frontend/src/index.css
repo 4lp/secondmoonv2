@@ -90,16 +90,14 @@ td ***REMOVED***
 	overflow-wrap: break-word;
 ***REMOVED***
 
-p***REMOVED***
-    background-color: rgb(255,255,255,0.5);
-    padding: 20px;
-	border-radius: 10px;
-	border: 1px lightgrey solid;
+.home-container img ***REMOVED***
+	max-width: 500px;
+	max-height: 500px;
 ***REMOVED***
 
-img ***REMOVED***
-	border-radius: 10px;
-	/* border: 1px lightgrey solid; */
+.post-image img***REMOVED***
+	max-width: 500px;
+	max-height: 500px;
 ***REMOVED***
 
 #header img***REMOVED***

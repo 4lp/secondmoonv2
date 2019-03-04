@@ -12,28 +12,22 @@ import 'react-router-modal/css/react-router-modal.css';
 import ***REMOVED*** ModalContainer, ModalRoute ***REMOVED*** from 'react-router-modal';
 import ***REMOVED*** LastLocationProvider, withLastLocation ***REMOVED*** from 'react-router-last-location';
 import Blog from "./components/Blog";
-import Products from "./components/Products";
-import MissionStatement from "./components/MissionStatement";
-import Experience from "./components/Experience";
-import Faq from "./components/Faq";
-import WhoCanUse from "./components/WhoCanUse";
-import Benefits from "./components/Benefits";
-import WhatIsCBD from "./components/WhatIsCBD";
-import WhyWereDoingThis from "./components/WhyWereDoingThis";
-import ProductDetail from "./components/ProductDetail";
+import TagDetail from "./components/TagDetail";
 import Template from "./components/Template";
-import ***REMOVED***products***REMOVED*** from "./actions";
+import ***REMOVED***posts***REMOVED*** from "./actions";
 
 let store = createStore(gaiasApp, applyMiddleware(thunk));
 
 class RootContainerComponent extends Component ***REMOVED***
 
 	componentDidMount() ***REMOVED***
+		if(this.props.posts)***REMOVED***
+			this.props.fetchPosts();
+		***REMOVED***
 	***REMOVED***	
 
 	render() ***REMOVED***
-		let ***REMOVED***AsyncRoute***REMOVED*** = this;
-		if (!this.props.products.isLoading)***REMOVED***
+		if (!this.props.posts.isLoading)***REMOVED***
 			return (
 				<BrowserRouter>
 					<div>
@@ -41,8 +35,8 @@ class RootContainerComponent extends Component ***REMOVED***
 							<Switch>
 								<Route exact path="/contact" render=***REMOVED***(props) => ( <Template component=***REMOVED***<ContactPage/>***REMOVED*** /> )***REMOVED*** />
 								<Route exact path="/blog" render=***REMOVED***(props) => ( <Template component=***REMOVED***<Blog />***REMOVED*** /> )***REMOVED*** />
-								<Route path="/tag/:tagname" render=***REMOVED***(props) => ( <Template component=***REMOVED***<ProductDetail />***REMOVED*** ***REMOVED***...props***REMOVED***/> )***REMOVED*** />
-								<Route path="/" render=***REMOVED***(props) => ( <Template component=***REMOVED***<Home/>***REMOVED*** /> )***REMOVED*** />
+								<Route path="/tag/:tagname" render=***REMOVED***(props) => ( <Template component=***REMOVED***<TagDetail posts=***REMOVED***this.props.posts***REMOVED***/>***REMOVED*** ***REMOVED***...props***REMOVED***/> )***REMOVED*** />
+								<Route path="/" render=***REMOVED***(props) => ( <Template component=***REMOVED***<Home posts=***REMOVED***this.props.posts***REMOVED*** />***REMOVED*** /> )***REMOVED*** />
 								<Route component=***REMOVED***NotFound***REMOVED*** />
 							</Switch>
 						</div>
@@ -61,21 +55,21 @@ class RootContainerComponent extends Component ***REMOVED***
 
 const mapStateToProps = state => ***REMOVED***
 	let errors = [];
-	if (state.products.errors) ***REMOVED***
-		errors = Object.keys(state.products.errors).map(field => ***REMOVED***
-			return ***REMOVED***field, message: state.products.errors[field]***REMOVED***;
+	if (state.posts.errors) ***REMOVED***
+		errors = Object.keys(state.posts.errors).map(field => ***REMOVED***
+			return ***REMOVED***field, message: state.posts.errors[field]***REMOVED***;
 		***REMOVED***);
 	***REMOVED***
 	return ***REMOVED***
-		products: state.products,
+		posts: state.posts,
 		errors
 	***REMOVED***
 ***REMOVED***
 
 const mapDispatchToProps = dispatch => ***REMOVED***
 	return ***REMOVED***
-		fetchProducts: () => ***REMOVED***
-			dispatch(products.fetchProducts());
+		fetchPosts: () => ***REMOVED***
+			dispatch(posts.fetchPosts());
 	    ***REMOVED***,
 	***REMOVED***
 ***REMOVED***

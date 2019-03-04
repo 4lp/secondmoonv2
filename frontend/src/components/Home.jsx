@@ -4,6 +4,7 @@ import ***REMOVED***connect***REMOVED*** from 'react-redux';
 import ***REMOVED***carouselImages***REMOVED*** from "../actions";
 import ***REMOVED***settings***REMOVED*** from "../actions";
 import ***REMOVED***instagram***REMOVED*** from "../actions";
+import Masonry from 'react-masonry-component';
 ***REMOVED***/*import InstagramCarousel from "./InstagramCarousel"
 import Register from "./Register";
 import Footer from "./Footer";
@@ -22,17 +23,37 @@ class Home extends Component ***REMOVED***
 	***REMOVED***	
 
 	render()***REMOVED***
-			return(
-				<div>
-					<div className="container-fluid home-container">
-						<div className="row">
-							<div className="col-12">
-								<img src="https://i.imgur.com/WYKw9jWm.png"/>
-							</div>
+		const masonryOptions = ***REMOVED***
+			transitionDuration: 0
+	  	***REMOVED***;
+		const imagesLoadedOptions = ***REMOVED*** background: '.my-bg-image-el' ***REMOVED***;
+		return(
+			<div>
+				<div className="container-fluid home-container">
+					<div className="row">
+						<div className="col-12">
+							<Masonry
+								className=***REMOVED***'grid'***REMOVED*** // default ''
+								elementType=***REMOVED***'div'***REMOVED*** // default 'div'
+								options=***REMOVED***masonryOptions***REMOVED*** // default ***REMOVED******REMOVED***
+								disableImagesLoaded=***REMOVED***false***REMOVED*** // default false
+								updateOnEachImageLoad=***REMOVED***false***REMOVED*** // default false and works only if disableImagesLoaded is false
+								imagesLoadedOptions=***REMOVED***imagesLoadedOptions***REMOVED*** // default ***REMOVED******REMOVED***
+								isFitWidth=***REMOVED***true***REMOVED***
+							>
+								***REMOVED***this.props.posts.posts.map((post) => ***REMOVED***
+									return (
+										<Link to=***REMOVED***"/tag/"+post.path***REMOVED***>
+											<img src=***REMOVED***post.image***REMOVED***/>
+										</Link>
+									)
+								***REMOVED***)***REMOVED***
+							</Masonry>
 						</div>
 					</div>
 				</div>
-			)
+			</div>
+		)
 	***REMOVED***
 ***REMOVED***
 
