@@ -13,17 +13,13 @@ function getCookie(name) ***REMOVED***
 	return cookieValue;
 ***REMOVED***
 
-export const fetchPosts = (tag) => ***REMOVED***
+export const fetchTags = () => ***REMOVED***
 	return (dispatch, getState) => ***REMOVED***
 		let csrftoken = getCookie('csrftoken');
+		
 		let headers = ***REMOVED***"Content-Type": "application/json", "X-CSRFToken": csrftoken***REMOVED***;
-		let queryString = '';
 
-		if (tag) ***REMOVED***
-			queryString += "&tags=" + tag;
-		***REMOVED***
-
-		return fetch("/api/post/" + queryString, ***REMOVED***headers, ***REMOVED***)
+		return fetch("/api/tag/", ***REMOVED***headers, ***REMOVED***)
 			.then(res => ***REMOVED***
 				if (res.status < 499) ***REMOVED***
 					return res.json().then(data => ***REMOVED***
@@ -36,7 +32,7 @@ export const fetchPosts = (tag) => ***REMOVED***
 			***REMOVED***)
 			.then(res => ***REMOVED***
 				if (res.status === 200) ***REMOVED***
-					return dispatch(***REMOVED***type: 'FETCH_POSTS', posts: res.data***REMOVED***);
+					return dispatch(***REMOVED***type: 'FETCH_TAGS', tags: res.data***REMOVED***);
 				***REMOVED*** else if (res.status === 401 || res.status === 403) ***REMOVED***
 					dispatch(***REMOVED***type: "AUTHENTICATION_ERROR", data: res.data***REMOVED***);
 	  				throw res.data;

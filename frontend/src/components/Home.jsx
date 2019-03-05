@@ -12,9 +12,6 @@ import ***REMOVED***auth***REMOVED*** from "../actions";
 import ReactInterval from 'react-interval';*/***REMOVED***
 
 class Home extends Component ***REMOVED***
-	state = ***REMOVED***
-	***REMOVED***
-
 	componentDidMount() ***REMOVED***
 		if (!this.props.instagram.length) ***REMOVED***
 	    	this.props.fetchInstagram();
@@ -43,7 +40,7 @@ class Home extends Component ***REMOVED***
 							>
 								***REMOVED***this.props.posts.posts.map((post) => ***REMOVED***
 									return (
-										<Link to=***REMOVED***"/tag/"+post.path***REMOVED***>
+										<Link to=***REMOVED***"/post/"+post.path***REMOVED***>
 											<img src=***REMOVED***post.image***REMOVED***/>
 										</Link>
 									)

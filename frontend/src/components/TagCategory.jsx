@@ -2,7 +2,7 @@ import React, ***REMOVED*** Component ***REMOVED*** from 'react';
 import ***REMOVED***Link***REMOVED*** from 'react-router-dom';
 import ***REMOVED***connect***REMOVED*** from 'react-redux';
 
-export default class PostDetail extends Component ***REMOVED***
+export default class TagCategory extends Component ***REMOVED***
 
 	render()***REMOVED***
 		const posts = this.props.posts.posts;
@@ -29,11 +29,6 @@ export default class PostDetail extends Component ***REMOVED***
 							</div>
 							<div className="col-12">
 								<div dangerouslySetInnerHTML=***REMOVED******REMOVED***__html:post[0].text***REMOVED******REMOVED***></div>
-							</div>
-							<div className="col-12">
-								<div>***REMOVED***post[0].tags.map((tag)=>***REMOVED***
-									return(<div key=***REMOVED***tag.id***REMOVED***>#***REMOVED***tag.name***REMOVED***</div>)
-								***REMOVED***)***REMOVED***</div>
 							</div>
 						</div>
 					</div>
