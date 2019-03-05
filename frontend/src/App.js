@@ -13,6 +13,8 @@ import { ModalContainer, ModalRoute } from 'react-router-modal';
 import { LastLocationProvider, withLastLocation } from 'react-router-last-location';
 import Blog from "./components/Blog";
 import TagDetail from "./components/TagDetail";
+import TagListing from "./components/TagListing";
+import TagCategory from "./components/TagCategory";
 import Template from "./components/Template";
 import {posts} from "./actions";
 
@@ -20,11 +22,19 @@ let store = createStore(gaiasApp, applyMiddleware(thunk));
 
 class RootContainerComponent extends Component {
 
+	state = {
+		filteredTag: ''
+	}
+
 	componentDidMount() {
 		if(this.props.posts){
-			this.props.fetchPosts();
+			this.props.fetchPosts(this.state.filteredTag);
 		}
 	}	
+
+	setTag(tag){
+		this.setState({filteredTag: tag});
+	}
 
 	render() {
 		if (!this.props.posts.isLoading){
@@ -35,7 +45,9 @@ class RootContainerComponent extends Component {
 							<Switch>
 								<Route exact path="/contact" render={(props) => ( <Template component={<ContactPage/>} /> )} />
 								<Route exact path="/blog" render={(props) => ( <Template component={<Blog />} /> )} />
-								<Route path="/tag/:tagname" render={(props) => ( <Template component={<TagDetail posts={this.props.posts}/>} {...props}/> )} />
+								<Route path="/post/:tagname" render={(props) => ( <Template component={<TagDetail posts={this.props.posts}/>} {...props}/> )} />
+								<Route path="/tag" render={(props) => ( <Template component={<TagListing setTag={this.setTag.bind(this)} posts={this.props.posts}/>} {...props}/> )} />
+								<Route path="/tag/:tagname" render={(props) => ( <Template component={<TagCategory posts={this.props.posts}/>} {...props}/> )} />
 								<Route path="/" render={(props) => ( <Template component={<Home posts={this.props.posts} />} /> )} />
 								<Route component={NotFound} />
 							</Switch>
@@ -68,8 +80,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		fetchPosts: () => {
-			dispatch(posts.fetchPosts());
+		fetchPosts: (tag) => {
+			dispatch(posts.fetchPosts(tag));
 	    },
 	}
 }

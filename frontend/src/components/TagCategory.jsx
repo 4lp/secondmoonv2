@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 
-export default class PostDetail extends Component {
+export default class TagCategory extends Component {
 
 	render(){
 		const posts = this.props.posts.posts;
@@ -29,11 +29,6 @@ export default class PostDetail extends Component {
 							</div>
 							<div className="col-12">
 								<div dangerouslySetInnerHTML={{__html:post[0].text}}></div>
-							</div>
-							<div className="col-12">
-								<div>{post[0].tags.map((tag)=>{
-									return(<div key={tag.id}>#{tag.name}</div>)
-								})}</div>
 							</div>
 						</div>
 					</div>

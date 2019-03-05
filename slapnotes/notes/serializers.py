@@ -17,6 +17,8 @@ class BlogpostSerializer(serializers.ModelSerializer):
         fields = ('id', 'text', 'title', 'image', 'created_at','tags')
         
 class PostSerializer(serializers.ModelSerializer):
+    tags = TagSerializer(read_only=True, many=True)
+
     class Meta:
         model = Post
         fields = ('id', 'name', 'text', 'image', 'path', 'tags')

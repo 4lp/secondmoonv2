@@ -12,9 +12,6 @@ import {auth} from "../actions";
 import ReactInterval from 'react-interval';*/}
 
 class Home extends Component {
-	state = {
-	}
-
 	componentDidMount() {
 		if (!this.props.instagram.length) {
 	    	this.props.fetchInstagram();
@@ -43,7 +40,7 @@ class Home extends Component {
 							>
 								{this.props.posts.posts.map((post) => {
 									return (
-										<Link to={"/tag/"+post.path}>
+										<Link to={"/post/"+post.path}>
 											<img src={post.image}/>
 										</Link>
 									)
