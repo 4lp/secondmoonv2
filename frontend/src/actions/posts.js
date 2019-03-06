@@ -13,13 +13,14 @@ function getCookie(name) ***REMOVED***
 	return cookieValue;
 ***REMOVED***
 
-export const fetchPosts = (tag,path) => ***REMOVED***
+export const fetchPosts = (tag,path,page) => ***REMOVED***
 	return (dispatch, getState) => ***REMOVED***
 		let csrftoken = getCookie('csrftoken');
 		let headers = ***REMOVED***"Content-Type": "application/json", "X-CSRFToken": csrftoken***REMOVED***;
-		let queryString = '';
+		let page = page || 1;
+		let queryString = '?page=' + page;
 
-		queryString += "?tags__name=";
+		queryString += "&tags__name=";
 
 		if (tag) ***REMOVED***
 			queryString += tag;

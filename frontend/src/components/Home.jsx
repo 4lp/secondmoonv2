@@ -5,7 +5,8 @@ import ***REMOVED***carouselImages***REMOVED*** from "../actions";
 import ***REMOVED***settings***REMOVED*** from "../actions";
 import ***REMOVED***instagram***REMOVED*** from "../actions";
 import ***REMOVED***posts***REMOVED*** from "../actions";
-import Masonry from 'react-masonry-component';
+import MasonryInfiniteScroller from 'react-masonry-infinite';
+***REMOVED***/*import Masonry from 'react-masonry-component';*/***REMOVED***
 ***REMOVED***/*import InstagramCarousel from "./InstagramCarousel"
 import Register from "./Register";
 import Footer from "./Footer";
@@ -13,6 +14,9 @@ import ***REMOVED***auth***REMOVED*** from "../actions";
 import ReactInterval from 'react-interval';*/***REMOVED***
 
 class Home extends Component ***REMOVED***
+	state = ***REMOVED***
+		page: 1
+	***REMOVED***
 	componentDidMount() ***REMOVED***
 		let params = new URLSearchParams(window.location.search);
 		if (!this.props.instagram.length) ***REMOVED***
@@ -20,7 +24,7 @@ class Home extends Component ***REMOVED***
 	    	this.props.fetchSettings();
 		***REMOVED***
 		let tagname = params.get("tags__name") || null;
-		this.props.fetchPosts(tagname,null);
+		this.props.fetchPosts(tagname, null, this.state.page);
 	***REMOVED***	
 
 	render()***REMOVED***
@@ -34,7 +38,7 @@ class Home extends Component ***REMOVED***
 				<div className="container-fluid home-container">
 					<div className="row">
 						<div className="col-12">
-							<Masonry
+			***REMOVED***/*<Masonry
 								className=***REMOVED***'grid'***REMOVED*** // default ''
 								elementType=***REMOVED***'div'***REMOVED*** // default 'div'
 								options=***REMOVED***masonryOptions***REMOVED*** // default ***REMOVED******REMOVED***
@@ -42,15 +46,25 @@ class Home extends Component ***REMOVED***
 								updateOnEachImageLoad=***REMOVED***false***REMOVED*** // default false and works only if disableImagesLoaded is false
 								imagesLoadedOptions=***REMOVED***imagesLoadedOptions***REMOVED*** // default ***REMOVED******REMOVED***
 								isFitWidth=***REMOVED***true***REMOVED***
+							>*/***REMOVED***
+							<MasonryInfiniteScroller
+								hasMore=***REMOVED***this.props.posts.next ? true : false***REMOVED***
+								loadMore=***REMOVED***() => this.setState(***REMOVED*** page: this.state.page + 1 ***REMOVED***)***REMOVED***
+								pack=***REMOVED***true***REMOVED***
+								className="main-masonry"
+								style=***REMOVED******REMOVED***width:'100%'***REMOVED******REMOVED***
 							>
 								***REMOVED***this.props.posts.posts.map((post) => ***REMOVED***
 									return (
-										<Link to=***REMOVED***"/post/"+post.path***REMOVED*** key=***REMOVED***post.id***REMOVED***>
+										<div>
+										<Link className="overlay-container" to=***REMOVED***"/post/"+post.path***REMOVED*** key=***REMOVED***post.id***REMOVED***>
 											<img src=***REMOVED***post.image***REMOVED***/>
+											<div className="overlay">***REMOVED***post.name***REMOVED***</div>
 										</Link>
+										</div>
 									)
 								***REMOVED***)***REMOVED***
-							</Masonry>
+							</MasonryInfiniteScroller>
 						</div>
 					</div>
 				</div>
@@ -90,8 +104,8 @@ const mapDispatchToProps = dispatch => ***REMOVED***
 		fetchSettings: () => ***REMOVED***
 			dispatch(settings.fetchSettings());
 	    ***REMOVED***,
-		fetchPosts: (tag,name) => ***REMOVED***
-			dispatch(posts.fetchPosts(tag,name));
+		fetchPosts: (tag,name,page) => ***REMOVED***
+			dispatch(posts.fetchPosts(tag,name,page));
 	    ***REMOVED***,
 ***REMOVED***
 ***REMOVED***

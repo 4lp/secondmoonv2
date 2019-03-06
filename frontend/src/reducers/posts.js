@@ -10,7 +10,7 @@ export default function posts(state=initialState, action) ***REMOVED***
 			return ***REMOVED***...state, isLoading: true***REMOVED***
 
 		case 'FETCH_POSTS':
-		    return ***REMOVED***state, posts: action.posts, isLoading: false***REMOVED***;
+		    return ***REMOVED***state, posts: action.posts.results, next:action.posts.next, isLoading: false***REMOVED***;
 
 		default:
 			return state;

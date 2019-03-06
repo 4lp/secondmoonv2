@@ -1,6 +1,6 @@
 @import url('../node_modules/react-mde/lib/styles/css/react-mde-all.css');
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans:300');
-@import url('https://fonts.googleapis.com/css?family=Comfortaa');
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,400,700');
 
 :root ***REMOVED***
 	--accent: #DCAE1D;
@@ -28,7 +28,7 @@ section ***REMOVED***
 body ***REMOVED***
 	margin: 0;
 	padding: 0;
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
 	min-width: 100%;
 	color: #010;
 	font-size: 1.1em;
@@ -55,7 +55,7 @@ hr ***REMOVED***
 
 h1,h2,h3,h4,h5,h6***REMOVED***
 	color: var(--primary);
-	font-family: 'Comfortaa', sans-serif;
+	font-family: 'Roboto', sans-serif;
 ***REMOVED***
 
 a ***REMOVED***
@@ -90,19 +90,38 @@ td ***REMOVED***
 	overflow-wrap: break-word;
 ***REMOVED***
 
-.home-container img ***REMOVED***
-	max-width: 500px;
-	max-height: 500px;
-***REMOVED***
+/* .home-container img ***REMOVED*** */
+/* 	max-width: 500px; */
+/* 	max-height: 500px; */
+/* ***REMOVED*** */
 
 .post-image img***REMOVED***
 	max-width: 500px;
 	max-height: 500px;
 ***REMOVED***
 
+.main-masonry***REMOVED***
+	width: 100% !important;
+***REMOVED***
+
+.main-masonry div***REMOVED***
+	max-width: 500px;
+	max-height: 500px;
+***REMOVED***
+
+
 #header img***REMOVED***
-	/* max-height: 50%; */
+	max-height: 50%;
 	display: inline;
+***REMOVED***
+
+#header***REMOVED***
+	font-weight: 100;
+***REMOVED***
+
+#header h3***REMOVED***
+	font-weight: 100;
+	font-style: italic;
 ***REMOVED***
 
 /* helper classes */
@@ -246,4 +265,38 @@ td ***REMOVED***
 	width: auto !important;
 ***REMOVED***
 
+.tag-link***REMOVED***
+	text-decoration: underline;	
+***REMOVED***
+
+.overlay-container ***REMOVED***
+  position: relative;
+  max-height: 500px;
+  max-width: 500px;
+***REMOVED***
+
+.overlay-container img ***REMOVED***
+  display: block;
+  width: 100%;
+  height: auto;
+***REMOVED***
+
+.overlay ***REMOVED***
+  position: absolute; 
+  bottom: 0; 
+  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.5); /* Black see-through */
+  color: #f1f1f1; 
+  width: 100%;
+  height: 100%;
+  transition: .5s ease;
+  opacity:0;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+***REMOVED***
+
+.overlay-container:hover .overlay ***REMOVED***
+  opacity: 1;
+***REMOVED***
 

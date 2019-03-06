@@ -31,7 +31,7 @@ class TagDetail extends Component ***REMOVED***
 							</div>
 							<div className="col-12">
 								<div>***REMOVED***this.props.posts.posts[0].tags.map((tag)=>***REMOVED***
-									return(<Link to=***REMOVED***"/?tags__name="+tag.name***REMOVED***><div>***REMOVED***tag.name***REMOVED***</div></Link>)
+									return(<span><Link className="tag-link" to=***REMOVED***"/?tags__name="+tag.name***REMOVED***>#***REMOVED***tag.name***REMOVED***</Link>&nbsp;</span>)
 								***REMOVED***)***REMOVED***</div>
 							</div>
 						</div>
