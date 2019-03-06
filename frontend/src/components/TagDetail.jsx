@@ -1,38 +1,37 @@
 import React, ***REMOVED*** Component ***REMOVED*** from 'react';
 import ***REMOVED***Link***REMOVED*** from 'react-router-dom';
 import ***REMOVED***connect***REMOVED*** from 'react-redux';
+import ***REMOVED***posts***REMOVED*** from "../actions";
 
-export default class PostDetail extends Component ***REMOVED***
+class TagDetail extends Component ***REMOVED***
+
+	componentDidMount()***REMOVED***
+		const path = this.props.props.match.params.tagname;
+		if(!this.props.posts.length)***REMOVED***
+			this.props.fetchPosts(null,path);
+		***REMOVED***	
+	***REMOVED***
 
 	render()***REMOVED***
-		const posts = this.props.posts.posts;
-		const path = this.props.props.match.params.tagname;
-		let images;
-		let reviews;
-        const post = posts.filter(post => ***REMOVED***
-            if(post.path == path) ***REMOVED***
-                return post;
-            ***REMOVED***
-        ***REMOVED***);
 		if (!this.props.posts.isLoading) ***REMOVED***
 			return(
 				<div>
-					<div className="container">
+				<div className="container">
 						<div className="row">
 							<div className="col-12 text-center">
-								<h1 className="text-center">***REMOVED***post[0].name***REMOVED***</h1>
+								<h1 className="text-center">***REMOVED***this.props.posts.posts[0].name***REMOVED***</h1>
 							</div>
 							<div className="col-12 text-center">
-								<div className="post-image">
-									<img src=***REMOVED***post[0].image***REMOVED***/>
+								<div className="this.props.posts.posts-image">
+									<img src=***REMOVED***this.props.posts.posts[0].image***REMOVED***/>
 								</div>
 							</div>
 							<div className="col-12">
-								<div dangerouslySetInnerHTML=***REMOVED******REMOVED***__html:post[0].text***REMOVED******REMOVED***></div>
+								<div dangerouslySetInnerHTML=***REMOVED******REMOVED***__html:this.props.posts.posts[0].text***REMOVED******REMOVED***></div>
 							</div>
 							<div className="col-12">
-								<div>***REMOVED***post[0].tags.map((tag)=>***REMOVED***
-									return(<div key=***REMOVED***tag.id***REMOVED***>#***REMOVED***tag.name***REMOVED***</div>)
+								<div>***REMOVED***this.props.posts.posts[0].tags.map((tag)=>***REMOVED***
+									return(<Link to=***REMOVED***"/?tags__name="+tag.name***REMOVED***><div>***REMOVED***tag.name***REMOVED***</div></Link>)
 								***REMOVED***)***REMOVED***</div>
 							</div>
 						</div>
@@ -45,3 +44,33 @@ export default class PostDetail extends Component ***REMOVED***
 	***REMOVED***
 
 ***REMOVED***
+
+const mapStateToProps = state => ***REMOVED***
+	let errors = [];
+	***REMOVED***/*if (state.instagramPictures.errors) ***REMOVED***
+		errors = Object.keys(state.instagramPictures.errors).map(field => ***REMOVED***
+			return ***REMOVED***field, message: state.instagramPictures.errors[field]***REMOVED***;
+		***REMOVED***);
+	***REMOVED*** */***REMOVED***
+	if (state.settings.errors) ***REMOVED***
+		errors = [...errors, Object.keys(state.settings.errors).map(field => ***REMOVED***
+			return ***REMOVED***field, message: state.settings.errors[field]***REMOVED***;
+		***REMOVED***)];
+	***REMOVED***
+	return ***REMOVED***
+		instagram: state.instagram,
+		settings: state.settings,
+		posts: state.posts,
+		errors
+	***REMOVED***
+***REMOVED***
+
+const mapDispatchToProps = dispatch => ***REMOVED***
+	return ***REMOVED***
+		fetchPosts: (tag,path) => ***REMOVED***
+			dispatch(posts.fetchPosts(tag,path));
+	    ***REMOVED***,
+***REMOVED***
+***REMOVED***
+
+export default connect(mapStateToProps, mapDispatchToProps)(TagDetail);

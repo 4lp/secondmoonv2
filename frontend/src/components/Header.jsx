@@ -41,7 +41,7 @@ class Header extends Component ***REMOVED***
 							<div className="row m0 p0" style=***REMOVED******REMOVED***width:'100%'***REMOVED******REMOVED***>
 								<div className="container">
 									<div className="row">
-										<Link to="/" className="nav-brand col-3"><img src="https://i.imgur.com/UEdsoNTm.png"/></Link>
+										<Link to="/" className="nav-brand col-3" onClick=***REMOVED***()=>this.props.refreshHome()***REMOVED***><img src="https://i.imgur.com/UEdsoNTm.png"/></Link>
 										<div className="collapse navbar-collapse col-9">
 											<ul className="navbar-nav mr-auto mt-2 mt-lg-0 flex-row">
 												<li className="nav-item active"><Link to="/contact" className="nav-link">Contact Us</Link></li>

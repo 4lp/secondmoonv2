@@ -27,9 +27,9 @@ class RootContainerComponent extends Component ***REMOVED***
 	***REMOVED***
 
 	componentDidMount() ***REMOVED***
-		if(this.props.posts)***REMOVED***
+		***REMOVED***/*if(this.props.posts)***REMOVED***
 			this.props.fetchPosts(this.state.filteredTag);
-		***REMOVED***
+		***REMOVED****/***REMOVED***
 	***REMOVED***	
 
 	setTag(tag)***REMOVED***
@@ -37,7 +37,6 @@ class RootContainerComponent extends Component ***REMOVED***
 	***REMOVED***
 
 	render() ***REMOVED***
-		if (!this.props.posts.isLoading)***REMOVED***
 			return (
 				<BrowserRouter>
 					<div>
@@ -45,11 +44,15 @@ class RootContainerComponent extends Component ***REMOVED***
 							<Switch>
 								<Route exact path="/contact" render=***REMOVED***(props) => ( <Template component=***REMOVED***<ContactPage/>***REMOVED*** /> )***REMOVED*** />
 								<Route exact path="/blog" render=***REMOVED***(props) => ( <Template component=***REMOVED***<Blog />***REMOVED*** /> )***REMOVED*** />
-								<Route path="/post/:tagname" render=***REMOVED***(props) => ( <Template component=***REMOVED***<TagDetail posts=***REMOVED***this.props.posts***REMOVED***/>***REMOVED*** ***REMOVED***...props***REMOVED***/> )***REMOVED*** />
+								***REMOVED***/*<Route path="/post/:tagname" render=***REMOVED***(props) => ( <Template component=***REMOVED***<TagDetail posts=***REMOVED***this.props.posts***REMOVED***/>***REMOVED*** ***REMOVED***...props***REMOVED***/> )***REMOVED*** />
 								<Route path="/tag" render=***REMOVED***(props) => ( <Template component=***REMOVED***<TagListing setTag=***REMOVED***this.setTag.bind(this)***REMOVED*** posts=***REMOVED***this.props.posts***REMOVED***/>***REMOVED*** ***REMOVED***...props***REMOVED***/> )***REMOVED*** />
 								<Route path="/tag/:tagname" render=***REMOVED***(props) => ( <Template component=***REMOVED***<TagCategory posts=***REMOVED***this.props.posts***REMOVED***/>***REMOVED*** ***REMOVED***...props***REMOVED***/> )***REMOVED*** />
-								<Route path="/" render=***REMOVED***(props) => ( <Template component=***REMOVED***<Home posts=***REMOVED***this.props.posts***REMOVED*** />***REMOVED*** /> )***REMOVED*** />
-								<Route component=***REMOVED***NotFound***REMOVED*** />
+								<Route path="/:tagname" render=***REMOVED***(props) => ( <Template component=***REMOVED***<Home posts=***REMOVED***this.props.posts***REMOVED*** />***REMOVED*** /> )***REMOVED*** />*/***REMOVED***
+								<Route path="/post/:tagname" render=***REMOVED***(props) => ( <Template component=***REMOVED***<TagDetail />***REMOVED*** ***REMOVED***...props***REMOVED***/> )***REMOVED*** />
+								<Route path="/tag" render=***REMOVED***(props) => ( <Template component=***REMOVED***<TagListing />***REMOVED*** ***REMOVED***...props***REMOVED***/> )***REMOVED*** />
+								<Route path="/tag/:tagname" render=***REMOVED***(props) => ( <Template component=***REMOVED***<TagCategory />***REMOVED*** ***REMOVED***...props***REMOVED***/> )***REMOVED*** />
+								<Route path="/" render=***REMOVED***(props) => ( <Template component=***REMOVED***<Home />***REMOVED*** /> )***REMOVED*** />
+									***REMOVED***/*<Route component=***REMOVED***NotFound***REMOVED*** />*/***REMOVED***
 							</Switch>
 						</div>
 						<div>
@@ -58,9 +61,6 @@ class RootContainerComponent extends Component ***REMOVED***
 					</div>
 				</BrowserRouter>
 			);
-		***REMOVED*** else ***REMOVED***
-			return(<div>Loading...</div>)
-		***REMOVED***
 	***REMOVED***
 ***REMOVED***
 

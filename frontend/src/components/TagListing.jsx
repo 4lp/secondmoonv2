@@ -18,7 +18,7 @@ class TagListing extends Component ***REMOVED***
 	***REMOVED***	
 
 	handleTagClick(id)***REMOVED***
-		this.props.setTag(id);
+		this.props.setTag(id,);
 		this.context.router.history.push(`/`);
 	***REMOVED***
 
@@ -30,8 +30,8 @@ class TagListing extends Component ***REMOVED***
 						<div className="row">
 							<div className="col-12 text-center">
 								***REMOVED***this.props.tags.tags.map((tag)=>***REMOVED***
-									return(<a href="#" onClick=***REMOVED***()=>this.handleTagClick(tag.id)***REMOVED***><div>***REMOVED***tag.name***REMOVED***</div></a>)
-								***REMOVED***)***REMOVED***
+									return(<Link to=***REMOVED***"/?tags__name="+tag.name***REMOVED***><div>***REMOVED***tag.name***REMOVED***</div></Link>)
+								***REMOVED***)***REMOVED***	
 							</div>
 						</div>
 					</div>

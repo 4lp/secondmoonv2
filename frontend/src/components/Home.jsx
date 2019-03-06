@@ -4,6 +4,7 @@ import ***REMOVED***connect***REMOVED*** from 'react-redux';
 import ***REMOVED***carouselImages***REMOVED*** from "../actions";
 import ***REMOVED***settings***REMOVED*** from "../actions";
 import ***REMOVED***instagram***REMOVED*** from "../actions";
+import ***REMOVED***posts***REMOVED*** from "../actions";
 import Masonry from 'react-masonry-component';
 ***REMOVED***/*import InstagramCarousel from "./InstagramCarousel"
 import Register from "./Register";
@@ -13,10 +14,13 @@ import ReactInterval from 'react-interval';*/***REMOVED***
 
 class Home extends Component ***REMOVED***
 	componentDidMount() ***REMOVED***
+		let params = new URLSearchParams(window.location.search);
 		if (!this.props.instagram.length) ***REMOVED***
 	    	this.props.fetchInstagram();
 	    	this.props.fetchSettings();
 		***REMOVED***
+		let tagname = params.get("tags__name") || null;
+		this.props.fetchPosts(tagname,null);
 	***REMOVED***	
 
 	render()***REMOVED***
@@ -24,6 +28,7 @@ class Home extends Component ***REMOVED***
 			transitionDuration: 0
 	  	***REMOVED***;
 		const imagesLoadedOptions = ***REMOVED*** background: '.my-bg-image-el' ***REMOVED***;
+		if (!this.props.posts.isLoading)***REMOVED***
 		return(
 			<div>
 				<div className="container-fluid home-container">
@@ -40,7 +45,7 @@ class Home extends Component ***REMOVED***
 							>
 								***REMOVED***this.props.posts.posts.map((post) => ***REMOVED***
 									return (
-										<Link to=***REMOVED***"/post/"+post.path***REMOVED***>
+										<Link to=***REMOVED***"/post/"+post.path***REMOVED*** key=***REMOVED***post.id***REMOVED***>
 											<img src=***REMOVED***post.image***REMOVED***/>
 										</Link>
 									)
@@ -51,6 +56,9 @@ class Home extends Component ***REMOVED***
 				</div>
 			</div>
 		)
+		***REMOVED*** else ***REMOVED***
+			return(<div>Loading...</div>)
+		***REMOVED***
 	***REMOVED***
 ***REMOVED***
 
@@ -69,6 +77,7 @@ const mapStateToProps = state => ***REMOVED***
 	return ***REMOVED***
 		instagram: state.instagram,
 		settings: state.settings,
+		posts: state.posts,
 		errors
 	***REMOVED***
 ***REMOVED***
@@ -81,8 +90,10 @@ const mapDispatchToProps = dispatch => ***REMOVED***
 		fetchSettings: () => ***REMOVED***
 			dispatch(settings.fetchSettings());
 	    ***REMOVED***,
-
-	***REMOVED***
+		fetchPosts: (tag,name) => ***REMOVED***
+			dispatch(posts.fetchPosts(tag,name));
+	    ***REMOVED***,
+***REMOVED***
 ***REMOVED***
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
