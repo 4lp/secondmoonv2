@@ -5,7 +5,8 @@ import {carouselImages} from "../actions";
 import {settings} from "../actions";
 import {instagram} from "../actions";
 import {posts} from "../actions";
-import Masonry from 'react-masonry-component';
+import MasonryInfiniteScroller from 'react-masonry-infinite';
+{/*import Masonry from 'react-masonry-component';*/}
 {/*import InstagramCarousel from "./InstagramCarousel"
 import Register from "./Register";
 import Footer from "./Footer";
@@ -13,6 +14,9 @@ import {auth} from "../actions";
 import ReactInterval from 'react-interval';*/}
 
 class Home extends Component {
+	state = {
+		page: 1
+	}
 	componentDidMount() {
 		let params = new URLSearchParams(window.location.search);
 		if (!this.props.instagram.length) {
@@ -20,7 +24,7 @@ class Home extends Component {
 	    	this.props.fetchSettings();
 		}
 		let tagname = params.get("tags__name") || null;
-		this.props.fetchPosts(tagname,null);
+		this.props.fetchPosts(tagname, null, this.state.page);
 	}	
 
 	render(){
@@ -34,7 +38,7 @@ class Home extends Component {
 				<div className="container-fluid home-container">
 					<div className="row">
 						<div className="col-12">
-							<Masonry
+			{/*<Masonry
 								className={'grid'} // default ''
 								elementType={'div'} // default 'div'
 								options={masonryOptions} // default {}
@@ -42,15 +46,25 @@ class Home extends Component {
 								updateOnEachImageLoad={false} // default false and works only if disableImagesLoaded is false
 								imagesLoadedOptions={imagesLoadedOptions} // default {}
 								isFitWidth={true}
+							>*/}
+							<MasonryInfiniteScroller
+								hasMore={this.props.posts.next ? true : false}
+								loadMore={() => this.setState({ page: this.state.page + 1 })}
+								pack={true}
+								className="main-masonry"
+								style={{width:'100%'}}
 							>
 								{this.props.posts.posts.map((post) => {
 									return (
-										<Link to={"/post/"+post.path} key={post.id}>
+										<div>
+										<Link className="overlay-container" to={"/post/"+post.path} key={post.id}>
 											<img src={post.image}/>
+											<div className="overlay">{post.name}</div>
 										</Link>
+										</div>
 									)
 								})}
-							</Masonry>
+							</MasonryInfiniteScroller>
 						</div>
 					</div>
 				</div>
@@ -90,8 +104,8 @@ const mapDispatchToProps = dispatch => {
 		fetchSettings: () => {
 			dispatch(settings.fetchSettings());
 	    },
-		fetchPosts: (tag,name) => {
-			dispatch(posts.fetchPosts(tag,name));
+		fetchPosts: (tag,name,page) => {
+			dispatch(posts.fetchPosts(tag,name,page));
 	    },
 }
 }

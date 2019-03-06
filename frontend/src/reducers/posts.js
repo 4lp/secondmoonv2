@@ -10,7 +10,7 @@ export default function posts(state=initialState, action) {
 			return {...state, isLoading: true}
 
 		case 'FETCH_POSTS':
-		    return {state, posts: action.posts, isLoading: false};
+		    return {state, posts: action.posts.results, next:action.posts.next, isLoading: false};
 
 		default:
 			return state;

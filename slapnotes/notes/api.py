@@ -3,7 +3,7 @@ from .models import Tag
 from .models import Post 
 from rest_framework import viewsets, permissions, generics
 from rest_framework.response import Response
-from rest_framework.pagination import LimitOffsetPagination
+from rest_framework.pagination import LimitOffsetPagination, PageNumberPagination
 from django import forms
 from django.core.mail import send_mail, BadHeaderError
 from django.conf import settings
@@ -27,6 +27,7 @@ class PostViewSet(viewsets.ModelViewSet):
     filter_backends = (rest_framework.DjangoFilterBackend,)
     filter_fields = ('tags__name','path')
     queryset = Post.objects.all().order_by('-created_at')
+    pagination_class = PageNumberPagination 
 
 class ContactEmailAPI(generics.GenericAPIView):
     serializer_class = ContactEmailSerializer

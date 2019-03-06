@@ -31,7 +31,7 @@ class TagDetail extends Component {
 							</div>
 							<div className="col-12">
 								<div>{this.props.posts.posts[0].tags.map((tag)=>{
-									return(<Link to={"/?tags__name="+tag.name}><div>{tag.name}</div></Link>)
+									return(<span><Link className="tag-link" to={"/?tags__name="+tag.name}>#{tag.name}</Link>&nbsp;</span>)
 								})}</div>
 							</div>
 						</div>
