@@ -13,16 +13,20 @@ function getCookie(name) {
 	return cookieValue;
 }
 
-export const fetchPosts = (tag) => {
+export const fetchPosts = (tag,path) => {
 	return (dispatch, getState) => {
 		let csrftoken = getCookie('csrftoken');
 		let headers = {"Content-Type": "application/json", "X-CSRFToken": csrftoken};
 		let queryString = '';
 
-		if (tag) {
-			queryString += "&tags=" + tag;
-		}
+		queryString += "?tags__name=";
 
+		if (tag) {
+			queryString += tag;
+		}
+		if (path) {
+			queryString += "&path=" + path;
+		}
 		return fetch("/api/post/" + queryString, {headers, })
 			.then(res => {
 				if (res.status < 499) {

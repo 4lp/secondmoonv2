@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {carouselImages} from "../actions";
 import {settings} from "../actions";
 import {instagram} from "../actions";
+import {posts} from "../actions";
 import Masonry from 'react-masonry-component';
 {/*import InstagramCarousel from "./InstagramCarousel"
 import Register from "./Register";
@@ -13,10 +14,13 @@ import ReactInterval from 'react-interval';*/}
 
 class Home extends Component {
 	componentDidMount() {
+		let params = new URLSearchParams(window.location.search);
 		if (!this.props.instagram.length) {
 	    	this.props.fetchInstagram();
 	    	this.props.fetchSettings();
 		}
+		let tagname = params.get("tags__name") || null;
+		this.props.fetchPosts(tagname,null);
 	}	
 
 	render(){
@@ -24,6 +28,7 @@ class Home extends Component {
 			transitionDuration: 0
 	  	};
 		const imagesLoadedOptions = { background: '.my-bg-image-el' };
+		if (!this.props.posts.isLoading){
 		return(
 			<div>
 				<div className="container-fluid home-container">
@@ -40,7 +45,7 @@ class Home extends Component {
 							>
 								{this.props.posts.posts.map((post) => {
 									return (
-										<Link to={"/post/"+post.path}>
+										<Link to={"/post/"+post.path} key={post.id}>
 											<img src={post.image}/>
 										</Link>
 									)
@@ -51,6 +56,9 @@ class Home extends Component {
 				</div>
 			</div>
 		)
+		} else {
+			return(<div>Loading...</div>)
+		}
 	}
 }
 
@@ -69,6 +77,7 @@ const mapStateToProps = state => {
 	return {
 		instagram: state.instagram,
 		settings: state.settings,
+		posts: state.posts,
 		errors
 	}
 }
@@ -81,8 +90,10 @@ const mapDispatchToProps = dispatch => {
 		fetchSettings: () => {
 			dispatch(settings.fetchSettings());
 	    },
-
-	}
+		fetchPosts: (tag,name) => {
+			dispatch(posts.fetchPosts(tag,name));
+	    },
+}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

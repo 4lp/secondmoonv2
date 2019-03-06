@@ -25,7 +25,7 @@ class BlogpostViewSet(viewsets.ModelViewSet):
 class PostViewSet(viewsets.ModelViewSet):
     serializer_class = PostSerializer
     filter_backends = (rest_framework.DjangoFilterBackend,)
-    filter_fields = ('tags',)
+    filter_fields = ('tags__name','path')
     queryset = Post.objects.all().order_by('-created_at')
 
 class ContactEmailAPI(generics.GenericAPIView):

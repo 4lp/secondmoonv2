@@ -27,9 +27,9 @@ class RootContainerComponent extends Component {
 	}
 
 	componentDidMount() {
-		if(this.props.posts){
+		{/*if(this.props.posts){
 			this.props.fetchPosts(this.state.filteredTag);
-		}
+		}*/}
 	}	
 
 	setTag(tag){
@@ -37,7 +37,6 @@ class RootContainerComponent extends Component {
 	}
 
 	render() {
-		if (!this.props.posts.isLoading){
 			return (
 				<BrowserRouter>
 					<div>
@@ -45,11 +44,15 @@ class RootContainerComponent extends Component {
 							<Switch>
 								<Route exact path="/contact" render={(props) => ( <Template component={<ContactPage/>} /> )} />
 								<Route exact path="/blog" render={(props) => ( <Template component={<Blog />} /> )} />
-								<Route path="/post/:tagname" render={(props) => ( <Template component={<TagDetail posts={this.props.posts}/>} {...props}/> )} />
+								{/*<Route path="/post/:tagname" render={(props) => ( <Template component={<TagDetail posts={this.props.posts}/>} {...props}/> )} />
 								<Route path="/tag" render={(props) => ( <Template component={<TagListing setTag={this.setTag.bind(this)} posts={this.props.posts}/>} {...props}/> )} />
 								<Route path="/tag/:tagname" render={(props) => ( <Template component={<TagCategory posts={this.props.posts}/>} {...props}/> )} />
-								<Route path="/" render={(props) => ( <Template component={<Home posts={this.props.posts} />} /> )} />
-								<Route component={NotFound} />
+								<Route path="/:tagname" render={(props) => ( <Template component={<Home posts={this.props.posts} />} /> )} />*/}
+								<Route path="/post/:tagname" render={(props) => ( <Template component={<TagDetail />} {...props}/> )} />
+								<Route path="/tag" render={(props) => ( <Template component={<TagListing />} {...props}/> )} />
+								<Route path="/tag/:tagname" render={(props) => ( <Template component={<TagCategory />} {...props}/> )} />
+								<Route path="/" render={(props) => ( <Template component={<Home />} /> )} />
+									{/*<Route component={NotFound} />*/}
 							</Switch>
 						</div>
 						<div>
@@ -58,9 +61,6 @@ class RootContainerComponent extends Component {
 					</div>
 				</BrowserRouter>
 			);
-		} else {
-			return(<div>Loading...</div>)
-		}
 	}
 }
 

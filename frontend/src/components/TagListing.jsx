@@ -18,7 +18,7 @@ class TagListing extends Component {
 	}	
 
 	handleTagClick(id){
-		this.props.setTag(id);
+		this.props.setTag(id,);
 		this.context.router.history.push(`/`);
 	}
 
@@ -30,8 +30,8 @@ class TagListing extends Component {
 						<div className="row">
 							<div className="col-12 text-center">
 								{this.props.tags.tags.map((tag)=>{
-									return(<a href="#" onClick={()=>this.handleTagClick(tag.id)}><div>{tag.name}</div></a>)
-								})}
+									return(<Link to={"/?tags__name="+tag.name}><div>{tag.name}</div></Link>)
+								})}	
 							</div>
 						</div>
 					</div>
