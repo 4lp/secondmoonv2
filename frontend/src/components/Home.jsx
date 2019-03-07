@@ -6,12 +6,6 @@ import {settings} from "../actions";
 import {instagram} from "../actions";
 import {posts} from "../actions";
 import MasonryInfiniteScroller from 'react-masonry-infinite';
-{/*import Masonry from 'react-masonry-component';*/}
-{/*import InstagramCarousel from "./InstagramCarousel"
-import Register from "./Register";
-import Footer from "./Footer";
-import {auth} from "../actions";
-import ReactInterval from 'react-interval';*/}
 
 class Home extends Component {
 	state = {
@@ -20,13 +14,10 @@ class Home extends Component {
 		tagname: '',
 
 	}
+
 	componentDidMount() {
 		this.props.clearPosts();
 		let params = new URLSearchParams(window.location.search);
-		{/*if (!this.props.instagram.length) {
-	    	this.props.fetchInstagram();
-	    	this.props.fetchSettings();
-		}*/}
 		this.setState({tagname: params.get("tags__name") || null}, () =>
 			this.props.fetchPosts(this.state.tagname, null, this.state.page)
 		);
@@ -52,7 +43,11 @@ class Home extends Component {
 			transitionDuration: 0
 	  	};
 		const imagesLoadedOptions = { background: '.my-bg-image-el' };
-		console.log(this.props.posts.posts)
+		const sizes = [
+		  { columns: 1, gutter: 0 },
+		  { mq: '768px', columns: 3, gutter: 0 },
+		  { mq: '1024px', columns: 4, gutter: 0 }
+		]
 		if (!this.props.posts.isLoading){
 			return(
 				<div>
@@ -66,13 +61,14 @@ class Home extends Component {
 									className="main-masonry"
 									style={{width:'100%'}}
 							        loader={<div className="loader" key={0}>Loading ...</div>}
+									sizes={sizes}
 								>
 									{this.props.posts.posts.map((post) => {
 										return (
-											<div>
-											<Link className="overlay-container" to={"/post/"+post[0].path} key={post[0].id}>
+											<div key={post[0].id}>
+											<Link className="overlay-container" to={"/post/"+post[0].path}>
 												<img src={post[0].image}/>
-												<div className="overlay">{post[0].name}</div>
+												<div className="overlay"><div className="overlay-text">{post[0].name}</div></div>
 											</Link>
 											</div>
 										)

@@ -7,7 +7,7 @@ import { Provider, connect } from "react-redux";
 import gaiasApp from "./reducers";
 import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
-import ContactPage from './components/ContactPage';
+import Contact from './components/Contact';
 import 'react-router-modal/css/react-router-modal.css';
 import { ModalContainer, ModalRoute } from 'react-router-modal';
 import { LastLocationProvider, withLastLocation } from 'react-router-last-location';
@@ -42,15 +42,31 @@ class RootContainerComponent extends Component {
 					<div>
 						<div>
 							<Switch>
-								<Route exact path="/contact" render={(props) => ( <Template component={<ContactPage/>} /> )} />
-								<Route exact path="/blog" render={(props) => ( <Template component={<Blog />} /> )} />
-								{/*<Route path="/post/:tagname" render={(props) => ( <Template component={<TagDetail posts={this.props.posts}/>} {...props}/> )} />
-								<Route path="/tag" render={(props) => ( <Template component={<TagListing setTag={this.setTag.bind(this)} posts={this.props.posts}/>} {...props}/> )} />
-								<Route path="/tag/:tagname" render={(props) => ( <Template component={<TagCategory posts={this.props.posts}/>} {...props}/> )} />
-								<Route path="/:tagname" render={(props) => ( <Template component={<Home posts={this.props.posts} />} /> )} />*/}
+								<ModalRoute 
+									path="/contact" 
+									parentPath="/" 
+									component={Contact} 
+									className='example-modal'
+									inClassName='example-modal-in'
+									outClassName='example-modal-out'
+									backdropClassName='example-backdrop'
+									backdropInClassName='example-backdrop-in'
+									backdropOutClassName='example-backdrop-out'
+									outDelay={500}
+								/>
+								<ModalRoute 
+									path="/tag" 
+									parentPath="/" 
+									component={TagListing} 
+									className='example-modal'
+									inClassName='example-modal-in'
+									outClassName='example-modal-out'
+									backdropClassName='example-backdrop'
+									backdropInClassName='example-backdrop-in'
+									backdropOutClassName='example-backdrop-out'
+									outDelay={500}
+								/>
 								<Route path="/post/:tagname" render={(props) => ( <Template component={<TagDetail />} {...props}/> )} />
-								<Route path="/tag" render={(props) => ( <Template component={<TagListing />} {...props}/> )} />
-								<Route path="/tag/:tagname" render={(props) => ( <Template component={<TagCategory />} {...props}/> )} />
 								<Route path="/" render={(props) => ( <Template component={<Home />} /> )} />
 									{/*<Route component={NotFound} />*/}
 							</Switch>

@@ -29,6 +29,7 @@ body {
 	margin: 0;
 	padding: 0;
     font-family: 'Roboto', sans-serif;
+	font-weight: 400;
 	min-width: 100%;
 	color: #010;
 	font-size: 1.1em;
@@ -59,7 +60,7 @@ h1,h2,h3,h4,h5,h6{
 }
 
 a {
-	color: var(--primary); 
+	color: black; 
 }
 
 a:hover {
@@ -111,7 +112,7 @@ td {
 
 
 #header img{
-	max-height: 50%;
+	height: 50px;
 	display: inline;
 }
 
@@ -122,6 +123,7 @@ td {
 #header h3{
 	font-weight: 100;
 	font-style: italic;
+	display: inline;
 }
 
 /* helper classes */
@@ -191,10 +193,6 @@ td {
 
 #header, #footer, .made-by{
 	background-color: white;
-}
-
-#header {
-	min-height: 85px;
 }
 
 #footer {
@@ -268,9 +266,9 @@ td {
 .tag-link{
 	text-decoration: underline;	
 }
-
+/* main page masonry images */
 .overlay-container {
-  position: relative;
+  /* position: relative; */
   max-height: 500px;
   max-width: 500px;
 }
@@ -296,7 +294,63 @@ td {
   text-align: center;
 }
 
+.overlay-text{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+}
+
 .overlay-container:hover .overlay {
   opacity: 1;
 }
 
+/*modal routes*/
+.react-router-modal__modal-open {
+	color: black;
+}
+
+.react-router-modal__modal-open {
+	position: inherit;
+}
+
+.example-modal {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate3d(-50%, -50%, 0);
+	background-color: white;
+	border-radius: 5px;
+	border: 1px solid #777;
+	padding: 2rem;
+	opacity: 0;
+}
+
+.example-modal-in  {
+	transition: opacity 0.5s ease-in;
+	opacity: 1 
+}
+
+.example-modal-out {
+	transition: opacity 0.3s ease-out;
+	opacity: 0
+}
+
+.example-backdrop {
+	background-color: black;
+	opacity: 0;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.example-backdrop-in  {
+	transition: opacity 0.3s ease-in;
+	opacity: 0.5;
+}
+
+.example-backdrop-out  {
+	transition: opacity 1.5s ease-out;
+	opacity: 0;
+}

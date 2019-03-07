@@ -7,6 +7,7 @@ class TagDetail extends Component {
 
 	componentDidMount(){
 		const path = this.props.props.match.params.tagname;
+		this.props.clearPosts();
 		if(!this.props.posts.length){
 			this.props.fetchPosts(null,path);
 		}	
@@ -70,7 +71,11 @@ const mapDispatchToProps = dispatch => {
 		fetchPosts: (tag,path) => {
 			dispatch(posts.fetchPosts(tag,path));
 	    },
-}
+		clearPosts: () => {
+			dispatch(posts.clearPosts());
+	    },
+
+	}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TagDetail);

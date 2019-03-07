@@ -29,9 +29,11 @@ class TagListing extends Component {
 					<div className="container">
 						<div className="row">
 							<div className="col-12 text-center">
+								<p>
 								{this.props.tags.tags.map((tag)=>{
-									return(<Link to={"/?tags__name="+tag.name}><div>{tag.name}</div></Link>)
-								})}	
+									return(<span><Link className="tag-link" to={"/?tags__name="+tag.name}><span>#{tag.name}</span></Link>&nbsp;</span>)
+								})}
+								</p>
 							</div>
 						</div>
 					</div>
