@@ -7,6 +7,7 @@ class TagDetail extends Component ***REMOVED***
 
 	componentDidMount()***REMOVED***
 		const path = this.props.props.match.params.tagname;
+		this.props.clearPosts();
 		if(!this.props.posts.length)***REMOVED***
 			this.props.fetchPosts(null,path);
 		***REMOVED***	
@@ -70,7 +71,11 @@ const mapDispatchToProps = dispatch => ***REMOVED***
 		fetchPosts: (tag,path) => ***REMOVED***
 			dispatch(posts.fetchPosts(tag,path));
 	    ***REMOVED***,
-***REMOVED***
+		clearPosts: () => ***REMOVED***
+			dispatch(posts.clearPosts());
+	    ***REMOVED***,
+
+	***REMOVED***
 ***REMOVED***
 
 export default connect(mapStateToProps, mapDispatchToProps)(TagDetail);

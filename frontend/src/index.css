@@ -29,6 +29,7 @@ body ***REMOVED***
 	margin: 0;
 	padding: 0;
     font-family: 'Roboto', sans-serif;
+	font-weight: 400;
 	min-width: 100%;
 	color: #010;
 	font-size: 1.1em;
@@ -59,7 +60,7 @@ h1,h2,h3,h4,h5,h6***REMOVED***
 ***REMOVED***
 
 a ***REMOVED***
-	color: var(--primary); 
+	color: black; 
 ***REMOVED***
 
 a:hover ***REMOVED***
@@ -111,7 +112,7 @@ td ***REMOVED***
 
 
 #header img***REMOVED***
-	max-height: 50%;
+	height: 50px;
 	display: inline;
 ***REMOVED***
 
@@ -122,6 +123,7 @@ td ***REMOVED***
 #header h3***REMOVED***
 	font-weight: 100;
 	font-style: italic;
+	display: inline;
 ***REMOVED***
 
 /* helper classes */
@@ -191,10 +193,6 @@ td ***REMOVED***
 
 #header, #footer, .made-by***REMOVED***
 	background-color: white;
-***REMOVED***
-
-#header ***REMOVED***
-	min-height: 85px;
 ***REMOVED***
 
 #footer ***REMOVED***
@@ -268,9 +266,9 @@ td ***REMOVED***
 .tag-link***REMOVED***
 	text-decoration: underline;	
 ***REMOVED***
-
+/* main page masonry images */
 .overlay-container ***REMOVED***
-  position: relative;
+  /* position: relative; */
   max-height: 500px;
   max-width: 500px;
 ***REMOVED***
@@ -296,7 +294,63 @@ td ***REMOVED***
   text-align: center;
 ***REMOVED***
 
+.overlay-text***REMOVED***
+	position: absolute;
+	top: 50%;
+	left: 50%;
+***REMOVED***
+
 .overlay-container:hover .overlay ***REMOVED***
   opacity: 1;
 ***REMOVED***
 
+/*modal routes*/
+.react-router-modal__modal-open ***REMOVED***
+	color: black;
+***REMOVED***
+
+.react-router-modal__modal-open ***REMOVED***
+	position: inherit;
+***REMOVED***
+
+.example-modal ***REMOVED***
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate3d(-50%, -50%, 0);
+	background-color: white;
+	border-radius: 5px;
+	border: 1px solid #777;
+	padding: 2rem;
+	opacity: 0;
+***REMOVED***
+
+.example-modal-in  ***REMOVED***
+	transition: opacity 0.5s ease-in;
+	opacity: 1 
+***REMOVED***
+
+.example-modal-out ***REMOVED***
+	transition: opacity 0.3s ease-out;
+	opacity: 0
+***REMOVED***
+
+.example-backdrop ***REMOVED***
+	background-color: black;
+	opacity: 0;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+***REMOVED***
+
+.example-backdrop-in  ***REMOVED***
+	transition: opacity 0.3s ease-in;
+	opacity: 0.5;
+***REMOVED***
+
+.example-backdrop-out  ***REMOVED***
+	transition: opacity 1.5s ease-out;
+	opacity: 0;
+***REMOVED***

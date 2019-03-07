@@ -6,12 +6,6 @@ import ***REMOVED***settings***REMOVED*** from "../actions";
 import ***REMOVED***instagram***REMOVED*** from "../actions";
 import ***REMOVED***posts***REMOVED*** from "../actions";
 import MasonryInfiniteScroller from 'react-masonry-infinite';
-***REMOVED***/*import Masonry from 'react-masonry-component';*/***REMOVED***
-***REMOVED***/*import InstagramCarousel from "./InstagramCarousel"
-import Register from "./Register";
-import Footer from "./Footer";
-import ***REMOVED***auth***REMOVED*** from "../actions";
-import ReactInterval from 'react-interval';*/***REMOVED***
 
 class Home extends Component ***REMOVED***
 	state = ***REMOVED***
@@ -20,13 +14,10 @@ class Home extends Component ***REMOVED***
 		tagname: '',
 
 	***REMOVED***
+
 	componentDidMount() ***REMOVED***
 		this.props.clearPosts();
 		let params = new URLSearchParams(window.location.search);
-		***REMOVED***/*if (!this.props.instagram.length) ***REMOVED***
-	    	this.props.fetchInstagram();
-	    	this.props.fetchSettings();
-		***REMOVED****/***REMOVED***
 		this.setState(***REMOVED***tagname: params.get("tags__name") || null***REMOVED***, () =>
 			this.props.fetchPosts(this.state.tagname, null, this.state.page)
 		);
@@ -52,7 +43,11 @@ class Home extends Component ***REMOVED***
 			transitionDuration: 0
 	  	***REMOVED***;
 		const imagesLoadedOptions = ***REMOVED*** background: '.my-bg-image-el' ***REMOVED***;
-		console.log(this.props.posts.posts)
+		const sizes = [
+		  ***REMOVED*** columns: 1, gutter: 0 ***REMOVED***,
+		  ***REMOVED*** mq: '768px', columns: 3, gutter: 0 ***REMOVED***,
+		  ***REMOVED*** mq: '1024px', columns: 4, gutter: 0 ***REMOVED***
+		]
 		if (!this.props.posts.isLoading)***REMOVED***
 			return(
 				<div>
@@ -66,13 +61,14 @@ class Home extends Component ***REMOVED***
 									className="main-masonry"
 									style=***REMOVED******REMOVED***width:'100%'***REMOVED******REMOVED***
 							        loader=***REMOVED***<div className="loader" key=***REMOVED***0***REMOVED***>Loading ...</div>***REMOVED***
+									sizes=***REMOVED***sizes***REMOVED***
 								>
 									***REMOVED***this.props.posts.posts.map((post) => ***REMOVED***
 										return (
-											<div>
-											<Link className="overlay-container" to=***REMOVED***"/post/"+post[0].path***REMOVED*** key=***REMOVED***post[0].id***REMOVED***>
+											<div key=***REMOVED***post[0].id***REMOVED***>
+											<Link className="overlay-container" to=***REMOVED***"/post/"+post[0].path***REMOVED***>
 												<img src=***REMOVED***post[0].image***REMOVED***/>
-												<div className="overlay">***REMOVED***post[0].name***REMOVED***</div>
+												<div className="overlay"><div className="overlay-text">***REMOVED***post[0].name***REMOVED***</div></div>
 											</Link>
 											</div>
 										)

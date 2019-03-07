@@ -7,7 +7,7 @@ import ***REMOVED*** Provider, connect ***REMOVED*** from "react-redux";
 import gaiasApp from "./reducers";
 import ***REMOVED*** createStore, applyMiddleware ***REMOVED*** from "redux";
 import thunk from "redux-thunk";
-import ContactPage from './components/ContactPage';
+import Contact from './components/Contact';
 import 'react-router-modal/css/react-router-modal.css';
 import ***REMOVED*** ModalContainer, ModalRoute ***REMOVED*** from 'react-router-modal';
 import ***REMOVED*** LastLocationProvider, withLastLocation ***REMOVED*** from 'react-router-last-location';
@@ -42,15 +42,31 @@ class RootContainerComponent extends Component ***REMOVED***
 					<div>
 						<div>
 							<Switch>
-								<Route exact path="/contact" render=***REMOVED***(props) => ( <Template component=***REMOVED***<ContactPage/>***REMOVED*** /> )***REMOVED*** />
-								<Route exact path="/blog" render=***REMOVED***(props) => ( <Template component=***REMOVED***<Blog />***REMOVED*** /> )***REMOVED*** />
-								***REMOVED***/*<Route path="/post/:tagname" render=***REMOVED***(props) => ( <Template component=***REMOVED***<TagDetail posts=***REMOVED***this.props.posts***REMOVED***/>***REMOVED*** ***REMOVED***...props***REMOVED***/> )***REMOVED*** />
-								<Route path="/tag" render=***REMOVED***(props) => ( <Template component=***REMOVED***<TagListing setTag=***REMOVED***this.setTag.bind(this)***REMOVED*** posts=***REMOVED***this.props.posts***REMOVED***/>***REMOVED*** ***REMOVED***...props***REMOVED***/> )***REMOVED*** />
-								<Route path="/tag/:tagname" render=***REMOVED***(props) => ( <Template component=***REMOVED***<TagCategory posts=***REMOVED***this.props.posts***REMOVED***/>***REMOVED*** ***REMOVED***...props***REMOVED***/> )***REMOVED*** />
-								<Route path="/:tagname" render=***REMOVED***(props) => ( <Template component=***REMOVED***<Home posts=***REMOVED***this.props.posts***REMOVED*** />***REMOVED*** /> )***REMOVED*** />*/***REMOVED***
+								<ModalRoute 
+									path="/contact" 
+									parentPath="/" 
+									component=***REMOVED***Contact***REMOVED*** 
+									className='example-modal'
+									inClassName='example-modal-in'
+									outClassName='example-modal-out'
+									backdropClassName='example-backdrop'
+									backdropInClassName='example-backdrop-in'
+									backdropOutClassName='example-backdrop-out'
+									outDelay=***REMOVED***500***REMOVED***
+								/>
+								<ModalRoute 
+									path="/tag" 
+									parentPath="/" 
+									component=***REMOVED***TagListing***REMOVED*** 
+									className='example-modal'
+									inClassName='example-modal-in'
+									outClassName='example-modal-out'
+									backdropClassName='example-backdrop'
+									backdropInClassName='example-backdrop-in'
+									backdropOutClassName='example-backdrop-out'
+									outDelay=***REMOVED***500***REMOVED***
+								/>
 								<Route path="/post/:tagname" render=***REMOVED***(props) => ( <Template component=***REMOVED***<TagDetail />***REMOVED*** ***REMOVED***...props***REMOVED***/> )***REMOVED*** />
-								<Route path="/tag" render=***REMOVED***(props) => ( <Template component=***REMOVED***<TagListing />***REMOVED*** ***REMOVED***...props***REMOVED***/> )***REMOVED*** />
-								<Route path="/tag/:tagname" render=***REMOVED***(props) => ( <Template component=***REMOVED***<TagCategory />***REMOVED*** ***REMOVED***...props***REMOVED***/> )***REMOVED*** />
 								<Route path="/" render=***REMOVED***(props) => ( <Template component=***REMOVED***<Home />***REMOVED*** /> )***REMOVED*** />
 									***REMOVED***/*<Route component=***REMOVED***NotFound***REMOVED*** />*/***REMOVED***
 							</Switch>

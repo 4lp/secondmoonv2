@@ -29,9 +29,11 @@ class TagListing extends Component ***REMOVED***
 					<div className="container">
 						<div className="row">
 							<div className="col-12 text-center">
+								<p>
 								***REMOVED***this.props.tags.tags.map((tag)=>***REMOVED***
-									return(<Link to=***REMOVED***"/?tags__name="+tag.name***REMOVED***><div>***REMOVED***tag.name***REMOVED***</div></Link>)
-								***REMOVED***)***REMOVED***	
+									return(<span><Link className="tag-link" to=***REMOVED***"/?tags__name="+tag.name***REMOVED***><span>#***REMOVED***tag.name***REMOVED***</span></Link>&nbsp;</span>)
+								***REMOVED***)***REMOVED***
+								</p>
 							</div>
 						</div>
 					</div>
