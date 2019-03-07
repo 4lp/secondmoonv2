@@ -15,61 +15,74 @@ import ReactInterval from 'react-interval';*/}
 
 class Home extends Component {
 	state = {
-		page: 1
+		page: 1,
+		hasMore: false,
+		tagname: '',
+
 	}
 	componentDidMount() {
+		this.props.clearPosts();
 		let params = new URLSearchParams(window.location.search);
-		if (!this.props.instagram.length) {
+		{/*if (!this.props.instagram.length) {
 	    	this.props.fetchInstagram();
 	    	this.props.fetchSettings();
-		}
-		let tagname = params.get("tags__name") || null;
-		this.props.fetchPosts(tagname, null, this.state.page);
+		}*/}
+		this.setState({tagname: params.get("tags__name") || null}, () =>
+			this.props.fetchPosts(this.state.tagname, null, this.state.page)
+		);
 	}	
+
+	componentDidUpdate(prevProps){
+     	if(prevProps.posts.posts.length !== this.props.posts.posts.length){ 
+			this.setState({hasMore: this.props.posts.next ? true : false});
+ 		}
+	}
+
+	handlePageUpdate(){
+		this.setState({page: this.state.page + 1}, () =>{
+			if (this.state.hasMore){
+				this.props.fetchPosts(this.state.tagname, null, this.state.page);
+			}
+		})
+	}
+
 
 	render(){
 		const masonryOptions = {
 			transitionDuration: 0
 	  	};
 		const imagesLoadedOptions = { background: '.my-bg-image-el' };
+		console.log(this.props.posts.posts)
 		if (!this.props.posts.isLoading){
-		return(
-			<div>
-				<div className="container-fluid home-container">
-					<div className="row">
-						<div className="col-12">
-			{/*<Masonry
-								className={'grid'} // default ''
-								elementType={'div'} // default 'div'
-								options={masonryOptions} // default {}
-								disableImagesLoaded={false} // default false
-								updateOnEachImageLoad={false} // default false and works only if disableImagesLoaded is false
-								imagesLoadedOptions={imagesLoadedOptions} // default {}
-								isFitWidth={true}
-							>*/}
-							<MasonryInfiniteScroller
-								hasMore={this.props.posts.next ? true : false}
-								loadMore={() => this.setState({ page: this.state.page + 1 })}
-								pack={true}
-								className="main-masonry"
-								style={{width:'100%'}}
-							>
-								{this.props.posts.posts.map((post) => {
-									return (
-										<div>
-										<Link className="overlay-container" to={"/post/"+post.path} key={post.id}>
-											<img src={post.image}/>
-											<div className="overlay">{post.name}</div>
-										</Link>
-										</div>
-									)
-								})}
-							</MasonryInfiniteScroller>
+			return(
+				<div>
+					<div className="container-fluid home-container">
+						<div className="row">
+							<div className="col-12">
+								<MasonryInfiniteScroller
+									hasMore={this.state.hasMore}
+									loadMore={() => this.handlePageUpdate()}
+									pack={true}
+									className="main-masonry"
+									style={{width:'100%'}}
+							        loader={<div className="loader" key={0}>Loading ...</div>}
+								>
+									{this.props.posts.posts.map((post) => {
+										return (
+											<div>
+											<Link className="overlay-container" to={"/post/"+post[0].path} key={post[0].id}>
+												<img src={post[0].image}/>
+												<div className="overlay">{post[0].name}</div>
+											</Link>
+											</div>
+										)
+									})}
+								</MasonryInfiniteScroller>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		)
+			)
 		} else {
 			return(<div>Loading...</div>)
 		}
@@ -106,6 +119,9 @@ const mapDispatchToProps = dispatch => {
 	    },
 		fetchPosts: (tag,name,page) => {
 			dispatch(posts.fetchPosts(tag,name,page));
+	    },
+		clearPosts: () => {
+			dispatch(posts.clearPosts());
 	    },
 }
 }

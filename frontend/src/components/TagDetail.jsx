@@ -19,18 +19,18 @@ class TagDetail extends Component {
 				<div className="container">
 						<div className="row">
 							<div className="col-12 text-center">
-								<h1 className="text-center">{this.props.posts.posts[0].name}</h1>
+								<h1 className="text-center">{this.props.posts.posts[0][0].name}</h1>
 							</div>
 							<div className="col-12 text-center">
 								<div className="this.props.posts.posts-image">
-									<img src={this.props.posts.posts[0].image}/>
+									<img src={this.props.posts.posts[0][0].image}/>
 								</div>
 							</div>
 							<div className="col-12">
-								<div dangerouslySetInnerHTML={{__html:this.props.posts.posts[0].text}}></div>
+								<div dangerouslySetInnerHTML={{__html:this.props.posts.posts[0][0].text}}></div>
 							</div>
 							<div className="col-12">
-								<div>{this.props.posts.posts[0].tags.map((tag)=>{
+								<div>{this.props.posts.posts[0][0].tags.map((tag)=>{
 									return(<span><Link className="tag-link" to={"/?tags__name="+tag.name}>#{tag.name}</Link>&nbsp;</span>)
 								})}</div>
 							</div>
