@@ -19,18 +19,18 @@ class TagDetail extends Component ***REMOVED***
 				<div className="container">
 						<div className="row">
 							<div className="col-12 text-center">
-								<h1 className="text-center">***REMOVED***this.props.posts.posts[0].name***REMOVED***</h1>
+								<h1 className="text-center">***REMOVED***this.props.posts.posts[0][0].name***REMOVED***</h1>
 							</div>
 							<div className="col-12 text-center">
 								<div className="this.props.posts.posts-image">
-									<img src=***REMOVED***this.props.posts.posts[0].image***REMOVED***/>
+									<img src=***REMOVED***this.props.posts.posts[0][0].image***REMOVED***/>
 								</div>
 							</div>
 							<div className="col-12">
-								<div dangerouslySetInnerHTML=***REMOVED******REMOVED***__html:this.props.posts.posts[0].text***REMOVED******REMOVED***></div>
+								<div dangerouslySetInnerHTML=***REMOVED******REMOVED***__html:this.props.posts.posts[0][0].text***REMOVED******REMOVED***></div>
 							</div>
 							<div className="col-12">
-								<div>***REMOVED***this.props.posts.posts[0].tags.map((tag)=>***REMOVED***
+								<div>***REMOVED***this.props.posts.posts[0][0].tags.map((tag)=>***REMOVED***
 									return(<span><Link className="tag-link" to=***REMOVED***"/?tags__name="+tag.name***REMOVED***>#***REMOVED***tag.name***REMOVED***</Link>&nbsp;</span>)
 								***REMOVED***)***REMOVED***</div>
 							</div>

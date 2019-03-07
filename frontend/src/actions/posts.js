@@ -13,11 +13,20 @@ function getCookie(name) ***REMOVED***
 	return cookieValue;
 ***REMOVED***
 
-export const fetchPosts = (tag,path,page) => ***REMOVED***
+export const clearPosts = (tag,path,page) => ***REMOVED***
 	return (dispatch, getState) => ***REMOVED***
+		return dispatch(***REMOVED***type: 'CLEAR_POSTS'***REMOVED***);
+	***REMOVED***
+***REMOVED***
+
+export const fetchPosts = (tag,path,page) => ***REMOVED***
+	page = page || 1;
+	return (dispatch, getState) => ***REMOVED***
+
+		dispatch(***REMOVED***type: 'POSTS_LOADING'***REMOVED***);
+
 		let csrftoken = getCookie('csrftoken');
 		let headers = ***REMOVED***"Content-Type": "application/json", "X-CSRFToken": csrftoken***REMOVED***;
-		let page = page || 1;
 		let queryString = '?page=' + page;
 
 		queryString += "&tags__name=";
