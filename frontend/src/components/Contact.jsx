@@ -27,7 +27,7 @@ class Contact extends Component ***REMOVED***
 		***REMOVED*** else ***REMOVED***
 			user = ''
 		***REMOVED***
-		this.props.sendContactEmail(this.state.name, this.state.reply, this.state.message, user, this.state.phone, this.state.zip, this.state.captcha);
+		this.props.sendContactEmail(this.state.name, this.state.reply, this.state.message, this.state.captcha);
 		this.setState(***REMOVED***
 			submitStatus: true,
 			captcha: "",
@@ -59,7 +59,7 @@ class Contact extends Component ***REMOVED***
 					<div className="col-12 text-center">
 						***REMOVED***this.props.user_message && this.state.submitStatus && (
 							<div>
-								<div className="alert alert-success" role="alert">***REMOVED***this.props.user_message***REMOVED***</div>
+								<p>***REMOVED***this.props.user_message***REMOVED***</p>
 							</div>
 						)***REMOVED***		
 						***REMOVED***!this.state.submitStatus || this.props.errors.length ?
@@ -92,32 +92,9 @@ class Contact extends Component ***REMOVED***
 										/>
 									</div>
 									<div className="form-group">
-										<label htmlFor="phone">Your phone number (xxx-xxx-xxxx)</label>
-										<input 
-											className="form-control" 
-											name="phone" 
-											id="phone" 
-											onChange=***REMOVED***e => this.setState(***REMOVED***phone: e.target.value***REMOVED***)***REMOVED***
-											value=***REMOVED***this.state.phone***REMOVED***
-											type="tel"
-											pattern="[0-9]***REMOVED***3***REMOVED***-[0-9]***REMOVED***3***REMOVED***-[0-9]***REMOVED***4***REMOVED***"
-										/>
-									</div>
-									<div className="form-group">
-										<label htmlFor="zip">Your zip code (xxxxx)</label>
-										<input 
-											className="form-control" 
-											name="zip" 
-											id="zip" 
-											onChange=***REMOVED***e => this.setState(***REMOVED***zip: e.target.value***REMOVED***)***REMOVED***
-											value=***REMOVED***this.state.zip***REMOVED***
-											type="text"
-											pattern="[0-9]***REMOVED***5***REMOVED***"
-										/>
-									</div>
-									<div className="form-group">
 										<label htmlFor="message">Your message</label>
-										<input 
+										<textarea 
+											rows="10"
 											className="form-control" 
 											message="message" 
 											id="message" 
@@ -178,8 +155,8 @@ const mapStateToProps = state => ***REMOVED***
 
 const mapDispatchToProps = dispatch => ***REMOVED***
 	return ***REMOVED***
-		sendContactEmail: (name, reply, message, user, phone, zip, captcha) => ***REMOVED***
-			return dispatch(email.sendContactEmail(name, reply, message, user, phone, zip, captcha));
+		sendContactEmail: (name, reply, message, captcha) => ***REMOVED***
+			return dispatch(email.sendContactEmail(name, reply, message, captcha));
 		***REMOVED***
 	***REMOVED***;
 ***REMOVED***

@@ -10,21 +10,6 @@
 	--accenttwo: #F7F9FB;
 ***REMOVED***
 
-section::before,
-section::after ***REMOVED***
-	position: absolute;
-	content: '';
-	pointer-events: none;
-***REMOVED***
-
-section ***REMOVED***
-	position: relative;
-	padding: 10em 10%;
-	color: #fff;
-	text-align: center;
-***REMOVED***
-
-
 body ***REMOVED***
 	margin: 0;
 	padding: 0;
@@ -34,24 +19,6 @@ body ***REMOVED***
 	color: #010;
 	font-size: 1.1em;
 	/* background: linear-gradient(-45deg, var(--accent),var(--accenttwo)); */
-***REMOVED***
-
-.background-div***REMOVED***
-	background-image: url('https://www.rpnation.com/gallery/parchment-paper-div-test.33588/full');
-	background-repeat: repeat;
-***REMOVED***
-
-.color-div-1***REMOVED***
-	background-color: var(--secondary);
-***REMOVED***
-
-hr ***REMOVED***
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid #ccc;
-    margin: 1em 0;
-    padding: 0; 
 ***REMOVED***
 
 h1,h2,h3,h4,h5,h6***REMOVED***
@@ -82,34 +49,14 @@ ul ***REMOVED***
 	list-style: none;
 ***REMOVED***
 
-table ***REMOVED***
-	table-layout: fixed;
-	width: 100%
+a svg:hover***REMOVED***
+	color: black;
+	transition: 1s;
 ***REMOVED***
 
-td ***REMOVED***
-	overflow-wrap: break-word;
+button, input, textarea***REMOVED***
+	border-radius: 0 !important;
 ***REMOVED***
-
-/* .home-container img ***REMOVED*** */
-/* 	max-width: 500px; */
-/* 	max-height: 500px; */
-/* ***REMOVED*** */
-
-.post-image img***REMOVED***
-	max-width: 500px;
-	max-height: 500px;
-***REMOVED***
-
-.main-masonry***REMOVED***
-	width: 100% !important;
-***REMOVED***
-
-.main-masonry div***REMOVED***
-	max-width: 500px;
-	max-height: 500px;
-***REMOVED***
-
 
 #header img***REMOVED***
 	height: 50px;
@@ -267,10 +214,21 @@ td ***REMOVED***
 	text-decoration: underline;	
 ***REMOVED***
 /* main page masonry images */
+
+.main-masonry***REMOVED***
+	width: 100% !important;
+***REMOVED***
+
+.main-masonry div***REMOVED***
+	max-width: 475px;
+	max-height: 475px;
+***REMOVED***
+
+
 .overlay-container ***REMOVED***
   /* position: relative; */
-  max-height: 500px;
-  max-width: 500px;
+  max-height: 475px;
+  max-width: 475px;
 ***REMOVED***
 
 .overlay-container img ***REMOVED***
@@ -320,8 +278,6 @@ td ***REMOVED***
 	left: 50%;
 	transform: translate3d(-50%, -50%, 0);
 	background-color: white;
-	border-radius: 5px;
-	border: 1px solid #777;
 	padding: 2rem;
 	opacity: 0;
 ***REMOVED***
@@ -354,4 +310,9 @@ td ***REMOVED***
 .example-backdrop-out  ***REMOVED***
 	transition: opacity 1.5s ease-out;
 	opacity: 0;
+***REMOVED***
+
+/* fix navbar & modals */
+.fixed-top***REMOVED***
+	z-index: 2 !important;
 ***REMOVED***

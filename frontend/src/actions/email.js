@@ -13,14 +13,14 @@ function getCookie(name) ***REMOVED***
 	return cookieValue;
 ***REMOVED***
 
-export const sendContactEmail = (name, reply, message, user, phone, zip_code, captcha) => ***REMOVED***
+export const sendContactEmail = (name, reply, message, captcha) => ***REMOVED***
 	return (dispatch, getState) => ***REMOVED***
 		dispatch(***REMOVED***type: 'EMAIL_SENDING'***REMOVED***);
 
 		let csrftoken = getCookie('csrftoken');
 		
 		let headers = ***REMOVED***"Content-Type": "application/json", "X-CSRFToken": csrftoken***REMOVED***;
-		let body = JSON.stringify(***REMOVED***name, reply, message, user, phone, zip_code, captcha***REMOVED***);
+		let body = JSON.stringify(***REMOVED***name, reply, message, captcha***REMOVED***);
 
 		dispatch(***REMOVED***type: 'default', data: null ***REMOVED***);
 

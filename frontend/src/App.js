@@ -16,6 +16,7 @@ import TagDetail from "./components/TagDetail";
 import TagListing from "./components/TagListing";
 import TagCategory from "./components/TagCategory";
 import Template from "./components/Template";
+import About from "./components/About";
 import ***REMOVED***posts***REMOVED*** from "./actions";
 
 let store = createStore(gaiasApp, applyMiddleware(thunk));
@@ -41,7 +42,6 @@ class RootContainerComponent extends Component ***REMOVED***
 				<BrowserRouter>
 					<div>
 						<div>
-							<Switch>
 								<ModalRoute 
 									path="/contact" 
 									parentPath="/" 
@@ -66,10 +66,21 @@ class RootContainerComponent extends Component ***REMOVED***
 									backdropOutClassName='example-backdrop-out'
 									outDelay=***REMOVED***500***REMOVED***
 								/>
+								<ModalRoute 
+									path="/about" 
+									parentPath="/" 
+									component=***REMOVED***About***REMOVED*** 
+									className='example-modal'
+									inClassName='example-modal-in'
+									outClassName='example-modal-out'
+									backdropClassName='example-backdrop'
+									backdropInClassName='example-backdrop-in'
+									backdropOutClassName='example-backdrop-out'
+									outDelay=***REMOVED***500***REMOVED***
+								/>
+
 								<Route path="/post/:tagname" render=***REMOVED***(props) => ( <Template component=***REMOVED***<TagDetail />***REMOVED*** ***REMOVED***...props***REMOVED***/> )***REMOVED*** />
-								<Route path="/" render=***REMOVED***(props) => ( <Template component=***REMOVED***<Home />***REMOVED*** /> )***REMOVED*** />
-									***REMOVED***/*<Route component=***REMOVED***NotFound***REMOVED*** />*/***REMOVED***
-							</Switch>
+								<Route path="/" render=***REMOVED***(props) => ( <Template component=***REMOVED***<Home />***REMOVED*** ***REMOVED***...props***REMOVED*** /> )***REMOVED*** />
 						</div>
 						<div>
 							<ModalContainer />

@@ -8,11 +8,8 @@ export default function auth(state=initialState, action) ***REMOVED***
 
 	switch (action.type) ***REMOVED***
 
-		case 'RESET_EMAIL_SENT':
-			return ***REMOVED***...state, user_message: "Email sent! Please check your email for password reset instructions.", errors:***REMOVED******REMOVED***, isSending: false***REMOVED***;
-
 		case 'CONTACT_EMAIL_SENT':
-			return ***REMOVED***...state, user_message: "Thanks for contacting us! We will respond to your message as soon as possible.", errors:***REMOVED******REMOVED***, isSending: false***REMOVED***;
+			return ***REMOVED***...state, user_message: "Message sent.", errors:***REMOVED******REMOVED***, isSending: false***REMOVED***;
 
 		case 'SERVER_ERROR':
 			return ***REMOVED***...state, user_message: null, errors: ***REMOVED***server_error: "Something went wrong. Please refresh this page and try again."***REMOVED***, isSending: false***REMOVED***
