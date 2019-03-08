@@ -297,7 +297,8 @@ td {
 .overlay-text{
 	position: absolute;
 	top: 50%;
-	left: 50%;
+	left: 25%;
+	right: 25%;
 }
 
 .overlay-container:hover .overlay {

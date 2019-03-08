@@ -9,7 +9,6 @@ import MasonryInfiniteScroller from 'react-masonry-infinite';
 
 class Home extends Component {
 	state = {
-		page: 1,
 		hasMore: false,
 		tagname: '',
 
@@ -19,7 +18,7 @@ class Home extends Component {
 		this.props.clearPosts();
 		let params = new URLSearchParams(window.location.search);
 		this.setState({tagname: params.get("tags__name") || null}, () =>
-			this.props.fetchPosts(this.state.tagname, null, this.state.page)
+			this.props.fetchPosts(this.state.tagname, null, 1)
 		);
 	}	
 
@@ -30,11 +29,10 @@ class Home extends Component {
 	}
 
 	handlePageUpdate(){
-		this.setState({page: this.state.page + 1}, () =>{
-			if (this.state.hasMore){
-				this.props.fetchPosts(this.state.tagname, null, this.state.page);
-			}
-		})
+		let page = this.props.posts.posts.length + 1
+		if (this.state.hasMore && !this.props.posts.isLoading){
+			this.props.fetchPosts(this.state.tagname, null, page);
+		}
 	}
 
 
@@ -48,7 +46,7 @@ class Home extends Component {
 		  { mq: '768px', columns: 3, gutter: 0 },
 		  { mq: '1024px', columns: 4, gutter: 0 }
 		]
-		if (!this.props.posts.isLoading){
+		if (!this.props.posts.isLoading || this.props.posts.posts.length){
 			return(
 				<div>
 					<div className="container-fluid home-container">
