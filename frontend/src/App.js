@@ -80,7 +80,7 @@ class RootContainerComponent extends Component {
 								/>
 
 								<Route path="/post/:tagname" render={(props) => ( <Template component={<TagDetail />} {...props}/> )} />
-								<Route path="/" render={(props) => ( <Template component={<Home />} {...props} /> )} />
+								<Route path="/" render={(props) => ( <Home props={props} /> )} />
 						</div>
 						<div>
 							<ModalContainer />

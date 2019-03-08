@@ -36,7 +36,7 @@ class Header extends Component {
 	render(){
 			return(
 				<div>
-					<nav id="header" className="navbar fixed-top navbar-expand-lg py-md-0 py-0" ref={ (divElement) => this.divElement = divElement}>
+					<nav id="header" className="navbar navbar-light fixed-top navbar-expand-lg py-md-0 py-0" ref={ (divElement) => this.divElement = divElement}>
 						<div className="container-fluid m0 p0">
 							<div className="row m0 p0" style={{width:'100%'}}>
 								<div className="container-fluid">
@@ -45,8 +45,18 @@ class Header extends Component {
 											<img src="https://i.imgur.com/UEdsoNTm.png"/>
 											<h3 className="align-middle">Second Moon Records</h3>
 										</Link>
-										<div className="collapse navbar-collapse col-3">
-											<ul className="navbar-nav flex-row align-middle">
+										<button className="navbar-toggler" 
+												type="button" 
+												data-toggle="collapse" 
+												data-target="#navbarToggler" 
+												aria-controls="navbarToggler" 
+												aria-expanded="false" 
+												aria-label="Toggle navigation"
+										>
+											<span className="navbar-toggler-icon"></span>
+										</button>
+										<div className="collapse navbar-collapse col-3" id="navbarToggler">
+											<ul className="navbar-nav">
 												<li className="nav-item py-0"><Link to="/contact" className="nav-link">Contact</Link></li>
 												<li className="nav-item py-0"><Link to="/tag" className="nav-link">Filter</Link></li>
 												<li className="nav-item py-0"><Link to="/about" className="nav-link">About</Link></li>

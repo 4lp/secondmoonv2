@@ -23,7 +23,7 @@ class TagDetail extends Component {
 								<h1 className="text-center">{this.props.posts.posts[0][0].name}</h1>
 							</div>
 							<div className="col-12 text-center">
-								<div className="this.props.posts.posts-image">
+								<div className="posts-image">
 									<img src={this.props.posts.posts[0][0].image}/>
 								</div>
 							</div>

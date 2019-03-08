@@ -6,6 +6,7 @@ import {settings} from "../actions";
 import {instagram} from "../actions";
 import {posts} from "../actions";
 import MasonryInfiniteScroller from 'react-masonry-infinite';
+import Header from "./Header";
 
 const pathre = RegExp('^\/post\/.*$')
 
@@ -56,7 +57,8 @@ class Home extends Component {
 		let params = new URLSearchParams(window.location.search);
 		const sizes = [
 		  { columns: 1, gutter: 0 },
-		  { mq: '768px', columns: 3, gutter: 0 },
+		  { mq: '768px', columns: 2, gutter: 0 },
+		  { mq: '922px', columns: 3, gutter: 0 },
 		  { mq: '1024px', columns: 4, gutter: 0 }
 		]
 		{/* need to block render on posts page but keep it for modals */}
@@ -65,7 +67,8 @@ class Home extends Component {
 		}else if (!this.props.posts.isLoading || this.props.posts.posts.length){
 			return(
 				<div>
-					<div className="container-fluid home-container">
+					<Header refreshHome={this.refreshHome} />
+					<div className="container-fluid home-container m0 p0">
 						<div className="row">
 							<div className="col-12">
 								<MasonryInfiniteScroller
