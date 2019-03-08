@@ -23,7 +23,7 @@ class TagDetail extends Component ***REMOVED***
 								<h1 className="text-center">***REMOVED***this.props.posts.posts[0][0].name***REMOVED***</h1>
 							</div>
 							<div className="col-12 text-center">
-								<div className="this.props.posts.posts-image">
+								<div className="posts-image">
 									<img src=***REMOVED***this.props.posts.posts[0][0].image***REMOVED***/>
 								</div>
 							</div>
