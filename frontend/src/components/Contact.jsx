@@ -27,7 +27,7 @@ class Contact extends Component {
 		} else {
 			user = ''
 		}
-		this.props.sendContactEmail(this.state.name, this.state.reply, this.state.message, user, this.state.phone, this.state.zip, this.state.captcha);
+		this.props.sendContactEmail(this.state.name, this.state.reply, this.state.message, this.state.captcha);
 		this.setState({
 			submitStatus: true,
 			captcha: "",
@@ -59,7 +59,7 @@ class Contact extends Component {
 					<div className="col-12 text-center">
 						{this.props.user_message && this.state.submitStatus && (
 							<div>
-								<div className="alert alert-success" role="alert">{this.props.user_message}</div>
+								<p>{this.props.user_message}</p>
 							</div>
 						)}		
 						{!this.state.submitStatus || this.props.errors.length ?
@@ -92,32 +92,9 @@ class Contact extends Component {
 										/>
 									</div>
 									<div className="form-group">
-										<label htmlFor="phone">Your phone number (xxx-xxx-xxxx)</label>
-										<input 
-											className="form-control" 
-											name="phone" 
-											id="phone" 
-											onChange={e => this.setState({phone: e.target.value})}
-											value={this.state.phone}
-											type="tel"
-											pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-										/>
-									</div>
-									<div className="form-group">
-										<label htmlFor="zip">Your zip code (xxxxx)</label>
-										<input 
-											className="form-control" 
-											name="zip" 
-											id="zip" 
-											onChange={e => this.setState({zip: e.target.value})}
-											value={this.state.zip}
-											type="text"
-											pattern="[0-9]{5}"
-										/>
-									</div>
-									<div className="form-group">
 										<label htmlFor="message">Your message</label>
-										<input 
+										<textarea 
+											rows="10"
 											className="form-control" 
 											message="message" 
 											id="message" 
@@ -178,8 +155,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		sendContactEmail: (name, reply, message, user, phone, zip, captcha) => {
-			return dispatch(email.sendContactEmail(name, reply, message, user, phone, zip, captcha));
+		sendContactEmail: (name, reply, message, captcha) => {
+			return dispatch(email.sendContactEmail(name, reply, message, captcha));
 		}
 	};
 }

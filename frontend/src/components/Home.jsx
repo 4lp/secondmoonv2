@@ -7,6 +7,8 @@ import {instagram} from "../actions";
 import {posts} from "../actions";
 import MasonryInfiniteScroller from 'react-masonry-infinite';
 
+const pathre = RegExp('^\/post\/.*$')
+
 class Home extends Component {
 	state = {
 		hasMore: false,
@@ -26,6 +28,16 @@ class Home extends Component {
      	if(prevProps.posts.posts.length !== this.props.posts.posts.length){ 
 			this.setState({hasMore: this.props.posts.next ? true : false});
  		}
+     	if(
+			(prevProps.props.location.search !== this.props.props.location.search && this.props.props.location.search) ||
+			(prevProps.props.location.pathname !== this.props.props.location.pathname && pathre.test(prevProps.props.location.pathname))
+		){
+			this.props.clearPosts();
+			let params = new URLSearchParams(window.location.search);
+			this.setState({tagname: params.get("tags__name") || null}, () =>
+				this.props.fetchPosts(this.state.tagname, null, 1)
+			);
+		}
 	}
 
 	handlePageUpdate(){
@@ -41,12 +53,16 @@ class Home extends Component {
 			transitionDuration: 0
 	  	};
 		const imagesLoadedOptions = { background: '.my-bg-image-el' };
+		let params = new URLSearchParams(window.location.search);
 		const sizes = [
 		  { columns: 1, gutter: 0 },
 		  { mq: '768px', columns: 3, gutter: 0 },
 		  { mq: '1024px', columns: 4, gutter: 0 }
 		]
-		if (!this.props.posts.isLoading || this.props.posts.posts.length){
+		{/* need to block render on posts page but keep it for modals */}
+		if (pathre.test(this.props.props.location.pathname)){
+			return(<div></div>)
+		}else if (!this.props.posts.isLoading || this.props.posts.posts.length){
 			return(
 				<div>
 					<div className="container-fluid home-container">
@@ -55,7 +71,6 @@ class Home extends Component {
 								<MasonryInfiniteScroller
 									hasMore={this.state.hasMore}
 									loadMore={() => this.handlePageUpdate()}
-									pack={true}
 									className="main-masonry"
 									style={{width:'100%'}}
 							        loader={<div className="loader" key={0}>Loading ...</div>}

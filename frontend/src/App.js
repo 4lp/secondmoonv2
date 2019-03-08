@@ -16,6 +16,7 @@ import TagDetail from "./components/TagDetail";
 import TagListing from "./components/TagListing";
 import TagCategory from "./components/TagCategory";
 import Template from "./components/Template";
+import About from "./components/About";
 import {posts} from "./actions";
 
 let store = createStore(gaiasApp, applyMiddleware(thunk));
@@ -41,7 +42,6 @@ class RootContainerComponent extends Component {
 				<BrowserRouter>
 					<div>
 						<div>
-							<Switch>
 								<ModalRoute 
 									path="/contact" 
 									parentPath="/" 
@@ -66,10 +66,21 @@ class RootContainerComponent extends Component {
 									backdropOutClassName='example-backdrop-out'
 									outDelay={500}
 								/>
+								<ModalRoute 
+									path="/about" 
+									parentPath="/" 
+									component={About} 
+									className='example-modal'
+									inClassName='example-modal-in'
+									outClassName='example-modal-out'
+									backdropClassName='example-backdrop'
+									backdropInClassName='example-backdrop-in'
+									backdropOutClassName='example-backdrop-out'
+									outDelay={500}
+								/>
+
 								<Route path="/post/:tagname" render={(props) => ( <Template component={<TagDetail />} {...props}/> )} />
-								<Route path="/" render={(props) => ( <Template component={<Home />} /> )} />
-									{/*<Route component={NotFound} />*/}
-							</Switch>
+								<Route path="/" render={(props) => ( <Template component={<Home />} {...props} /> )} />
 						</div>
 						<div>
 							<ModalContainer />

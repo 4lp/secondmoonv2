@@ -160,33 +160,16 @@ WEBPACK_LOADER = {
     }
 }
 
-# REST_AUTH_SERIALIZERS = {
-#     'PASSWORD_RESET_SERIALIZER': 
-#         'yourproject_app.serializers.PasswordResetSerializer',
-# }
-
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
     'PAGE_SIZE': 1,
 }
 
-# LOGOUT_ON_PASSWORD_CHANGE = False
-
-# Email
-# TESTING - Prints emails to console
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-# EMAIL_USE_TLS = True
 EMAIL_HOST = 'mail.gandi.net'
 EMAIL_PORT = 25 
 EMAIL_HOST_USER = 'slapnote-admin@slaponic.us'
 DEFAULT_FROM_EMAIL = 'slapnote-admin@slaponic.us'
 EMAIL_HOST_PASSWORD = get_secret("EMAIL_HOST_PASSWORD")
-
-# Gmail settings - keeping just in case we need to test again
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_HOST_USER = 'knvb.ajax@gmail.com'
-# DEFAULT_FROM_EMAIL = 'admin@xn--note-fi63c.ws'
-# SERVER_EMAIL = 'admin@xn--note-fi63c.ws'
 
 #ReCAPTCHA
 GOOGLE_RECAPTCHA_SECRET_KEY = get_secret("GOOGLE_RECAPTCHA_SECRET_KEY")

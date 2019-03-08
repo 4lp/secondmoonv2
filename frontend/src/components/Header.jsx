@@ -43,12 +43,13 @@ class Header extends Component {
 									<div className="row">
 										<Link to="/" className="nav-brand col-9" onClick={()=>this.props.refreshHome()}>
 											<img src="https://i.imgur.com/UEdsoNTm.png"/>
-											<h3>Second Moon Records</h3>
+											<h3 className="align-middle">Second Moon Records</h3>
 										</Link>
 										<div className="collapse navbar-collapse col-3">
-											<ul className="navbar-nav flex-row">
-												<li className="nav-item py-0"><Link to="/contact" className="nav-link">Contact Us</Link></li>
-												<li className="nav-item py-0"><Link to="/tag" className="nav-link">Categories</Link></li>
+											<ul className="navbar-nav flex-row align-middle">
+												<li className="nav-item py-0"><Link to="/contact" className="nav-link">Contact</Link></li>
+												<li className="nav-item py-0"><Link to="/tag" className="nav-link">Filter</Link></li>
+												<li className="nav-item py-0"><Link to="/about" className="nav-link">About</Link></li>
 											</ul>
 										</div>
 									</div>

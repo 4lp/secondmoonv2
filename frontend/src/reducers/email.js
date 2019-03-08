@@ -8,11 +8,8 @@ export default function auth(state=initialState, action) {
 
 	switch (action.type) {
 
-		case 'RESET_EMAIL_SENT':
-			return {...state, user_message: "Email sent! Please check your email for password reset instructions.", errors:{}, isSending: false};
-
 		case 'CONTACT_EMAIL_SENT':
-			return {...state, user_message: "Thanks for contacting us! We will respond to your message as soon as possible.", errors:{}, isSending: false};
+			return {...state, user_message: "Message sent.", errors:{}, isSending: false};
 
 		case 'SERVER_ERROR':
 			return {...state, user_message: null, errors: {server_error: "Something went wrong. Please refresh this page and try again."}, isSending: false}
