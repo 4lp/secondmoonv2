@@ -9,7 +9,6 @@ import MasonryInfiniteScroller from 'react-masonry-infinite';
 
 class Home extends Component ***REMOVED***
 	state = ***REMOVED***
-		page: 1,
 		hasMore: false,
 		tagname: '',
 
@@ -19,7 +18,7 @@ class Home extends Component ***REMOVED***
 		this.props.clearPosts();
 		let params = new URLSearchParams(window.location.search);
 		this.setState(***REMOVED***tagname: params.get("tags__name") || null***REMOVED***, () =>
-			this.props.fetchPosts(this.state.tagname, null, this.state.page)
+			this.props.fetchPosts(this.state.tagname, null, 1)
 		);
 	***REMOVED***	
 
@@ -30,11 +29,10 @@ class Home extends Component ***REMOVED***
 	***REMOVED***
 
 	handlePageUpdate()***REMOVED***
-		this.setState(***REMOVED***page: this.state.page + 1***REMOVED***, () =>***REMOVED***
-			if (this.state.hasMore)***REMOVED***
-				this.props.fetchPosts(this.state.tagname, null, this.state.page);
-			***REMOVED***
-		***REMOVED***)
+		let page = this.props.posts.posts.length + 1
+		if (this.state.hasMore && !this.props.posts.isLoading)***REMOVED***
+			this.props.fetchPosts(this.state.tagname, null, page);
+		***REMOVED***
 	***REMOVED***
 
 
@@ -48,7 +46,7 @@ class Home extends Component ***REMOVED***
 		  ***REMOVED*** mq: '768px', columns: 3, gutter: 0 ***REMOVED***,
 		  ***REMOVED*** mq: '1024px', columns: 4, gutter: 0 ***REMOVED***
 		]
-		if (!this.props.posts.isLoading)***REMOVED***
+		if (!this.props.posts.isLoading || this.props.posts.posts.length)***REMOVED***
 			return(
 				<div>
 					<div className="container-fluid home-container">

@@ -297,7 +297,8 @@ td ***REMOVED***
 .overlay-text***REMOVED***
 	position: absolute;
 	top: 50%;
-	left: 50%;
+	left: 25%;
+	right: 25%;
 ***REMOVED***
 
 .overlay-container:hover .overlay ***REMOVED***
