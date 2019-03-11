@@ -9,3 +9,7 @@ Features fancy things such as:
   - Routes for everything!
   - Contact email
   
+TODO:
+	- Fix mobile styles for header
+	- Fix mobile styles for contact modal
+	- Fix weird issue where header extends to the right too far

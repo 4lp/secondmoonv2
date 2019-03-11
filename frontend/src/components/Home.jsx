@@ -66,7 +66,8 @@ class Home extends Component {
 			return(<div></div>)
 		}else if (!this.props.posts.isLoading || this.props.posts.posts.length){
 			return(
-				<div>
+				<div className="container-fluid">
+					<div className="row">
 					<Header refreshHome={this.refreshHome} />
 					<div className="container-fluid home-container m0 p0">
 						<div className="row">
@@ -78,14 +79,15 @@ class Home extends Component {
 									style={{width:'100%'}}
 							        loader={<div className="loader" key={0}>Loading ...</div>}
 									sizes={sizes}
+									pack={true}
 								>
 									{this.props.posts.posts.map((post) => {
 										return (
 											<div key={post[0].id}>
-											<Link className="overlay-container" to={"/post/"+post[0].path}>
-												<img src={post[0].image}/>
-												<div className="overlay"><div className="overlay-text">{post[0].name}</div></div>
-											</Link>
+												<Link className="overlay-container" to={"/post/"+post[0].path}>
+													<img src={post[0].image}/>
+													<div className="overlay"><div className="overlay-text">{post[0].name}</div></div>
+												</Link>
 											</div>
 										)
 									})}
@@ -93,6 +95,7 @@ class Home extends Component {
 							</div>
 						</div>
 					</div>
+				</div>
 				</div>
 			)
 		} else {
