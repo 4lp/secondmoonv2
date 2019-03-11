@@ -19,15 +19,15 @@ class TagDetail extends Component ***REMOVED***
 				<div>
 				<div className="container">
 						<div className="row">
-							<div className="col-12 text-center">
+							<div className="col-12 text-center posts-header">
 								<h1 className="text-center">***REMOVED***this.props.posts.posts[0][0].name***REMOVED***</h1>
 							</div>
-							<div className="col-12 text-center">
+							<div className="col-12 text-center posts-image-container">
 								<div className="posts-image">
 									<img src=***REMOVED***this.props.posts.posts[0][0].image***REMOVED***/>
 								</div>
 							</div>
-							<div className="col-12">
+							<div className="col-12 posts-text">
 								<div dangerouslySetInnerHTML=***REMOVED******REMOVED***__html:this.props.posts.posts[0][0].text***REMOVED******REMOVED***></div>
 							</div>
 							<div className="col-12">

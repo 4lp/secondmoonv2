@@ -66,7 +66,8 @@ class Home extends Component ***REMOVED***
 			return(<div></div>)
 		***REMOVED***else if (!this.props.posts.isLoading || this.props.posts.posts.length)***REMOVED***
 			return(
-				<div>
+				<div className="container-fluid">
+					<div className="row">
 					<Header refreshHome=***REMOVED***this.refreshHome***REMOVED*** />
 					<div className="container-fluid home-container m0 p0">
 						<div className="row">
@@ -78,14 +79,15 @@ class Home extends Component ***REMOVED***
 									style=***REMOVED******REMOVED***width:'100%'***REMOVED******REMOVED***
 							        loader=***REMOVED***<div className="loader" key=***REMOVED***0***REMOVED***>Loading ...</div>***REMOVED***
 									sizes=***REMOVED***sizes***REMOVED***
+									pack=***REMOVED***true***REMOVED***
 								>
 									***REMOVED***this.props.posts.posts.map((post) => ***REMOVED***
 										return (
 											<div key=***REMOVED***post[0].id***REMOVED***>
-											<Link className="overlay-container" to=***REMOVED***"/post/"+post[0].path***REMOVED***>
-												<img src=***REMOVED***post[0].image***REMOVED***/>
-												<div className="overlay"><div className="overlay-text">***REMOVED***post[0].name***REMOVED***</div></div>
-											</Link>
+												<Link className="overlay-container" to=***REMOVED***"/post/"+post[0].path***REMOVED***>
+													<img src=***REMOVED***post[0].image***REMOVED***/>
+													<div className="overlay"><div className="overlay-text">***REMOVED***post[0].name***REMOVED***</div></div>
+												</Link>
 											</div>
 										)
 									***REMOVED***)***REMOVED***
@@ -93,6 +95,7 @@ class Home extends Component ***REMOVED***
 							</div>
 						</div>
 					</div>
+				</div>
 				</div>
 			)
 		***REMOVED*** else ***REMOVED***

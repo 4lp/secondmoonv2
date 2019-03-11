@@ -36,15 +36,17 @@ class Header extends Component ***REMOVED***
 	render()***REMOVED***
 			return(
 				<div>
-					<nav id="header" className="navbar navbar-light fixed-top navbar-expand-lg py-md-0 py-0" ref=***REMOVED*** (divElement) => this.divElement = divElement***REMOVED***>
+					<nav id="header" className="navbar navbar-light fixed-top navbar-expand-lg py-md-0 py-0 m0 p0" ref=***REMOVED*** (divElement) => this.divElement = divElement***REMOVED***>
 						<div className="container-fluid m0 p0">
 							<div className="row m0 p0" style=***REMOVED******REMOVED***width:'100%'***REMOVED******REMOVED***>
 								<div className="container-fluid">
 									<div className="row">
-										<Link to="/" className="nav-brand col-9" onClick=***REMOVED***()=>this.props.refreshHome()***REMOVED***>
-											<img src="https://i.imgur.com/UEdsoNTm.png"/>
-											<h3 className="align-middle">Second Moon Records</h3>
-										</Link>
+										<div className="col-9">
+											<Link to="/" className="nav-brand col-9" onClick=***REMOVED***()=>this.props.refreshHome()***REMOVED***>
+												<img src="https://i.imgur.com/UEdsoNTm.png"/>
+												<h3 className="align-middle header-text">Second Moon Records</h3>
+											</Link>
+										</div>
 										<button className="navbar-toggler" 
 												type="button" 
 												data-toggle="collapse" 

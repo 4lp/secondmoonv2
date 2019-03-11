@@ -89,16 +89,17 @@ button, input, textarea***REMOVED***
 	padding: 0;
 ***REMOVED***
 
-.category-list***REMOVED***
-    background-color: rgb(255,255,255,0.5);
-	border: 1px lightgrey solid;
-	border-radius: 10px;
-    padding: 0 20px 20px 20px;
-    margin-top: 3%;
+/* details page */
+.posts-image img***REMOVED***
+	max-width: 1000px;
 ***REMOVED***
 
-.posts-image img***REMOVED***
-	width: 100%;
+.posts-header***REMOVED***
+	margin-bottom: 20px;
+***REMOVED***
+
+.posts-image-container***REMOVED***
+	margin-bottom: 40px;
 ***REMOVED***
 
 /* >:( stupid recaptcha lib... */
@@ -113,7 +114,7 @@ button, input, textarea***REMOVED***
 /* main page masonry images */
 
 .main-masonry***REMOVED***
-	width: 100% !important;
+	max-width: 100% !important;
 ***REMOVED***
 
 .main-masonry div***REMOVED***
@@ -225,5 +226,13 @@ button, input, textarea***REMOVED***
 		width: 90%;
 		max-height: 100vh;
 		overflow-y: auto;
+	***REMOVED***
+
+	.header-text***REMOVED***
+		font-size: 1em;
+	***REMOVED***
+
+	.posts-image img***REMOVED***
+		max-width: 100%;
 	***REMOVED***
 ***REMOVED***
