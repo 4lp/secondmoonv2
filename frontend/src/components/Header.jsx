@@ -39,32 +39,28 @@ class Header extends Component ***REMOVED***
 					<nav id="header" className="navbar navbar-light fixed-top navbar-expand-lg py-md-0 py-0 m0 p0" ref=***REMOVED*** (divElement) => this.divElement = divElement***REMOVED***>
 						<div className="container-fluid m0 p0">
 							<div className="row m0 p0" style=***REMOVED******REMOVED***width:'100%'***REMOVED******REMOVED***>
-								<div className="container-fluid">
-									<div className="row">
-										<div className="col-9">
-											<Link to="/" className="nav-brand col-9" onClick=***REMOVED***()=>this.props.refreshHome()***REMOVED***>
-												<img src="https://i.imgur.com/UEdsoNTm.png"/>
-												<h3 className="align-middle header-text">Second Moon Records</h3>
-											</Link>
-										</div>
-										<button className="navbar-toggler" 
-												type="button" 
-												data-toggle="collapse" 
-												data-target="#navbarToggler" 
-												aria-controls="navbarToggler" 
-												aria-expanded="false" 
-												aria-label="Toggle navigation"
-										>
-											<span className="navbar-toggler-icon"></span>
-										</button>
-										<div className="collapse navbar-collapse col-3" id="navbarToggler">
-											<ul className="navbar-nav">
-												<li className="nav-item py-0"><Link to="/contact" className="nav-link">Contact</Link></li>
-												<li className="nav-item py-0"><Link to="/tag" className="nav-link">Filter</Link></li>
-												<li className="nav-item py-0"><Link to="/about" className="nav-link">About</Link></li>
-											</ul>
-										</div>
-									</div>
+								<div className="col-10 col-md-9">
+									<Link to="/" className="nav-brand col-10 col-md-9" onClick=***REMOVED***()=>this.props.refreshHome()***REMOVED***>
+										<img src="https://i.imgur.com/UEdsoNTm.png"/>
+										<h3 className="align-middle header-text">Second Moon Records</h3>
+									</Link>
+								</div>
+								<button className="navbar-toggler" 
+										type="button" 
+										data-toggle="collapse" 
+										data-target="#navbarToggler" 
+										aria-controls="navbarToggler" 
+										aria-expanded="false" 
+										aria-label="Toggle navigation"
+								>
+									<span className="navbar-toggler-icon"></span>
+								</button>
+								<div className="collapse navbar-collapse col-3" id="navbarToggler">
+									<ul className="navbar-nav">
+										<li className="nav-item py-0"><Link to="/contact" className="nav-link">Contact</Link></li>
+										<li className="nav-item py-0"><Link to="/tag" className="nav-link">Filter</Link></li>
+										<li className="nav-item py-0"><Link to="/about" className="nav-link">About</Link></li>
+									</ul>
 								</div>
 							</div>
 						</div>

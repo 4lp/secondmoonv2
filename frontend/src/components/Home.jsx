@@ -14,7 +14,8 @@ class Home extends Component ***REMOVED***
 	state = ***REMOVED***
 		hasMore: false,
 		tagname: '',
-
+		width: '',
+		columns: ''
 	***REMOVED***
 
 	componentDidMount() ***REMOVED***
@@ -23,6 +24,7 @@ class Home extends Component ***REMOVED***
 		this.setState(***REMOVED***tagname: params.get("tags__name") || null***REMOVED***, () =>
 			this.props.fetchPosts(this.state.tagname, null, 1)
 		);
+        window.addEventListener("resize", this.updateDimensions);
 	***REMOVED***	
 
 	componentDidUpdate(prevProps)***REMOVED***
@@ -40,6 +42,28 @@ class Home extends Component ***REMOVED***
 			);
 		***REMOVED***
 	***REMOVED***
+
+	updateDimensions() ***REMOVED***
+        this.setState(***REMOVED***width: window.innerWidth***REMOVED***, () => ***REMOVED***
+			if(this.state.width > 1024)***REMOVED***
+				this.setState(***REMOVED***columns: 4***REMOVED***)
+			***REMOVED*** else if(this.state.width > 922)***REMOVED***
+				this.setState(***REMOVED***columns: 3***REMOVED***)
+			***REMOVED*** else  if(this.state.width > 786)***REMOVED***
+				this.setState(***REMOVED***columns: 2***REMOVED***)
+			***REMOVED*** else ***REMOVED***
+				this.setState(***REMOVED***colums: 1***REMOVED***)
+			***REMOVED***
+		***REMOVED***);
+    ***REMOVED***
+
+    componentWillMount () ***REMOVED***
+        this.updateDimensions();
+    ***REMOVED***
+
+    componentWillUnmount () ***REMOVED***
+        window.removeEventListener("resize", this.updateDimensions);
+    ***REMOVED***
 
 	handlePageUpdate()***REMOVED***
 		let page = this.props.posts.posts.length + 1
@@ -61,13 +85,14 @@ class Home extends Component ***REMOVED***
 		  ***REMOVED*** mq: '922px', columns: 3, gutter: 0 ***REMOVED***,
 		  ***REMOVED*** mq: '1024px', columns: 4, gutter: 0 ***REMOVED***
 		]
+		let divWidth = this.state.width/this.state.columns - 4 
 		***REMOVED***/* need to block render on posts page but keep it for modals */***REMOVED***
 		if (pathre.test(this.props.props.location.pathname))***REMOVED***
 			return(<div></div>)
 		***REMOVED***else if (!this.props.posts.isLoading || this.props.posts.posts.length)***REMOVED***
 			return(
 				<div className="container-fluid">
-					<div className="row">
+					<div className="row" style=***REMOVED******REMOVED***width: "100%"***REMOVED******REMOVED***>
 					<Header refreshHome=***REMOVED***this.refreshHome***REMOVED*** />
 					<div className="container-fluid home-container m0 p0">
 						<div className="row">
@@ -83,8 +108,8 @@ class Home extends Component ***REMOVED***
 								>
 									***REMOVED***this.props.posts.posts.map((post) => ***REMOVED***
 										return (
-											<div key=***REMOVED***post[0].id***REMOVED***>
-												<Link className="overlay-container" to=***REMOVED***"/post/"+post[0].path***REMOVED***>
+											<div key=***REMOVED***post[0].id***REMOVED*** style=***REMOVED******REMOVED***width: divWidth***REMOVED******REMOVED***>
+												<Link className="overlay-container" to=***REMOVED***"/post/"+post[0].path***REMOVED*** style=***REMOVED******REMOVED***width: divWidth***REMOVED******REMOVED***>
 													<img src=***REMOVED***post[0].image***REMOVED***/>
 													<div className="overlay"><div className="overlay-text">***REMOVED***post[0].name***REMOVED***</div></div>
 												</Link>
