@@ -10,6 +10,9 @@ Features fancy things such as:
   - Contact email
   
 TODO:
-	- Fix mobile styles for header
-	- Fix mobile styles for contact modal
-	- Fix weird issue where header extends to the right too far
+  - ~Fix mobile styles for header~
+  - ~Fix mobile styles for contact modal~
+  - ~Fix weird issue where header extends to the right too far~
+  - Fix padding on mobile
+  - Tablet styles?
+  - TagDetail -> Bottom tags need padding maybe?

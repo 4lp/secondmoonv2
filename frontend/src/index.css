@@ -117,17 +117,17 @@ button, input, textarea{
 	max-width: 100% !important;
 }
 
-.main-masonry div{
-	max-width: 475px;
-	max-height: 475px;
-}
+/* .main-masonry div{ */
+/* 	max-width: 475px; */
+/* 	max-height: 475px; */
+/* } */
 
 
-.overlay-container {
-  /* position: relative; */
-  max-height: 475px;
-  max-width: 475px;
-}
+/* .overlay-container { */
+/*   /1* position: relative; *1/ */
+/*   max-height: 475px; */
+/*   max-width: 475px; */
+/* } */
 
 .overlay-container img {
   display: block;
@@ -178,6 +178,8 @@ button, input, textarea{
 	background-color: white;
 	padding: 2rem;
 	opacity: 0;
+	max-height: calc(100vh - 210px);
+	overflow: auto;
 }
 
 .example-modal-in  {
@@ -235,4 +237,30 @@ button, input, textarea{
 	.posts-image img{
 		max-width: 100%;
 	}
+
+	.nav-brand img{
+		float: left;
+	}
+
+	#header h3{
+		line-height: 2.5;
+	}
+
+	.main-masonry div{
+		max-width: 100%;
+		max-height: 100%;
+	}
+
+
+	.overlay-container {
+		/* position: relative; */
+		max-height: 100%;
+	  	max-width: 100%;
+	}
+
+	.example-modal{
+		max-height: calc(100vh - 210px);
+	}
+
+
 }

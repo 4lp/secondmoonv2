@@ -14,7 +14,8 @@ class Home extends Component {
 	state = {
 		hasMore: false,
 		tagname: '',
-
+		width: '',
+		columns: ''
 	}
 
 	componentDidMount() {
@@ -23,6 +24,7 @@ class Home extends Component {
 		this.setState({tagname: params.get("tags__name") || null}, () =>
 			this.props.fetchPosts(this.state.tagname, null, 1)
 		);
+        window.addEventListener("resize", this.updateDimensions);
 	}	
 
 	componentDidUpdate(prevProps){
@@ -40,6 +42,28 @@ class Home extends Component {
 			);
 		}
 	}
+
+	updateDimensions() {
+        this.setState({width: window.innerWidth}, () => {
+			if(this.state.width > 1024){
+				this.setState({columns: 4})
+			} else if(this.state.width > 922){
+				this.setState({columns: 3})
+			} else  if(this.state.width > 786){
+				this.setState({columns: 2})
+			} else {
+				this.setState({colums: 1})
+			}
+		});
+    }
+
+    componentWillMount () {
+        this.updateDimensions();
+    }
+
+    componentWillUnmount () {
+        window.removeEventListener("resize", this.updateDimensions);
+    }
 
 	handlePageUpdate(){
 		let page = this.props.posts.posts.length + 1
@@ -61,13 +85,14 @@ class Home extends Component {
 		  { mq: '922px', columns: 3, gutter: 0 },
 		  { mq: '1024px', columns: 4, gutter: 0 }
 		]
+		let divWidth = this.state.width/this.state.columns - 4 
 		{/* need to block render on posts page but keep it for modals */}
 		if (pathre.test(this.props.props.location.pathname)){
 			return(<div></div>)
 		}else if (!this.props.posts.isLoading || this.props.posts.posts.length){
 			return(
 				<div className="container-fluid">
-					<div className="row">
+					<div className="row" style={{width: "100%"}}>
 					<Header refreshHome={this.refreshHome} />
 					<div className="container-fluid home-container m0 p0">
 						<div className="row">
@@ -83,8 +108,8 @@ class Home extends Component {
 								>
 									{this.props.posts.posts.map((post) => {
 										return (
-											<div key={post[0].id}>
-												<Link className="overlay-container" to={"/post/"+post[0].path}>
+											<div key={post[0].id} style={{width: divWidth}}>
+												<Link className="overlay-container" to={"/post/"+post[0].path} style={{width: divWidth}}>
 													<img src={post[0].image}/>
 													<div className="overlay"><div className="overlay-text">{post[0].name}</div></div>
 												</Link>
