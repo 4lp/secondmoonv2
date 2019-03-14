@@ -1,23 +1,23 @@
-import React, ***REMOVED***Component***REMOVED*** from 'react';
+import React, {Component} from 'react';
 import Header from "./Header";
 
 
-export default class Template extends Component ***REMOVED***
-	state = ***REMOVED***
+export default class Template extends Component {
+	state = {
 		update: false
-	***REMOVED***
+	}
 
-	refreshHome()***REMOVED***
-		this.setState(***REMOVED***update: !this.state.update***REMOVED***);
-	***REMOVED***
+	refreshHome(){
+		this.setState({update: !this.state.update});
+	}
 
-	render()***REMOVED***
+	render(){
 		let props = this.props;
 		return (
 			<div>
-				<Header refreshHome=***REMOVED***this.refreshHome***REMOVED*** />
-				***REMOVED***React.cloneElement(props.component, props=***REMOVED***props***REMOVED***)***REMOVED***
+				<Header refreshHome={this.refreshHome} />
+				{React.cloneElement(props.component, props={props})}
 			</div>
 		)
-	***REMOVED***
-***REMOVED***
+	}
+}

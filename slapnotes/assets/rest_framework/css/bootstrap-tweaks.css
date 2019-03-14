@@ -6,164 +6,164 @@ a single block in the template.
 
 */
 
-.form-actions ***REMOVED***
+.form-actions {
   background: transparent;
   border-top-color: transparent;
   padding-top: 0;
   text-align: right;
-***REMOVED***
+}
 
-#generic-content-form textarea ***REMOVED***
+#generic-content-form textarea {
   font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
   font-size: 80%;
-***REMOVED***
+}
 
-.navbar-inverse .brand a ***REMOVED***
+.navbar-inverse .brand a {
   color: #999999;
-***REMOVED***
-.navbar-inverse .brand:hover a ***REMOVED***
+}
+.navbar-inverse .brand:hover a {
   color: white;
   text-decoration: none;
-***REMOVED***
+}
 
 /* custom navigation styles */
-.navbar ***REMOVED***
+.navbar {
   width: 100%;
   position: fixed;
   left: 0;
   top: 0;
-***REMOVED***
+}
 
-.navbar ***REMOVED***
+.navbar {
   background: #2C2C2C;
   color: white;
   border: none;
   border-top: 5px solid #A30000;
   border-radius: 0px;
-***REMOVED***
+}
 
-.navbar .nav li, .navbar .nav li a, .navbar .brand:hover ***REMOVED***
+.navbar .nav li, .navbar .nav li a, .navbar .brand:hover {
   color: white;
-***REMOVED***
+}
 
-.nav-list > .active > a, .nav-list > .active > a:hover ***REMOVED***
+.nav-list > .active > a, .nav-list > .active > a:hover {
   background: #2C2C2C;
-***REMOVED***
+}
 
-.navbar .dropdown-menu li a, .navbar .dropdown-menu li ***REMOVED***
+.navbar .dropdown-menu li a, .navbar .dropdown-menu li {
   color: #A30000;
-***REMOVED***
+}
 
-.navbar .dropdown-menu li a:hover ***REMOVED***
+.navbar .dropdown-menu li a:hover {
   background: #EEEEEE;
   color: #C20000;
-***REMOVED***
+}
 
-ul.breadcrumb ***REMOVED***
+ul.breadcrumb {
   margin: 70px 0 0 0;
-***REMOVED***
+}
 
-.breadcrumb li.active a ***REMOVED***
+.breadcrumb li.active a {
   color: #777;
-***REMOVED***
+}
 
 .pagination>.disabled>a,
 .pagination>.disabled>a:hover,
-.pagination>.disabled>a:focus ***REMOVED***
+.pagination>.disabled>a:focus {
   cursor: not-allowed;
   pointer-events: none;
-***REMOVED***
+}
 
 .pager>.disabled>a,
 .pager>.disabled>a:hover,
-.pager>.disabled>a:focus ***REMOVED***
+.pager>.disabled>a:focus {
   pointer-events: none;
-***REMOVED***
+}
 
-.pager .next ***REMOVED***
+.pager .next {
   margin-left: 10px;
-***REMOVED***
+}
 
 /*=== dabapps bootstrap styles ====*/
 
-html ***REMOVED***
+html {
   width:100%;
   background: none;
-***REMOVED***
+}
 
-/*body, .navbar .container-fluid ***REMOVED***
+/*body, .navbar .container-fluid {
   max-width: 1150px;
   margin: 0 auto;
-***REMOVED****/
+}*/
 
-body ***REMOVED***
+body {
   background: url("../img/grid.png") repeat-x;
   background-attachment: fixed;
-***REMOVED***
+}
 
-#content ***REMOVED***
+#content {
   margin: 0;
   padding-bottom: 60px;
-***REMOVED***
+}
 
 /* sticky footer and footer */
-html, body ***REMOVED***
+html, body {
   height: 100%;
-***REMOVED***
+}
 
-.wrapper ***REMOVED***
+.wrapper {
   position: relative;
   top: 0;
   left: 0;
   padding-top: 60px;
   margin: -60px 0;
   min-height: 100%;
-***REMOVED***
+}
 
-.form-switcher ***REMOVED***
+.form-switcher {
   margin-bottom: 0;
-***REMOVED***
+}
 
-.well ***REMOVED***
+.well {
   -webkit-box-shadow: none;
      -moz-box-shadow: none;
           box-shadow: none;
-***REMOVED***
+}
 
-.well .form-actions ***REMOVED***
+.well .form-actions {
   padding-bottom: 0;
   margin-bottom: 0;
-***REMOVED***
+}
 
-.well form ***REMOVED***
+.well form {
   margin-bottom: 0;
-***REMOVED***
+}
 
-.nav-tabs ***REMOVED***
+.nav-tabs {
   border: 0;
-***REMOVED***
+}
 
-.nav-tabs > li ***REMOVED***
+.nav-tabs > li {
   float: right;
-***REMOVED***
+}
 
-.nav-tabs li a ***REMOVED***
+.nav-tabs li a {
   margin-right: 0;
-***REMOVED***
+}
 
-.nav-tabs > .active > a ***REMOVED***
+.nav-tabs > .active > a {
   background: #F5F5F5;
-***REMOVED***
+}
 
-.nav-tabs > .active > a:hover ***REMOVED***
+.nav-tabs > .active > a:hover {
   background: #F5F5F5;
-***REMOVED***
+}
 
-.tabbable.first-tab-active .tab-content ***REMOVED***
+.tabbable.first-tab-active .tab-content {
   border-top-right-radius: 0;
-***REMOVED***
+}
 
-footer ***REMOVED***
+footer {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -172,62 +172,62 @@ footer ***REMOVED***
   height: 60px;
   width: 95%;
   margin: 0 2.5%;
-***REMOVED***
+}
 
-footer p ***REMOVED***
+footer p {
   text-align: center;
   color: gray;
   border-top: 1px solid #DDDDDD;
   padding-top: 10px;
-***REMOVED***
+}
 
-footer a ***REMOVED***
+footer a {
   color: gray !important;
   font-weight: bold;
-***REMOVED***
+}
 
-footer a:hover ***REMOVED***
+footer a:hover {
   color: gray;
-***REMOVED***
+}
 
-.page-header ***REMOVED***
+.page-header {
   border-bottom: none;
   padding-bottom: 0px;
   margin: 0;
-***REMOVED***
+}
 
 /* custom general page styles */
-.hero-unit h1, .hero-unit h2 ***REMOVED***
+.hero-unit h1, .hero-unit h2 {
   color: #A30000;
-***REMOVED***
+}
 
-body a ***REMOVED***
+body a {
   color: #A30000;
-***REMOVED***
+}
 
-body a:hover ***REMOVED***
+body a:hover {
   color: #c20000;
-***REMOVED***
+}
 
-.request-info ***REMOVED***
+.request-info {
   clear:both;
-***REMOVED***
+}
 
-.horizontal-checkbox label ***REMOVED***
+.horizontal-checkbox label {
   padding-top: 0;
-***REMOVED***
+}
 
-.horizontal-checkbox label ***REMOVED***
+.horizontal-checkbox label {
   padding-top: 0 !important;
-***REMOVED***
+}
 
-.horizontal-checkbox input ***REMOVED***
+.horizontal-checkbox input {
   float: left;
   width: 20px;
   margin-top: 3px;
-***REMOVED***
+}
 
-.modal-footer form ***REMOVED***
+.modal-footer form {
   margin-left: 5px;
   margin-right: 5px;
-***REMOVED***
+}

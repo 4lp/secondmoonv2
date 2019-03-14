@@ -246,9 +246,9 @@ They are not required for linting. You should see the linter output right in you
 You would need to install an ESLint plugin for your editor first. Then, add a file called `.eslintrc` to the project root:
 
 ```js
-***REMOVED***
+{
   "extends": "react-app"
-***REMOVED***
+}
 ```
 
 Now your editor should report the linting warnings.
@@ -270,19 +270,19 @@ You would need to have the latest version of [VS Code](https://code.visualstudio
 Then add the block below to your `launch.json` file and put it inside the `.vscode` folder in your app’s root directory.
 
 ```json
-***REMOVED***
+{
   "version": "0.2.0",
-  "configurations": [***REMOVED***
+  "configurations": [{
     "name": "Chrome",
     "type": "chrome",
     "request": "launch",
     "url": "http://localhost:3000",
-    "webRoot": "$***REMOVED***workspaceRoot***REMOVED***/src",
-    "sourceMapPathOverrides": ***REMOVED***
-      "webpack:///src/*": "$***REMOVED***webRoot***REMOVED***/*"
-    ***REMOVED***
-  ***REMOVED***]
-***REMOVED***
+    "webRoot": "${workspaceRoot}/src",
+    "sourceMapPathOverrides": {
+      "webpack:///src/*": "${webRoot}/*"
+    }
+  }]
+}
 ```
 >Note: the URL may be different if you've made adjustments via the [HOST or PORT environment variables](#advanced-configuration).
 
@@ -327,7 +327,7 @@ Now we can make sure every file is formatted correctly by adding a few lines to 
 Add the following line to `scripts` section:
 
 ```diff
-  "scripts": ***REMOVED***
+  "scripts": {
 +   "precommit": "lint-staged",
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -336,19 +336,19 @@ Add the following line to `scripts` section:
 Next we add a 'lint-staged' field to the `package.json`, for example:
 
 ```diff
-  "dependencies": ***REMOVED***
+  "dependencies": {
     // ...
-  ***REMOVED***,
-+ "lint-staged": ***REMOVED***
-+   "src/**/*.***REMOVED***js,jsx,json,css***REMOVED***": [
+  },
++ "lint-staged": {
++   "src/**/*.{js,jsx,json,css}": [
 +     "prettier --single-quote --write",
 +     "git add"
 +   ]
-+ ***REMOVED***,
-  "scripts": ***REMOVED***
++ },
+  "scripts": {
 ```
 
-Now, whenever you make a commit, Prettier will format the changed files automatically. You can also run `./node_modules/.bin/prettier --single-quote --write "src/**/*.***REMOVED***js,jsx,json,css***REMOVED***"` to format your entire project for the first time.
+Now, whenever you make a commit, Prettier will format the changed files automatically. You can also run `./node_modules/.bin/prettier --single-quote --write "src/**/*.{js,jsx,json,css}"` to format your entire project for the first time.
 
 Next you might want to integrate Prettier in your favorite editor. Read the section on [Editor Integration](https://prettier.io/docs/en/editors.html) on the Prettier GitHub page.
 
@@ -388,13 +388,13 @@ For example:
 ### `Button.js`
 
 ```js
-import React, ***REMOVED*** Component ***REMOVED*** from 'react';
+import React, { Component } from 'react';
 
-class Button extends Component ***REMOVED***
-  render() ***REMOVED***
+class Button extends Component {
+  render() {
     // ...
-  ***REMOVED***
-***REMOVED***
+  }
+}
 
 export default Button; // Don’t forget to use export default!
 ```
@@ -403,14 +403,14 @@ export default Button; // Don’t forget to use export default!
 
 
 ```js
-import React, ***REMOVED*** Component ***REMOVED*** from 'react';
+import React, { Component } from 'react';
 import Button from './Button'; // Import a component from another file
 
-class DangerButton extends Component ***REMOVED***
-  render() ***REMOVED***
+class DangerButton extends Component {
+  render() {
     return <Button color="red" />;
-  ***REMOVED***
-***REMOVED***
+  }
+}
 
 export default DangerButton;
 ```
@@ -440,32 +440,32 @@ Here is an example:
 ```js
 const moduleA = 'Hello';
 
-export ***REMOVED*** moduleA ***REMOVED***;
+export { moduleA };
 ```
 ### `App.js`
 
 ```js
-import React, ***REMOVED*** Component ***REMOVED*** from 'react';
+import React, { Component } from 'react';
 
-class App extends Component ***REMOVED***
-  handleClick = () => ***REMOVED***
+class App extends Component {
+  handleClick = () => {
     import('./moduleA')
-      .then((***REMOVED*** moduleA ***REMOVED***) => ***REMOVED***
+      .then(({ moduleA }) => {
         // Use moduleA
-      ***REMOVED***)
-      .catch(err => ***REMOVED***
+      })
+      .catch(err => {
         // Handle failure
-      ***REMOVED***);
-  ***REMOVED***;
+      });
+  };
 
-  render() ***REMOVED***
+  render() {
     return (
       <div>
-        <button onClick=***REMOVED***this.handleClick***REMOVED***>Load</button>
+        <button onClick={this.handleClick}>Load</button>
       </div>
     );
-  ***REMOVED***
-***REMOVED***
+  }
+}
 
 export default App;
 ```
@@ -487,23 +487,23 @@ This project setup uses [Webpack](https://webpack.js.org/) for handling all asse
 ### `Button.css`
 
 ```css
-.Button ***REMOVED***
+.Button {
   padding: 20px;
-***REMOVED***
+}
 ```
 
 ### `Button.js`
 
 ```js
-import React, ***REMOVED*** Component ***REMOVED*** from 'react';
+import React, { Component } from 'react';
 import './Button.css'; // Tell Webpack that Button.js uses these styles
 
-class Button extends Component ***REMOVED***
-  render() ***REMOVED***
+class Button extends Component {
+  render() {
     // You can use them as regular CSS styles
     return <div className="Button" />;
-  ***REMOVED***
-***REMOVED***
+  }
+}
 ```
 
 **This is not required for React** but many people find this feature convenient. You can read about the benefits of this approach [here](https://medium.com/seek-blog/block-element-modifying-your-javascript-components-d7f99fcab52b). However you should be aware that this makes your code less portable to other build tools and environments than Webpack.
@@ -519,17 +519,17 @@ This project setup minifies your CSS and adds vendor prefixes to it automaticall
 For example, this:
 
 ```css
-.App ***REMOVED***
+.App {
   display: flex;
   flex-direction: row;
   align-items: center;
-***REMOVED***
+}
 ```
 
 becomes this:
 
 ```css
-.App ***REMOVED***
+.App {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -540,7 +540,7 @@ becomes this:
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-***REMOVED***
+}
 ```
 
 If you need to disable autoprefixing for some reason, [follow this section](https://github.com/postcss/autoprefixer#disabling).
@@ -566,7 +566,7 @@ yarn add node-sass-chokidar
 Then in `package.json`, add the following lines to `scripts`:
 
 ```diff
-   "scripts": ***REMOVED***
+   "scripts": {
 +    "build-css": "node-sass-chokidar src/ -o src/",
 +    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
      "start": "react-scripts start",
@@ -611,7 +611,7 @@ yarn add npm-run-all
 Then we can change `start` and `build` scripts to include the CSS preprocessor commands:
 
 ```diff
-   "scripts": ***REMOVED***
+   "scripts": {
      "build-css": "node-sass-chokidar src/ -o src/",
      "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
 -    "start": "react-scripts start",
@@ -622,7 +622,7 @@ Then we can change `start` and `build` scripts to include the CSS preprocessor c
 +    "build": "npm-run-all build-css build-js",
      "test": "react-scripts test --env=jsdom",
      "eject": "react-scripts eject"
-   ***REMOVED***
+   }
 ```
 
 Now running `npm start` and `npm run build` also builds Sass files.
@@ -655,10 +655,10 @@ import logo from './logo.png'; // Tell Webpack this JS file uses this image
 
 console.log(logo); // /logo.84287d09.png
 
-function Header() ***REMOVED***
+function Header() {
   // Import result is the URL of your image
-  return <img src=***REMOVED***logo***REMOVED*** alt="Logo" />;
-***REMOVED***
+  return <img src={logo} alt="Logo" />;
+}
 
 export default Header;
 ```
@@ -668,9 +668,9 @@ This ensures that when the project is built, Webpack will correctly move the ima
 This works in CSS too:
 
 ```css
-.Logo ***REMOVED***
+.Logo {
   background-image: url(./logo.png);
-***REMOVED***
+}
 ```
 
 Webpack finds all relative module references in CSS (they start with `./`) and replaces them with the final paths from the compiled bundle. If you make a typo or accidentally delete an important file, you will see a compilation error, just like when you import a non-existent JavaScript module. The final filenames in the compiled bundle are generated by Webpack from content hashes. If the file content changes in the future, Webpack will give it a different name in production so you don’t need to worry about long-term caching of assets.
@@ -718,12 +718,12 @@ When you run `npm run build`, Create React App will substitute `%PUBLIC_URL%` wi
 In JavaScript code, you can use `process.env.PUBLIC_URL` for similar purposes:
 
 ```js
-render() ***REMOVED***
+render() {
   // Note: this is an escape hatch and should be used sparingly!
   // Normally we recommend using `import` for getting asset URLs
   // as described in “Adding Images and Fonts” above this section.
-  return <img src=***REMOVED***process.env.PUBLIC_URL + '/img/logo.png'***REMOVED*** />;
-***REMOVED***
+  return <img src={process.env.PUBLIC_URL + '/img/logo.png'} />;
+}
 ```
 
 Keep in mind the downsides of this approach:
@@ -786,7 +786,7 @@ import 'bootstrap/dist/css/bootstrap-theme.css';
 Import required React Bootstrap components within ```src/App.js``` file or your custom component files:
 
 ```js
-import ***REMOVED*** Navbar, Jumbotron, Button ***REMOVED*** from 'react-bootstrap';
+import { Navbar, Jumbotron, Button } from 'react-bootstrap';
 ```
 
 Now you are ready to use the imported React Bootstrap components within your component hierarchy defined in the render method. Here is an example [`App.js`](https://gist.githubusercontent.com/gaearon/85d8c067f6af1e56277c82d19fd4da7b/raw/6158dd991b67284e9fc8d70b9d973efe87659d72/App.js) redone using React Bootstrap.
@@ -865,16 +865,16 @@ First, you need to have environment variables defined. For example, let’s say 
 in the environment inside a `<form>`:
 
 ```jsx
-render() ***REMOVED***
+render() {
   return (
     <div>
-      <small>You are running this application in <b>***REMOVED***process.env.NODE_ENV***REMOVED***</b> mode.</small>
+      <small>You are running this application in <b>{process.env.NODE_ENV}</b> mode.</small>
       <form>
-        <input type="hidden" defaultValue=***REMOVED***process.env.REACT_APP_SECRET_CODE***REMOVED*** />
+        <input type="hidden" defaultValue={process.env.REACT_APP_SECRET_CODE} />
       </form>
     </div>
   );
-***REMOVED***
+}
 ```
 
 During the build, `process.env.REACT_APP_SECRET_CODE` will be replaced with the current value of the `REACT_APP_SECRET_CODE` environment variable. Remember that the `NODE_ENV` variable will be set for you automatically.
@@ -897,9 +897,9 @@ a `.env` file. Both of these ways are described in the next few sections.
 Having access to the `NODE_ENV` is also useful for performing actions conditionally:
 
 ```js
-if (process.env.NODE_ENV !== 'production') ***REMOVED***
+if (process.env.NODE_ENV !== 'production') {
   analytics.disable();
-***REMOVED***
+}
 ```
 
 When you compile the app with `npm run build`, the minification step will strip out this condition, and the resulting bundle will be smaller.
@@ -989,7 +989,7 @@ For example, to get the environment variable `npm_package_version`:
 ```
 REACT_APP_VERSION=$npm_package_version
 # also works:
-# REACT_APP_VERSION=$***REMOVED***npm_package_version***REMOVED***
+# REACT_APP_VERSION=${npm_package_version}
 ```
 
 Or expand variables local to the current `.env` file:
@@ -1112,17 +1112,17 @@ We don’t recommend this approach.
 If the `proxy` option is **not** flexible enough for you, you can specify an object in the following form (in `package.json`).<br>
 You may also specify any configuration value [`http-proxy-middleware`](https://github.com/chimurai/http-proxy-middleware#options) or [`http-proxy`](https://github.com/nodejitsu/node-http-proxy#options) supports.
 ```js
-***REMOVED***
+{
   // ...
-  "proxy": ***REMOVED***
-    "/api": ***REMOVED***
+  "proxy": {
+    "/api": {
       "target": "<url>",
       "ws": true
       // ...
-    ***REMOVED***
-  ***REMOVED***
+    }
+  }
   // ...
-***REMOVED***
+}
 ```
 
 All requests matching this path will be proxies, no exceptions. This includes requests for `text/html`, which the standard `proxy` option does not proxy.
@@ -1130,37 +1130,37 @@ All requests matching this path will be proxies, no exceptions. This includes re
 If you need to specify multiple proxies, you may do so by specifying additional entries.
 Matches are regular expressions, so that you can use a regexp to match multiple paths.
 ```js
-***REMOVED***
+{
   // ...
-  "proxy": ***REMOVED***
+  "proxy": {
     // Matches any request starting with /api
-    "/api": ***REMOVED***
+    "/api": {
       "target": "<url_1>",
       "ws": true
       // ...
-    ***REMOVED***,
+    },
     // Matches any request starting with /foo
-    "/foo": ***REMOVED***
+    "/foo": {
       "target": "<url_2>",
       "ssl": true,
-      "pathRewrite": ***REMOVED***
+      "pathRewrite": {
         "^/foo": "/foo/beta"
-      ***REMOVED***
+      }
       // ...
-    ***REMOVED***,
+    },
     // Matches /bar/abc.html but not /bar/sub/def.html
-    "/bar/[^/]*[.]html": ***REMOVED***
+    "/bar/[^/]*[.]html": {
       "target": "<url_3>",
       // ...
-    ***REMOVED***,
+    },
     // Matches /baz/abc.html and /baz/sub/def.html
-    "/baz/.*/.*[.]html": ***REMOVED***
+    "/baz/.*/.*[.]html": {
       "target": "<url_4>"
       // ...
-    ***REMOVED***
-  ***REMOVED***
+    }
+  }
   // ...
-***REMOVED***
+}
 ```
 
 ### Configuring a WebSocket Proxy
@@ -1176,10 +1176,10 @@ Standard WebSockets **will** work with a standard WebSocket server as well as th
 Either way, you can proxy WebSocket requests manually in `package.json`:
 
 ```js
-***REMOVED***
+{
   // ...
-  "proxy": ***REMOVED***
-    "/socket": ***REMOVED***
+  "proxy": {
+    "/socket": {
       // Your compatible WebSocket server
       "target": "ws://<socket_url>",
       // Tell http-proxy-middleware that this is a WebSocket proxy.
@@ -1187,10 +1187,10 @@ Either way, you can proxy WebSocket requests manually in `package.json`:
       // https://github.com/chimurai/http-proxy-middleware#external-websocket-upgrade
       "ws": true
       // ...
-    ***REMOVED***
-  ***REMOVED***
+    }
+  }
   // ...
-***REMOVED***
+}
 ```
 
 ## Using HTTPS in Development
@@ -1314,10 +1314,10 @@ Jest provides a built-in `expect()` global function for making assertions. A bas
 ```js
 import sum from './sum';
 
-it('sums numbers', () => ***REMOVED***
+it('sums numbers', () => {
   expect(sum(1, 2)).toEqual(3);
   expect(sum(2, 2)).toEqual(4);
-***REMOVED***);
+});
 ```
 
 All `expect()` matchers supported by Jest are [extensively documented here](https://facebook.github.io/jest/docs/en/expect.html#content).<br>
@@ -1334,10 +1334,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 
-it('renders without crashing', () => ***REMOVED***
+it('renders without crashing', () => {
   const div = document.createElement('div');
   ReactDOM.render(<App />, div);
-***REMOVED***);
+});
 ```
 
 This test mounts a component and makes sure that it didn’t throw during rendering. Tests like this provide a lot of value with very little effort so they are great as a starting point, and this is the test you will find in `src/App.test.js`.
@@ -1362,10 +1362,10 @@ The adapter will also need to be configured in your [global setup file](#initial
 
 #### `src/setupTests.js`
 ```js
-import ***REMOVED*** configure ***REMOVED*** from 'enzyme';
+import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-configure(***REMOVED*** adapter: new Adapter() ***REMOVED***);
+configure({ adapter: new Adapter() });
 ```
 
 >Note: Keep in mind that if you decide to "eject" before creating `src/setupTests.js`, the resulting `package.json` file won't contain any reference to it. [Read here](#initializing-test-environment) to learn how to add this after ejecting.
@@ -1374,12 +1374,12 @@ Now you can write a smoke test with it:
 
 ```js
 import React from 'react';
-import ***REMOVED*** shallow ***REMOVED*** from 'enzyme';
+import { shallow } from 'enzyme';
 import App from './App';
 
-it('renders without crashing', () => ***REMOVED***
+it('renders without crashing', () => {
   shallow(<App />);
-***REMOVED***);
+});
 ```
 
 Unlike the previous smoke test using `ReactDOM.render()`, this test only renders `<App>` and doesn’t go deeper. For example, even if `<App>` itself renders a `<Button>` that throws, this test will pass. Shallow rendering is great for isolated unit tests, but you may still want to create some full rendering tests to ensure the components integrate correctly. Enzyme supports [full rendering with `mount()`](http://airbnb.io/enzyme/docs/api/mount.html), and you can also use it for testing state changes and component lifecycle.
@@ -1390,15 +1390,15 @@ Here is an example from Enzyme documentation that asserts specific output, rewri
 
 ```js
 import React from 'react';
-import ***REMOVED*** shallow ***REMOVED*** from 'enzyme';
+import { shallow } from 'enzyme';
 import App from './App';
 
-it('renders welcome message', () => ***REMOVED***
+it('renders welcome message', () => {
   const wrapper = shallow(<App />);
   const welcome = <h2>Welcome to React</h2>;
   // expect(wrapper.contains(welcome)).to.equal(true);
   expect(wrapper.contains(welcome)).toEqual(true);
-***REMOVED***);
+});
 ```
 
 All Jest matchers are [extensively documented here](http://facebook.github.io/jest/docs/en/expect.html).<br>
@@ -1459,13 +1459,13 @@ Here's an example of using `react-testing-library` and `jest-dom` for testing th
 
 ```js
 import React from 'react';
-import ***REMOVED*** render ***REMOVED*** from 'react-testing-library';
+import { render } from 'react-testing-library';
 import App from './App';
 
-it('renders welcome message', () => ***REMOVED***
-  const ***REMOVED*** getByText ***REMOVED*** = render(<App />);
+it('renders welcome message', () => {
+  const { getByText } = render(<App />);
   expect(getByText('Welcome to React')).toBeInTheDOM();
-***REMOVED***);
+});
 ```
 
 Learn more about the utilities provided by `react-testing-library` to facilitate testing asynchronous interactions as well as selecting form elements from [the `react-testing-library` documentation](https://github.com/kentcdodds/react-testing-library) and [examples](https://codesandbox.io/s/github/kentcdodds/react-testing-library-examples).
@@ -1478,7 +1478,7 @@ However, if you are used to other libraries, such as [Chai](http://chaijs.com/) 
 
 ```js
 import sinon from 'sinon';
-import ***REMOVED*** expect ***REMOVED*** from 'chai';
+import { expect } from 'chai';
 ```
 
 and then use them in your tests like you normally do.
@@ -1493,21 +1493,21 @@ For example:
 
 #### `src/setupTests.js`
 ```js
-const localStorageMock = ***REMOVED***
+const localStorageMock = {
   getItem: jest.fn(),
   setItem: jest.fn(),
   clear: jest.fn()
-***REMOVED***;
+};
 global.localStorage = localStorageMock
 ```
 
 >Note: Keep in mind that if you decide to "eject" before creating `src/setupTests.js`, the resulting `package.json` file won't contain any reference to it, so you should manually create the property `setupTestFrameworkScriptFile` in the configuration for Jest, something like the following:
 
 >```js
->"jest": ***REMOVED***
+>"jest": {
 >   // ...
 >   "setupTestFrameworkScriptFile": "<rootDir>/src/setupTests.js"
->  ***REMOVED***
+>  }
 >  ```
 
 ### Focusing and Excluding Tests
@@ -1537,26 +1537,26 @@ Supported overrides:
 Example package.json:
 
 ```json
-***REMOVED***
+{
   "name": "your-package",
-  "jest": ***REMOVED***
+  "jest": {
     "collectCoverageFrom" : [
-      "src/**/*.***REMOVED***js,jsx***REMOVED***",
+      "src/**/*.{js,jsx}",
       "!<rootDir>/node_modules/",
       "!<rootDir>/path/to/dir/"
     ],
-    "coverageThreshold": ***REMOVED***
-      "global": ***REMOVED***
+    "coverageThreshold": {
+      "global": {
         "branches": 90,
         "functions": 90,
         "lines": 90,
         "statements": 90
-      ***REMOVED***
-    ***REMOVED***,
+      }
+    },
     "coverageReporters": ["text"],
     "snapshotSerializers": ["my-serializer-module"]
-  ***REMOVED***
-***REMOVED***
+  }
+}
 ```
 
 ### Continuous Integration
@@ -1634,7 +1634,7 @@ The build command will check for linter warnings and fail if any are found.
 By default, the `package.json` of the generated project looks like this:
 
 ```js
-  "scripts": ***REMOVED***
+  "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom"
@@ -1643,7 +1643,7 @@ By default, the `package.json` of the generated project looks like this:
 If you know that none of your tests depend on [jsdom](https://github.com/tmpvar/jsdom), you can safely remove `--env=jsdom`, and your tests will run faster:
 
 ```diff
-  "scripts": ***REMOVED***
+  "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
 -   "test": "react-scripts test --env=jsdom"
@@ -1684,9 +1684,9 @@ There are various ways to setup a debugger for your Jest tests. We cover debuggi
 
 Add the following to the `scripts` section in your project's `package.json`
 ```json
-"scripts": ***REMOVED***
+"scripts": {
     "test:debug": "react-scripts --inspect-brk test --runInBand --env=jsdom"
-  ***REMOVED***
+  }
 ```
 Place `debugger;` statements in any test and run:
 ```bash
@@ -1710,27 +1710,27 @@ Debugging Jest tests is supported out of the box for [Visual Studio Code](https:
 
 Use the following [`launch.json`](https://code.visualstudio.com/docs/editor/debugging#_launch-configurations) configuration file:
 ```
-***REMOVED***
+{
   "version": "0.2.0",
   "configurations": [
-    ***REMOVED***
+    {
       "name": "Debug CRA Tests",
       "type": "node",
       "request": "launch",
-      "runtimeExecutable": "$***REMOVED***workspaceRoot***REMOVED***/node_modules/.bin/react-scripts",      
+      "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/react-scripts",      
       "args": [
         "test",
         "--runInBand",
         "--no-cache",
         "--env=jsdom"
       ],
-      "cwd": "$***REMOVED***workspaceRoot***REMOVED***",
+      "cwd": "${workspaceRoot}",
       "protocol": "inspector",
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
-    ***REMOVED***
+    }
   ]
-***REMOVED***
+}
 ```
 
 ## Developing Components in Isolation
@@ -1794,7 +1794,7 @@ yarn add react-styleguidist
 Then, add these scripts to your `package.json`:
 
 ```diff
-   "scripts": ***REMOVED***
+   "scripts": {
 +    "styleguide": "styleguidist server",
 +    "styleguide:build": "styleguidist build",
      "start": "react-scripts start",
@@ -1847,7 +1847,7 @@ have decided that you would like to disable them for all your existing users,
 you can swap out the call to `registerServiceWorker()` in
 [`src/index.js`](src/index.js) first by modifying the service worker import:
 ```javascript
-import ***REMOVED*** unregister ***REMOVED*** from './registerServiceWorker';
+import { unregister } from './registerServiceWorker';
 ```
 and then call `unregister()` instead.
 After the user visits a page that has `unregister()`,
@@ -1945,7 +1945,7 @@ yarn add source-map-explorer
 Then in `package.json`, add the following line to `scripts`:
 
 ```diff
-   "scripts": ***REMOVED***
+   "scripts": {
 +    "analyze": "source-map-explorer build/static/js/main.*",
      "start": "react-scripts start",
      "build": "react-scripts build",
@@ -1994,9 +1994,9 @@ const app = express();
 
 app.use(express.static(path.join(__dirname, 'build')));
 
-app.get('/', function (req, res) ***REMOVED***
+app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
-***REMOVED***);
+});
 
 app.listen(9000);
 ```
@@ -2016,10 +2016,10 @@ This is because when there is a fresh page load for a `/todos/42`, the server lo
 ```diff
  app.use(express.static(path.join(__dirname, 'build')));
 
--app.get('/', function (req, res) ***REMOVED***
-+app.get('/*', function (req, res) ***REMOVED***
+-app.get('/', function (req, res) {
++app.get('/*', function (req, res) {
    res.sendFile(path.join(__dirname, 'build', 'index.html'));
- ***REMOVED***);
+ });
 ```
 
 If you’re using [Apache HTTP Server](https://httpd.apache.org/), you need to create a `.htaccess` file in the `public` folder that looks like this:
@@ -2027,7 +2027,7 @@ If you’re using [Apache HTTP Server](https://httpd.apache.org/), you need to c
 ```
     Options -MultiViews
     RewriteEngine On
-    RewriteCond %***REMOVED***REQUEST_FILENAME***REMOVED*** !-f
+    RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.html [QSA,L]
 ```
 
@@ -2134,11 +2134,11 @@ Then run the `firebase init` command from your project’s root. You need to cho
 IMPORTANT: you need to set proper HTTP caching headers for `service-worker.js` file in `firebase.json` file or you will not be able to see changes after first deployment ([issue #2440](https://github.com/facebookincubator/create-react-app/issues/2440)). It should be added inside `"hosting"` key like next:
 
 ```
-***REMOVED***
-  "hosting": ***REMOVED***
+{
+  "hosting": {
     ...
     "headers": [
-      ***REMOVED***"source": "/service-worker.js", "headers": [***REMOVED***"key": "Cache-Control", "value": "no-cache"***REMOVED***]***REMOVED***
+      {"source": "/service-worker.js", "headers": [{"key": "Cache-Control", "value": "no-cache"}]}
     ]
     ...
 ```
@@ -2205,7 +2205,7 @@ yarn add gh-pages
 Add the following scripts in your `package.json`:
 
 ```diff
-  "scripts": ***REMOVED***
+  "scripts": {
 +   "predeploy": "npm run build",
 +   "deploy": "gh-pages -d build",
     "start": "react-scripts start",
@@ -2220,7 +2220,7 @@ additional modifications:
 1. First, change your repository's source branch to be any branch other than **master**.
 1. Additionally, tweak your `package.json` scripts to push deployments to **master**:
 ```diff
-  "scripts": ***REMOVED***
+  "scripts": {
     "predeploy": "npm run build",
 -   "deploy": "gh-pages -d build",
 +   "deploy": "gh-pages -b master -d build",

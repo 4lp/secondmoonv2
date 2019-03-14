@@ -7,9 +7,9 @@ process.env.NODE_ENV = 'production';
 // Makes the script crash on unhandled rejections instead of silently
 // ignoring them. In the future, promise rejections that are not handled will
 // terminate the Node.js process with a non-zero exit code.
-process.on('unhandledRejection', err => ***REMOVED***
+process.on('unhandledRejection', err => {
   throw err;
-***REMOVED***);
+});
 
 // Ensure environment variables are read.
 require('../config/env');
@@ -36,14 +36,14 @@ const WARN_AFTER_BUNDLE_GZIP_SIZE = 512 * 1024;
 const WARN_AFTER_CHUNK_GZIP_SIZE = 1024 * 1024;
 
 // Warn and crash if required files are missing
-if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) ***REMOVED***
+if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
   process.exit(1);
-***REMOVED***
+}
 
 // First, read the current file sizes in build directory.
 // This lets us display how much they changed later.
 measureFileSizesBeforeBuild(paths.appBuild)
-  .then(previousFileSizes => ***REMOVED***
+  .then(previousFileSizes => {
     // Remove all content but keep the directory so that
     // if you're in it, you don't end up in Trash
     fs.emptyDirSync(paths.appBuild);
@@ -51,10 +51,10 @@ measureFileSizesBeforeBuild(paths.appBuild)
     copyPublicFolder();
     // Start the webpack build
     return build(previousFileSizes);
-  ***REMOVED***)
+  })
   .then(
-    (***REMOVED*** stats, previousFileSizes, warnings ***REMOVED***) => ***REMOVED***
-      if (warnings.length) ***REMOVED***
+    ({ stats, previousFileSizes, warnings }) => {
+      if (warnings.length) {
         console.log(chalk.yellow('Compiled with warnings.\n'));
         console.log(warnings.join('\n\n'));
         console.log(
@@ -67,9 +67,9 @@ measureFileSizesBeforeBuild(paths.appBuild)
             chalk.cyan('// eslint-disable-next-line') +
             ' to the line before.\n'
         );
-      ***REMOVED*** else ***REMOVED***
+      } else {
         console.log(chalk.green('Compiled successfully.\n'));
-      ***REMOVED***
+      }
 
       console.log('File sizes after gzip:\n');
       printFileSizesAfterBuild(
@@ -92,39 +92,39 @@ measureFileSizesBeforeBuild(paths.appBuild)
         buildFolder,
         useYarn
       );
-    ***REMOVED***,
-    err => ***REMOVED***
+    },
+    err => {
       console.log(chalk.red('Failed to compile.\n'));
       printBuildError(err);
       process.exit(1);
-    ***REMOVED***
+    }
   );
 
 // Create the production build and print the deployment instructions.
-function build(previousFileSizes) ***REMOVED***
+function build(previousFileSizes) {
   console.log('Creating an optimized production build...');
 
   let compiler = webpack(config);
-  return new Promise((resolve, reject) => ***REMOVED***
-    compiler.run((err, stats) => ***REMOVED***
-      if (err) ***REMOVED***
+  return new Promise((resolve, reject) => {
+    compiler.run((err, stats) => {
+      if (err) {
         return reject(err);
-      ***REMOVED***
-      const messages = formatWebpackMessages(stats.toJson(***REMOVED******REMOVED***, true));
-      if (messages.errors.length) ***REMOVED***
+      }
+      const messages = formatWebpackMessages(stats.toJson({}, true));
+      if (messages.errors.length) {
         // Only keep the first error. Others are often indicative
         // of the same problem, but confuse the reader with noise.
-        if (messages.errors.length > 1) ***REMOVED***
+        if (messages.errors.length > 1) {
           messages.errors.length = 1;
-        ***REMOVED***
+        }
         return reject(new Error(messages.errors.join('\n\n')));
-      ***REMOVED***
+      }
       if (
         process.env.CI &&
         (typeof process.env.CI !== 'string' ||
           process.env.CI.toLowerCase() !== 'false') &&
         messages.warnings.length
-      ) ***REMOVED***
+      ) {
         console.log(
           chalk.yellow(
             '\nTreating warnings as errors because process.env.CI = true.\n' +
@@ -132,19 +132,19 @@ function build(previousFileSizes) ***REMOVED***
           )
         );
         return reject(new Error(messages.warnings.join('\n\n')));
-      ***REMOVED***
-      return resolve(***REMOVED***
+      }
+      return resolve({
         stats,
         previousFileSizes,
         warnings: messages.warnings,
-      ***REMOVED***);
-    ***REMOVED***);
-  ***REMOVED***);
-***REMOVED***
+      });
+    });
+  });
+}
 
-function copyPublicFolder() ***REMOVED***
-  fs.copySync(paths.appPublic, paths.appBuild, ***REMOVED***
+function copyPublicFolder() {
+  fs.copySync(paths.appPublic, paths.appBuild, {
     dereference: true,
     filter: file => file !== paths.appHtml,
-  ***REMOVED***);
-***REMOVED***
+  });
+}

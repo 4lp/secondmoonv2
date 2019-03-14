@@ -1,18 +1,18 @@
-const initialState = ***REMOVED***
+const initialState = {
 	isLoading: true,
 	images: null 
-***REMOVED***
+}
 
-export default function carouselImages(state=initialState, action) ***REMOVED***
+export default function carouselImages(state=initialState, action) {
 
-	switch (action.type) ***REMOVED***
+	switch (action.type) {
 		case 'CAROUSELIMAGES_LOADING':
-			return ***REMOVED***...state, isLoading: true***REMOVED***
+			return {...state, isLoading: true}
 
 		case 'FETCH_CAROUSELIMAGES':
-		    return ***REMOVED***...state, images: action.images, isLoading: false***REMOVED***;
+		    return {...state, images: action.images, isLoading: false};
 
 		default:
 			return state;
-	***REMOVED***
-***REMOVED***
+	}
+}

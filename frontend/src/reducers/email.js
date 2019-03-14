@@ -1,27 +1,27 @@
-const initialState = ***REMOVED***
-	errors: ***REMOVED******REMOVED***,
+const initialState = {
+	errors: {},
 	user_message: null,
 	isSending: false
-***REMOVED***;
+};
 
-export default function auth(state=initialState, action) ***REMOVED***
+export default function auth(state=initialState, action) {
 
-	switch (action.type) ***REMOVED***
+	switch (action.type) {
 
 		case 'CONTACT_EMAIL_SENT':
-			return ***REMOVED***...state, user_message: "Message sent.", errors:***REMOVED******REMOVED***, isSending: false***REMOVED***;
+			return {...state, user_message: "Message sent.", errors:{}, isSending: false};
 
 		case 'SERVER_ERROR':
-			return ***REMOVED***...state, user_message: null, errors: ***REMOVED***server_error: "Something went wrong. Please refresh this page and try again."***REMOVED***, isSending: false***REMOVED***
+			return {...state, user_message: null, errors: {server_error: "Something went wrong. Please refresh this page and try again."}, isSending: false}
 
 		case 'EMAIL_SENDING':
-			return ***REMOVED***...state, errors: ***REMOVED******REMOVED***, user_message: null, isSending: true***REMOVED***
+			return {...state, errors: {}, user_message: null, isSending: true}
 
 		case 'BAD_REQUEST':
-			return ***REMOVED***...state, user_message: null, errors: action.data, isSending: false***REMOVED***
+			return {...state, user_message: null, errors: action.data, isSending: false}
 
 		default:
 			return state
 			
-	***REMOVED***
-***REMOVED***
+	}
+}

@@ -8,20 +8,20 @@ const paths = require('./paths');
 delete require.cache[require.resolve('./paths')];
 
 const NODE_ENV = process.env.NODE_ENV;
-if (!NODE_ENV) ***REMOVED***
+if (!NODE_ENV) {
   throw new Error(
     'The NODE_ENV environment variable is required but was not specified.'
   );
-***REMOVED***
+}
 
 // https://github.com/bkeepers/dotenv#what-other-env-files-can-i-use
 var dotenvFiles = [
-  `$***REMOVED***paths.dotenv***REMOVED***.$***REMOVED***NODE_ENV***REMOVED***.local`,
-  `$***REMOVED***paths.dotenv***REMOVED***.$***REMOVED***NODE_ENV***REMOVED***`,
+  `${paths.dotenv}.${NODE_ENV}.local`,
+  `${paths.dotenv}.${NODE_ENV}`,
   // Don't include `.env.local` for `test` environment
   // since normally you expect tests to produce the same
   // results for everyone
-  NODE_ENV !== 'test' && `$***REMOVED***paths.dotenv***REMOVED***.local`,
+  NODE_ENV !== 'test' && `${paths.dotenv}.local`,
   paths.dotenv,
 ].filter(Boolean);
 
@@ -30,15 +30,15 @@ var dotenvFiles = [
 // that have already been set.  Variable expansion is supported in .env files.
 // https://github.com/motdotla/dotenv
 // https://github.com/motdotla/dotenv-expand
-dotenvFiles.forEach(dotenvFile => ***REMOVED***
-  if (fs.existsSync(dotenvFile)) ***REMOVED***
+dotenvFiles.forEach(dotenvFile => {
+  if (fs.existsSync(dotenvFile)) {
     require('dotenv-expand')(
-      require('dotenv').config(***REMOVED***
+      require('dotenv').config({
         path: dotenvFile,
-      ***REMOVED***)
+      })
     );
-  ***REMOVED***
-***REMOVED***);
+  }
+});
 
 // We support resolving modules according to `NODE_PATH`.
 // This lets you use absolute paths in imports inside large monorepos:
@@ -60,34 +60,34 @@ process.env.NODE_PATH = (process.env.NODE_PATH || '')
 // injected into the application via DefinePlugin in Webpack configuration.
 const REACT_APP = /^REACT_APP_/i;
 
-function getClientEnvironment(publicUrl) ***REMOVED***
+function getClientEnvironment(publicUrl) {
   const raw = Object.keys(process.env)
     .filter(key => REACT_APP.test(key))
     .reduce(
-      (env, key) => ***REMOVED***
+      (env, key) => {
         env[key] = process.env[key];
         return env;
-      ***REMOVED***,
-      ***REMOVED***
+      },
+      {
         // Useful for determining whether we’re running in production mode.
         // Most importantly, it switches React into the correct mode.
         NODE_ENV: process.env.NODE_ENV || 'development',
         // Useful for resolving the correct path to static assets in `public`.
-        // For example, <img src=***REMOVED***process.env.PUBLIC_URL + '/img/logo.png'***REMOVED*** />.
+        // For example, <img src={process.env.PUBLIC_URL + '/img/logo.png'} />.
         // This should only be used as an escape hatch. Normally you would put
         // images into the `src` and `import` them in code to get their paths.
         PUBLIC_URL: publicUrl,
-      ***REMOVED***
+      }
     );
   // Stringify all values so we can feed into Webpack DefinePlugin
-  const stringified = ***REMOVED***
-    'process.env': Object.keys(raw).reduce((env, key) => ***REMOVED***
+  const stringified = {
+    'process.env': Object.keys(raw).reduce((env, key) => {
       env[key] = JSON.stringify(raw[key]);
       return env;
-    ***REMOVED***, ***REMOVED******REMOVED***),
-  ***REMOVED***;
+    }, {}),
+  };
 
-  return ***REMOVED*** raw, stringified ***REMOVED***;
-***REMOVED***
+  return { raw, stringified };
+}
 
 module.exports = getClientEnvironment;

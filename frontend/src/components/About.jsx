@@ -1,11 +1,11 @@
-import React, ***REMOVED***Component***REMOVED*** from 'react';
+import React, {Component} from 'react';
 
 
-export default class About extends Component ***REMOVED***
-	state = ***REMOVED***
-	***REMOVED***
+export default class About extends Component {
+	state = {
+	}
 
-	render()***REMOVED***
+	render(){
 		return (
 			<div className="container">
 				<div className="row">
@@ -22,5 +22,5 @@ export default class About extends Component ***REMOVED***
 				</div>
 			</div>
 		)
-	***REMOVED***
-***REMOVED***
+	}
+}

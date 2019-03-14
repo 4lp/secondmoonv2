@@ -5,20 +5,20 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
 */
 
-.hljs ***REMOVED***
+.hljs {
   display: block;
   overflow-x: auto;
   padding: 0.5em;
   color: #333;
   -webkit-text-size-adjust: none;
-***REMOVED***
+}
 
 .hljs-comment,
 .diff .hljs-header,
-.hljs-javadoc ***REMOVED***
+.hljs-javadoc {
   color: #998;
   font-style: italic;
-***REMOVED***
+}
 
 .hljs-keyword,
 .css .rule .hljs-keyword,
@@ -26,63 +26,63 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 .nginx .hljs-title,
 .hljs-subst,
 .hljs-request,
-.hljs-status ***REMOVED***
+.hljs-status {
   color: #333;
   font-weight: bold;
-***REMOVED***
+}
 
 .hljs-number,
 .hljs-hexcolor,
-.ruby .hljs-constant ***REMOVED***
+.ruby .hljs-constant {
   color: #008080;
-***REMOVED***
+}
 
 .hljs-string,
 .hljs-tag .hljs-value,
 .hljs-phpdoc,
 .hljs-dartdoc,
-.tex .hljs-formula ***REMOVED***
+.tex .hljs-formula {
   color: #d14;
-***REMOVED***
+}
 
 .hljs-title,
 .hljs-id,
-.scss .hljs-preprocessor ***REMOVED***
+.scss .hljs-preprocessor {
   color: #900;
   font-weight: bold;
-***REMOVED***
+}
 
 .hljs-list .hljs-keyword,
-.hljs-subst ***REMOVED***
+.hljs-subst {
   font-weight: normal;
-***REMOVED***
+}
 
 .hljs-class .hljs-title,
 .hljs-type,
 .vhdl .hljs-literal,
-.tex .hljs-command ***REMOVED***
+.tex .hljs-command {
   color: #458;
   font-weight: bold;
-***REMOVED***
+}
 
 .hljs-tag,
 .hljs-tag .hljs-title,
 .hljs-rule .hljs-property,
-.django .hljs-tag .hljs-keyword ***REMOVED***
+.django .hljs-tag .hljs-keyword {
   color: #000080;
   font-weight: normal;
-***REMOVED***
+}
 
 .hljs-attribute,
 .hljs-variable,
 .lisp .hljs-body,
-.hljs-name ***REMOVED***
+.hljs-name {
   color: #008080;
-***REMOVED***
+}
 
-.hljs-regexp ***REMOVED***
+.hljs-regexp {
   color: #009926;
-***REMOVED***
+}
 
 .hljs-symbol,
 .ruby .hljs-symbol .hljs-string,
@@ -90,36 +90,36 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 .clojure .hljs-keyword,
 .scheme .hljs-keyword,
 .tex .hljs-special,
-.hljs-prompt ***REMOVED***
+.hljs-prompt {
   color: #990073;
-***REMOVED***
+}
 
-.hljs-built_in ***REMOVED***
+.hljs-built_in {
   color: #0086b3;
-***REMOVED***
+}
 
 .hljs-preprocessor,
 .hljs-pragma,
 .hljs-pi,
 .hljs-doctype,
 .hljs-shebang,
-.hljs-cdata ***REMOVED***
+.hljs-cdata {
   color: #999;
   font-weight: bold;
-***REMOVED***
+}
 
-.hljs-deletion ***REMOVED***
+.hljs-deletion {
   background: #fdd;
-***REMOVED***
+}
 
-.hljs-addition ***REMOVED***
+.hljs-addition {
   background: #dfd;
-***REMOVED***
+}
 
-.diff .hljs-change ***REMOVED***
+.diff .hljs-change {
   background: #0086b3;
-***REMOVED***
+}
 
-.hljs-chunk ***REMOVED***
+.hljs-chunk {
   color: #aaa;
-***REMOVED***
+}

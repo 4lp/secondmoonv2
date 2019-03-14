@@ -1,4 +1,4 @@
-***REMOVED***% load render_bundle from webpack_loader %***REMOVED***
+{% load render_bundle from webpack_loader %}
 <!DOCTYPE html>
 <html>
 	<head>
@@ -15,7 +15,7 @@
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-136260024-1"></script>
 		<script>
 		  window.dataLayer = window.dataLayer || [];
-		  function gtag()***REMOVED***dataLayer.push(arguments);***REMOVED***
+		  function gtag(){dataLayer.push(arguments);}
 		  gtag('js', new Date());
 
 		  gtag('config', 'UA-136260024-1');
@@ -24,7 +24,7 @@
 	<body>
 		<div id="root">
 		</div>
-		***REMOVED***% render_bundle 'main' %***REMOVED***
-		***REMOVED***% csrf_token %***REMOVED***		
+		{% render_bundle 'main' %}
+		{% csrf_token %}		
 	</body>
 </html>

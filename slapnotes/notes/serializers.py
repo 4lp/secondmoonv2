@@ -25,10 +25,10 @@ class ContactEmailSerializer(serializers.Serializer):
     def validate(self, data):
         if data['captcha']:
             recaptcha_response = data['captcha']
-            captcha_data = ***REMOVED***
+            captcha_data = {
                 'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,
                 'response': recaptcha_response
-            ***REMOVED***
+            }
             r = requests.post('https://www.google.com/recaptcha/api/siteverify', 
                     data=captcha_data)
             result = r.json()

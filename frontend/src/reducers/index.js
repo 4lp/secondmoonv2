@@ -1,19 +1,19 @@
-import ***REMOVED*** combineReducers ***REMOVED*** from 'redux';
+import { combineReducers } from 'redux';
 import posts from "./posts";
 import tags from "./tags";
 import email from "./email";
 import settings from "./settings";
 
-const gaiasApp = combineReducers(***REMOVED***
+const gaiasApp = combineReducers({
 	email, posts, settings, tags
-***REMOVED***)
+})
 
-const rootReducer = (state, action) => ***REMOVED***
+const rootReducer = (state, action) => {
 
-	if ( action.type === 'AUTHENTICATION_ERROR' || action.type === 'LOGOUT_SUCCESSFUL' ) ***REMOVED***
+	if ( action.type === 'AUTHENTICATION_ERROR' || action.type === 'LOGOUT_SUCCESSFUL' ) {
 		state = undefined;
-	***REMOVED***
+	}
 	return gaiasApp(state, action);
-***REMOVED***
+}
 
 export default rootReducer;

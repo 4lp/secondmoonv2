@@ -1,21 +1,21 @@
-const initialState = ***REMOVED***
+const initialState = {
 	isLoading: true,
 	posts: [] 
-***REMOVED***
+}
 
-export default function posts(state=initialState, action) ***REMOVED***
+export default function posts(state=initialState, action) {
 
-	switch (action.type) ***REMOVED***
+	switch (action.type) {
 		case 'POSTS_LOADING':
-			return ***REMOVED***...state, posts: [...state.posts], isLoading: true***REMOVED***
+			return {...state, posts: [...state.posts], isLoading: true}
 
 		case 'CLEAR_POSTS':
-			return ***REMOVED***...state, posts: [], isLoading: true***REMOVED***
+			return {...state, posts: [], isLoading: true}
 
 		case 'FETCH_POSTS':
-		    return ***REMOVED***...state, posts: [...state.posts,action.posts.results], next:action.posts.next, isLoading: false***REMOVED***;
+		    return {...state, posts: [...state.posts,action.posts.results], next:action.posts.next, isLoading: false};
 
 		default:
 			return state;
-	***REMOVED***
-***REMOVED***
+	}
+}

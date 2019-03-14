@@ -1,28 +1,28 @@
-.App ***REMOVED***
+.App {
   text-align: center;
-***REMOVED***
+}
 
-.App-logo ***REMOVED***
+.App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
-***REMOVED***
+}
 
-.App-header ***REMOVED***
+.App-header {
   background-color: #222;
   height: 150px;
   padding: 20px;
   color: white;
-***REMOVED***
+}
 
-.App-title ***REMOVED***
+.App-title {
   font-size: 1.5em;
-***REMOVED***
+}
 
-.App-intro ***REMOVED***
+.App-intro {
   font-size: large;
-***REMOVED***
+}
 
-@keyframes App-logo-spin ***REMOVED***
-  from ***REMOVED*** transform: rotate(0deg); ***REMOVED***
-  to ***REMOVED*** transform: rotate(360deg); ***REMOVED***
-***REMOVED***
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

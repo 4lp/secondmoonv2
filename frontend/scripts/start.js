@@ -7,9 +7,9 @@ process.env.NODE_ENV = 'development';
 // Makes the script crash on unhandled rejections instead of silently
 // ignoring them. In the future, promise rejections that are not handled will
 // terminate the Node.js process with a non-zero exit code.
-process.on('unhandledRejection', err => ***REMOVED***
+process.on('unhandledRejection', err => {
   throw err;
-***REMOVED***);
+});
 
 // Ensure environment variables are read.
 require('../config/env');
@@ -20,12 +20,12 @@ const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const clearConsole = require('react-dev-utils/clearConsole');
 const checkRequiredFiles = require('react-dev-utils/checkRequiredFiles');
-const ***REMOVED***
+const {
   choosePort,
   createCompiler,
   prepareProxy,
   prepareUrls,
-***REMOVED*** = require('react-dev-utils/WebpackDevServerUtils');
+} = require('react-dev-utils/WebpackDevServerUtils');
 const openBrowser = require('react-dev-utils/openBrowser');
 const paths = require('../config/paths');
 const config = require('../config/webpack.config.dev');
@@ -35,37 +35,37 @@ const useYarn = fs.existsSync(paths.yarnLockFile);
 const isInteractive = process.stdout.isTTY;
 
 // Warn and crash if required files are missing
-if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) ***REMOVED***
+if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
   process.exit(1);
-***REMOVED***
+}
 
 // Tools like Cloud9 rely on this.
 const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 3000;
 const HOST = process.env.HOST || '0.0.0.0';
 
-if (process.env.HOST) ***REMOVED***
+if (process.env.HOST) {
   console.log(
     chalk.cyan(
-      `Attempting to bind to HOST environment variable: $***REMOVED***chalk.yellow(
+      `Attempting to bind to HOST environment variable: ${chalk.yellow(
         chalk.bold(process.env.HOST)
-      )***REMOVED***`
+      )}`
     )
   );
   console.log(
     `If this was unintentional, check that you haven't mistakenly set it in your shell.`
   );
-  console.log(`Learn more here: $***REMOVED***chalk.yellow('http://bit.ly/2mwWSwH')***REMOVED***`);
+  console.log(`Learn more here: ${chalk.yellow('http://bit.ly/2mwWSwH')}`);
   console.log();
-***REMOVED***
+}
 
 // We attempt to use the default port but if it is busy, we offer the user to
 // run on a different port. `choosePort()` Promise resolves to the next free port.
 choosePort(HOST, DEFAULT_PORT)
-  .then(port => ***REMOVED***
-    if (port == null) ***REMOVED***
+  .then(port => {
+    if (port == null) {
       // We have not found a port.
       return;
-    ***REMOVED***
+    }
     const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
     const appName = require(paths.appPackageJson).name;
     const urls = prepareUrls(protocol, HOST, port);
@@ -81,27 +81,27 @@ choosePort(HOST, DEFAULT_PORT)
     );
     const devServer = new WebpackDevServer(compiler, serverConfig);
     // Launch WebpackDevServer.
-    devServer.listen(port, HOST, err => ***REMOVED***
-      if (err) ***REMOVED***
+    devServer.listen(port, HOST, err => {
+      if (err) {
         return console.log(err);
-      ***REMOVED***
-      if (isInteractive) ***REMOVED***
+      }
+      if (isInteractive) {
         clearConsole();
-      ***REMOVED***
+      }
       console.log(chalk.cyan('Starting the development server...\n'));
       openBrowser(urls.localUrlForBrowser);
-    ***REMOVED***);
+    });
 
-    ['SIGINT', 'SIGTERM'].forEach(function(sig) ***REMOVED***
-      process.on(sig, function() ***REMOVED***
+    ['SIGINT', 'SIGTERM'].forEach(function(sig) {
+      process.on(sig, function() {
         devServer.close();
         process.exit();
-      ***REMOVED***);
-    ***REMOVED***);
-  ***REMOVED***)
-  .catch(err => ***REMOVED***
-    if (err && err.message) ***REMOVED***
+      });
+    });
+  })
+  .catch(err => {
+    if (err && err.message) {
       console.log(err.message);
-    ***REMOVED***
+    }
     process.exit(1);
-  ***REMOVED***);
+  });

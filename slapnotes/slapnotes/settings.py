@@ -28,7 +28,7 @@ def get_secret(settings, secrets=secrets):
     try:
         return secrets[settings]
     except KeyError:
-        error_msg = "Set the ***REMOVED***0***REMOVED*** environment variable".format(setting)
+        error_msg = "Set the {0} environment variable".format(setting)
         raise ImproperlyConfigured(error_msg)
 
 SECRET_KEY = get_secret("SECRET_KEY")
@@ -59,9 +59,9 @@ INSTALLED_APPS = [
     # 'dynamic_preferences.users.apps.UserPreferencesConfig',
 ]
 
-REST_FRAMEWORK = ***REMOVED***
+REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',),
-***REMOVED***
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -76,19 +76,19 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'slapnotes.urls'
 
 TEMPLATES = [
-    ***REMOVED***
+    {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, "templates"), ],
         'APP_DIRS': True,
-        'OPTIONS': ***REMOVED***
+        'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
-        ***REMOVED***,
-    ***REMOVED***,
+        },
+    },
 ]
 
 WSGI_APPLICATION = 'slapnotes.wsgi.application'
@@ -97,30 +97,30 @@ WSGI_APPLICATION = 'slapnotes.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DATABASES = ***REMOVED***
-    'default': ***REMOVED***
+DATABASES = {
+    'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    ***REMOVED***
-***REMOVED***
+    }
+}
 
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    ***REMOVED***
+    {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    ***REMOVED***,
-    ***REMOVED***
+    },
+    {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    ***REMOVED***,
-    ***REMOVED***
+    },
+    {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    ***REMOVED***,
-    ***REMOVED***
+    },
+    {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    ***REMOVED***,
+    },
 ]
 
 
@@ -144,26 +144,26 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 #TINYMCE_JS_URL = "https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.0.0/tinymce.min.js"
-TINYMCE_DEFAULT_CONFIG = ***REMOVED***
+TINYMCE_DEFAULT_CONFIG = {
     'plugins': "table,spellchecker,paste,searchreplace",
     'theme': "advanced",
     'cleanup_on_startup': True,
     'custom_undo_redo_levels': 10,
-***REMOVED***
+}
 TINYMCE_SPELLCHECKER = True
 #TINYMCE_COMPRESSOR = True
 
-WEBPACK_LOADER = ***REMOVED***
-    'DEFAULT': ***REMOVED***
+WEBPACK_LOADER = {
+    'DEFAULT': {
         'BUNDLE_DIR_NAME': 'bundles/',
         'STATS_FILE': os.path.join(BASE_DIR, '../webpack-stats.dev.json'),
-    ***REMOVED***
-***REMOVED***
+    }
+}
 
-REST_FRAMEWORK = ***REMOVED***
+REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
     'PAGE_SIZE': 1,
-***REMOVED***
+}
 
 EMAIL_HOST = 'mail.gandi.net'
 EMAIL_PORT = 25 

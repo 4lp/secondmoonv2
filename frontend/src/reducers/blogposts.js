@@ -1,15 +1,15 @@
-const initialState = ***REMOVED***
+const initialState = {
 	isLoading: true,
 	blogposts: null 
-***REMOVED***
+}
 
-export default function blogposts(state=initialState, action) ***REMOVED***
+export default function blogposts(state=initialState, action) {
 
-	switch (action.type) ***REMOVED***
+	switch (action.type) {
 		case 'FETCH_BLOGPOSTS':
-		    return ***REMOVED***...state, blogposts: action.blogposts, isLoading: false***REMOVED***;
+		    return {...state, blogposts: action.blogposts, isLoading: false};
 
 		default:
 			return state;
-	***REMOVED***
-***REMOVED***
+	}
+}

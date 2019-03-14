@@ -1,47 +1,47 @@
-$(document).ready(function() ***REMOVED***
+$(document).ready(function() {
   // JSON highlighting.
   prettyPrint();
 
   // Bootstrap tooltips.
-  $('.js-tooltip').tooltip(***REMOVED***
+  $('.js-tooltip').tooltip({
     delay: 1000,
     container: 'body'
-  ***REMOVED***);
+  });
 
   // Deal with rounded tab styling after tab clicks.
-  $('a[data-toggle="tab"]:first').on('shown', function(e) ***REMOVED***
+  $('a[data-toggle="tab"]:first').on('shown', function(e) {
     $(e.target).parents('.tabbable').addClass('first-tab-active');
-  ***REMOVED***);
+  });
 
-  $('a[data-toggle="tab"]:not(:first)').on('shown', function(e) ***REMOVED***
+  $('a[data-toggle="tab"]:not(:first)').on('shown', function(e) {
     $(e.target).parents('.tabbable').removeClass('first-tab-active');
-  ***REMOVED***);
+  });
 
-  $('a[data-toggle="tab"]').click(function() ***REMOVED***
+  $('a[data-toggle="tab"]').click(function() {
     document.cookie = "tabstyle=" + this.name + "; path=/";
-  ***REMOVED***);
+  });
 
   // Store tab preference in cookies & display appropriate tab on load.
   var selectedTab = null;
   var selectedTabName = getCookie('tabstyle');
 
-  if (selectedTabName) ***REMOVED***
+  if (selectedTabName) {
     selectedTabName = selectedTabName.replace(/[^a-z-]/g, '');
-  ***REMOVED***
+  }
 
-  if (selectedTabName) ***REMOVED***
+  if (selectedTabName) {
     selectedTab = $('.form-switcher a[name=' + selectedTabName + ']');
-  ***REMOVED***
+  }
 
-  if (selectedTab && selectedTab.length > 0) ***REMOVED***
+  if (selectedTab && selectedTab.length > 0) {
     // Display whichever tab is selected.
     selectedTab.tab('show');
-  ***REMOVED*** else ***REMOVED***
+  } else {
     // If no tab selected, display rightmost tab.
     $('.form-switcher a:first').tab('show');
-  ***REMOVED***
+  }
 
-  $(window).load(function() ***REMOVED***
+  $(window).load(function() {
     $('#errorModal').modal('show');
-  ***REMOVED***);
-***REMOVED***);
+  });
+});

@@ -1,81 +1,81 @@
-import React, ***REMOVED*** Component ***REMOVED*** from 'react';
-import ***REMOVED***Link***REMOVED*** from 'react-router-dom';
-import ***REMOVED***connect***REMOVED*** from 'react-redux';
-import ***REMOVED***posts***REMOVED*** from "../actions";
+import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {posts} from "../actions";
 
-class TagDetail extends Component ***REMOVED***
+class TagDetail extends Component {
 
-	componentDidMount()***REMOVED***
+	componentDidMount(){
 		const path = this.props.props.match.params.tagname;
 		this.props.clearPosts();
-		if(!this.props.posts.length)***REMOVED***
+		if(!this.props.posts.length){
 			this.props.fetchPosts(null,path);
-		***REMOVED***	
-	***REMOVED***
+		}	
+	}
 
-	render()***REMOVED***
-		if (!this.props.posts.isLoading) ***REMOVED***
+	render(){
+		if (!this.props.posts.isLoading) {
 			return(
 				<div>
 				<div className="container">
 						<div className="row">
 							<div className="col-12 text-center posts-header">
-								<h1 className="text-center">***REMOVED***this.props.posts.posts[0][0].name***REMOVED***</h1>
+								<h1 className="text-center">{this.props.posts.posts[0][0].name}</h1>
 							</div>
 							<div className="col-12 text-center posts-image-container">
 								<div className="posts-image">
-									<img src=***REMOVED***this.props.posts.posts[0][0].image***REMOVED***/>
+									<img src={this.props.posts.posts[0][0].image}/>
 								</div>
 							</div>
 							<div className="col-12 posts-text">
-								<div dangerouslySetInnerHTML=***REMOVED******REMOVED***__html:this.props.posts.posts[0][0].text***REMOVED******REMOVED***></div>
+								<div dangerouslySetInnerHTML={{__html:this.props.posts.posts[0][0].text}}></div>
 							</div>
 							<div className="col-12">
-								<div>***REMOVED***this.props.posts.posts[0][0].tags.map((tag)=>***REMOVED***
-									return(<span><Link className="tag-link" to=***REMOVED***"/?tags__name="+tag.name***REMOVED***>#***REMOVED***tag.name***REMOVED***</Link>&nbsp;</span>)
-								***REMOVED***)***REMOVED***</div>
+								<div>{this.props.posts.posts[0][0].tags.map((tag)=>{
+									return(<span><Link className="tag-link" to={"/?tags__name="+tag.name}>#{tag.name}</Link>&nbsp;</span>)
+								})}</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			)
-		***REMOVED*** else ***REMOVED***
+		} else {
 			return(<div>Loading...</div>)
-		***REMOVED***
-	***REMOVED***
+		}
+	}
 
-***REMOVED***
+}
 
-const mapStateToProps = state => ***REMOVED***
+const mapStateToProps = state => {
 	let errors = [];
-	***REMOVED***/*if (state.instagramPictures.errors) ***REMOVED***
-		errors = Object.keys(state.instagramPictures.errors).map(field => ***REMOVED***
-			return ***REMOVED***field, message: state.instagramPictures.errors[field]***REMOVED***;
-		***REMOVED***);
-	***REMOVED*** */***REMOVED***
-	if (state.settings.errors) ***REMOVED***
-		errors = [...errors, Object.keys(state.settings.errors).map(field => ***REMOVED***
-			return ***REMOVED***field, message: state.settings.errors[field]***REMOVED***;
-		***REMOVED***)];
-	***REMOVED***
-	return ***REMOVED***
+	{/*if (state.instagramPictures.errors) {
+		errors = Object.keys(state.instagramPictures.errors).map(field => {
+			return {field, message: state.instagramPictures.errors[field]};
+		});
+	} */}
+	if (state.settings.errors) {
+		errors = [...errors, Object.keys(state.settings.errors).map(field => {
+			return {field, message: state.settings.errors[field]};
+		})];
+	}
+	return {
 		instagram: state.instagram,
 		settings: state.settings,
 		posts: state.posts,
 		errors
-	***REMOVED***
-***REMOVED***
+	}
+}
 
-const mapDispatchToProps = dispatch => ***REMOVED***
-	return ***REMOVED***
-		fetchPosts: (tag,path) => ***REMOVED***
+const mapDispatchToProps = dispatch => {
+	return {
+		fetchPosts: (tag,path) => {
 			dispatch(posts.fetchPosts(tag,path));
-	    ***REMOVED***,
-		clearPosts: () => ***REMOVED***
+	    },
+		clearPosts: () => {
 			dispatch(posts.clearPosts());
-	    ***REMOVED***,
+	    },
 
-	***REMOVED***
-***REMOVED***
+	}
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(TagDetail);

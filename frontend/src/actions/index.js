@@ -3,4 +3,4 @@ import * as tags from "./tags";
 import * as email from "./email";
 import * as settings from "./settings";
 
-export ***REMOVED***email, posts, settings,tags***REMOVED***
+export {email, posts, settings,tags}

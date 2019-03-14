@@ -1,61 +1,61 @@
-function getCookie(name) ***REMOVED***
+function getCookie(name) {
     var cookieValue = null;
-    if (document.cookie && document.cookie !== '') ***REMOVED***
+    if (document.cookie && document.cookie !== '') {
 	    var cookies = document.cookie.split(';');
-	    for (var i = 0; i < cookies.length; i++) ***REMOVED***
+	    for (var i = 0; i < cookies.length; i++) {
 		    var cookie = cookies[i].trim();
-		    if (cookie.substring(0, name.length + 1) === (name + '=')) ***REMOVED***
+		    if (cookie.substring(0, name.length + 1) === (name + '=')) {
 				cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
 				break;
-			***REMOVED***
-		***REMOVED***
-	***REMOVED***
+			}
+		}
+	}
 	return cookieValue;
-***REMOVED***
+}
 
-export const clearPosts = (tag,path,page) => ***REMOVED***
-	return (dispatch, getState) => ***REMOVED***
-		return dispatch(***REMOVED***type: 'CLEAR_POSTS'***REMOVED***);
-	***REMOVED***
-***REMOVED***
+export const clearPosts = (tag,path,page) => {
+	return (dispatch, getState) => {
+		return dispatch({type: 'CLEAR_POSTS'});
+	}
+}
 
-export const fetchPosts = (tag,path,page) => ***REMOVED***
+export const fetchPosts = (tag,path,page) => {
 	page = page || 1;
-	return (dispatch, getState) => ***REMOVED***
+	return (dispatch, getState) => {
 
-		dispatch(***REMOVED***type: 'POSTS_LOADING'***REMOVED***);
+		dispatch({type: 'POSTS_LOADING'});
 
 		let csrftoken = getCookie('csrftoken');
-		let headers = ***REMOVED***"Content-Type": "application/json", "X-CSRFToken": csrftoken***REMOVED***;
+		let headers = {"Content-Type": "application/json", "X-CSRFToken": csrftoken};
 		let queryString = '?page=' + page;
 
 		queryString += "&tags__name=";
 
-		if (tag) ***REMOVED***
+		if (tag) {
 			queryString += tag;
-		***REMOVED***
-		if (path) ***REMOVED***
+		}
+		if (path) {
 			queryString += "&path=" + path;
-		***REMOVED***
-		return fetch("/api/post/" + queryString, ***REMOVED***headers, ***REMOVED***)
-			.then(res => ***REMOVED***
-				if (res.status < 499) ***REMOVED***
-					return res.json().then(data => ***REMOVED***
-						return ***REMOVED***status: res.status, data***REMOVED***;
-					***REMOVED***)
-				***REMOVED*** else ***REMOVED***
+		}
+		return fetch("/api/post/" + queryString, {headers, })
+			.then(res => {
+				if (res.status < 499) {
+					return res.json().then(data => {
+						return {status: res.status, data};
+					})
+				} else {
 					console.log("Server Error!");
 					throw res;
-				***REMOVED***
-			***REMOVED***)
-			.then(res => ***REMOVED***
-				if (res.status === 200) ***REMOVED***
-					return dispatch(***REMOVED***type: 'FETCH_POSTS', posts: res.data***REMOVED***);
-				***REMOVED*** else if (res.status === 401 || res.status === 403) ***REMOVED***
-					dispatch(***REMOVED***type: "AUTHENTICATION_ERROR", data: res.data***REMOVED***);
+				}
+			})
+			.then(res => {
+				if (res.status === 200) {
+					return dispatch({type: 'FETCH_POSTS', posts: res.data});
+				} else if (res.status === 401 || res.status === 403) {
+					dispatch({type: "AUTHENTICATION_ERROR", data: res.data});
 	  				throw res.data;
-				***REMOVED***
-			***REMOVED***)
-	***REMOVED***
-***REMOVED***
+				}
+			})
+	}
+}
 

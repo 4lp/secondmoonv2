@@ -1,18 +1,18 @@
-const initialState = ***REMOVED***
+const initialState = {
 	isLoading: true,
 	tags: null 
-***REMOVED***
+}
 
-export default function tags(state=initialState, action) ***REMOVED***
+export default function tags(state=initialState, action) {
 
-	switch (action.type) ***REMOVED***
+	switch (action.type) {
 		case 'TAGS_LOADING':
-			return ***REMOVED***...state, isLoading: true***REMOVED***
+			return {...state, isLoading: true}
 
 		case 'FETCH_TAGS':
-		    return ***REMOVED***...state, tags: action.tags, isLoading: false***REMOVED***;
+		    return {...state, tags: action.tags, isLoading: false};
 
 		default:
 			return state;
-	***REMOVED***
-***REMOVED***
+	}
+}

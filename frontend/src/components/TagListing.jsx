@@ -1,70 +1,70 @@
-import React, ***REMOVED*** Component ***REMOVED*** from 'react';
-import ***REMOVED***Link***REMOVED*** from 'react-router-dom';
-import ***REMOVED***connect***REMOVED*** from 'react-redux';
-import ***REMOVED***tags***REMOVED*** from "../actions";
+import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {tags} from "../actions";
 import PropTypes from 'prop-types'
 
 
-class TagListing extends Component ***REMOVED***
+class TagListing extends Component {
 
-	static contextTypes = ***REMOVED***
+	static contextTypes = {
 		router: PropTypes.object
-	***REMOVED***
+	}
 
-	componentDidMount() ***REMOVED***
-		if (!this.props.tags.length) ***REMOVED***
+	componentDidMount() {
+		if (!this.props.tags.length) {
 	    	this.props.fetchTags();
-		***REMOVED***
-	***REMOVED***	
+		}
+	}	
 
-	handleTagClick(id)***REMOVED***
+	handleTagClick(id){
 		this.props.setTag(id,);
 		this.context.router.history.push(`/`);
-	***REMOVED***
+	}
 
-	render()***REMOVED***
-		if (!this.props.tags.isLoading) ***REMOVED***
+	render(){
+		if (!this.props.tags.isLoading) {
 			return(
 				<div>
 					<div className="container">
 						<div className="row">
 							<div className="col-12 text-center">
 								<p>
-								***REMOVED***this.props.tags.tags.map((tag)=>***REMOVED***
-									return(<span><Link className="tag-link" to=***REMOVED***"/?tags__name="+tag.name***REMOVED***><span>#***REMOVED***tag.name***REMOVED***</span></Link>&nbsp;</span>)
-								***REMOVED***)***REMOVED***
+								{this.props.tags.tags.map((tag)=>{
+									return(<span><Link className="tag-link" to={"/?tags__name="+tag.name}><span>#{tag.name}</span></Link>&nbsp;</span>)
+								})}
 								</p>
 							</div>
 						</div>
 					</div>
 				</div>
 			)
-		***REMOVED*** else ***REMOVED***
+		} else {
 			return(<div>Loading...</div>)
-		***REMOVED***
-	***REMOVED***
+		}
+	}
 
-***REMOVED***
+}
 
-const mapStateToProps = state => ***REMOVED***
+const mapStateToProps = state => {
 	let errors = [];
-	if (state.tags.errors) ***REMOVED***
-		errors = Object.keys(state.tags.errors).map(field => ***REMOVED***
-			return ***REMOVED***field, message: state.tags.errors[field]***REMOVED***;
-		***REMOVED***);
-	***REMOVED*** 
-	return ***REMOVED***
+	if (state.tags.errors) {
+		errors = Object.keys(state.tags.errors).map(field => {
+			return {field, message: state.tags.errors[field]};
+		});
+	} 
+	return {
 		tags: state.tags,
 		errors
-	***REMOVED***
-***REMOVED***
+	}
+}
 
-const mapDispatchToProps = dispatch => ***REMOVED***
-	return ***REMOVED***
-		fetchTags: () => ***REMOVED***
+const mapDispatchToProps = dispatch => {
+	return {
+		fetchTags: () => {
 			dispatch(tags.fetchTags());
-	    ***REMOVED***,
-	***REMOVED***
-***REMOVED***
+	    },
+	}
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(TagListing);

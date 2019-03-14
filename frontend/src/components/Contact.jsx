@@ -1,13 +1,13 @@
-import React, ***REMOVED*** Component ***REMOVED*** from 'react';
-import ***REMOVED***connect***REMOVED*** from "react-redux";
-import ***REMOVED***Link, Redirect***REMOVED*** from "react-router-dom";
-import ***REMOVED***email***REMOVED*** from "../actions";
+import React, { Component } from 'react';
+import {connect} from "react-redux";
+import {Link, Redirect} from "react-router-dom";
+import {email} from "../actions";
 import Errors from "./Errors";
 import MediaQuery from 'react-responsive';
 import ReCAPTCHA from "react-google-recaptcha";
 
-class Contact extends Component ***REMOVED***
-	state = ***REMOVED***
+class Contact extends Component {
+	state = {
 		name: "",
 		reply: "",
 		message: "",
@@ -17,66 +17,66 @@ class Contact extends Component ***REMOVED***
 		width: 0,
 		height: 0,
 		submitStatus: false
-	***REMOVED***
+	}
 
-	onSubmit = e => ***REMOVED***
+	onSubmit = e => {
 		e.preventDefault();
 		let user 
-		if (this.props.user)***REMOVED***
+		if (this.props.user){
 			user = this.props.user.username
-		***REMOVED*** else ***REMOVED***
+		} else {
 			user = ''
-		***REMOVED***
+		}
 		this.props.sendContactEmail(this.state.name, this.state.reply, this.state.message, this.state.captcha);
-		this.setState(***REMOVED***
+		this.setState({
 			submitStatus: true,
 			captcha: "",
-		***REMOVED***);
-	***REMOVED***
+		});
+	}
 
-	componentDidUpdate(prevProps) ***REMOVED***
-		if (this.props.location !== prevProps.location) ***REMOVED***
+	componentDidUpdate(prevProps) {
+		if (this.props.location !== prevProps.location) {
 			this.onRouteChanged();
-		***REMOVED***
-	***REMOVED***
+		}
+	}
 
-	onRouteChanged() ***REMOVED***
-		this.setState(***REMOVED***submitStatus: false***REMOVED***);
-	***REMOVED***
+	onRouteChanged() {
+		this.setState({submitStatus: false});
+	}
 
-	onResize = (event, ***REMOVED***element, size***REMOVED***) => ***REMOVED***
-		this.setState(***REMOVED***width: size.width, height: size.height***REMOVED***);
-	***REMOVED***;
+	onResize = (event, {element, size}) => {
+		this.setState({width: size.width, height: size.height});
+	};
 
-	onChange = (value) => ***REMOVED***
-		this.setState(***REMOVED***captcha: value***REMOVED***);
-	***REMOVED***
+	onChange = (value) => {
+		this.setState({captcha: value});
+	}
 
-	render()***REMOVED***
+	render(){
 		return(
 			<div>
 			    <div className="row">
 					<div className="col-12 text-center">
-						***REMOVED***this.props.user_message && this.state.submitStatus && (
+						{this.props.user_message && this.state.submitStatus && (
 							<div>
-								<p>***REMOVED***this.props.user_message***REMOVED***</p>
+								<p>{this.props.user_message}</p>
 							</div>
-						)***REMOVED***		
-						***REMOVED***!this.state.submitStatus || this.props.errors.length ?
+						)}		
+						{!this.state.submitStatus || this.props.errors.length ?
 							<div>
-								<form onSubmit=***REMOVED***this.onSubmit***REMOVED*** className=***REMOVED***this.props.errors.length && this.state.submitStatus ? "animated shake" : null***REMOVED***>
+								<form onSubmit={this.onSubmit} className={this.props.errors.length && this.state.submitStatus ? "animated shake" : null}>
 									<fieldset>
-									***REMOVED***this.props.errors && this.state.submitStatus && (
-										<Errors errors=***REMOVED***this.props.errors***REMOVED*** />
-									)***REMOVED***
+									{this.props.errors && this.state.submitStatus && (
+										<Errors errors={this.props.errors} />
+									)}
 									<div className="form-group">
 										<label htmlFor="name">Your Name</label>
 										<input 
 											className="form-control" 
 											name="name" 
 											id="name" 
-											onChange=***REMOVED***e => this.setState(***REMOVED***name: e.target.value***REMOVED***)***REMOVED***
-											value=***REMOVED***this.state.name***REMOVED***
+											onChange={e => this.setState({name: e.target.value})}
+											value={this.state.name}
 											type="text"
 										/>
 									</div>
@@ -86,8 +86,8 @@ class Contact extends Component ***REMOVED***
 											className="form-control" 
 											name="reply" 
 											id="reply" 
-											onChange=***REMOVED***e => this.setState(***REMOVED***reply: e.target.value***REMOVED***)***REMOVED***
-											value=***REMOVED***this.state.reply***REMOVED***
+											onChange={e => this.setState({reply: e.target.value})}
+											value={this.state.reply}
 											type="email"
 										/>
 									</div>
@@ -98,20 +98,20 @@ class Contact extends Component ***REMOVED***
 											className="form-control" 
 											message="message" 
 											id="message" 
-											onChange=***REMOVED***e => this.setState(***REMOVED***message: e.target.value***REMOVED***)***REMOVED***
-											value=***REMOVED***this.state.message***REMOVED***
+											onChange={e => this.setState({message: e.target.value})}
+											value={this.state.message}
 											type="text"
 										/>
 									</div>
 									</fieldset>
 									<br/>
-									***REMOVED***!this.props.user &&
+									{!this.props.user &&
 										<div>
 											<MediaQuery query="(min-device-width: 576px)">
 												<div className="recaptcha-wrapper">
 													<ReCAPTCHA
 														sitekey="6LdIX3kUAAAAABM7JHwaA-NnjFdce__uU4ya6VWj"
-														onChange=***REMOVED***this.onChange***REMOVED***
+														onChange={this.onChange}
 													 />
 												</div>
 											</MediaQuery>
@@ -119,46 +119,46 @@ class Contact extends Component ***REMOVED***
 												<div className="recaptcha-wrapper">
 													<ReCAPTCHA
 														sitekey="6LdIX3kUAAAAABM7JHwaA-NnjFdce__uU4ya6VWj"
-														onChange=***REMOVED***this.onChange***REMOVED***
+														onChange={this.onChange}
 														size="compact"
 													 />
 												</div>
 											</MediaQuery>
 										</div>
-									***REMOVED***
+									}
 									<br />
 									<button className="btn btn-primary" type="submit" value="Send">Submit</button>
 								</form> 
 							</div>
-						: null***REMOVED***
-						***REMOVED***this.props.isSending ? <div><i className="fas fa-cog fa-3x fa-spin"></i></div> : null***REMOVED***
+						: null}
+						{this.props.isSending ? <div><i className="fas fa-cog fa-3x fa-spin"></i></div> : null}
 					</div>
 				</div>
 			</div>
 		)
-	***REMOVED***
-***REMOVED***
+	}
+}
 
-const mapStateToProps = state => ***REMOVED***
+const mapStateToProps = state => {
 	let errors = [];
-	if (state.email.errors) ***REMOVED***
-		errors = Object.keys(state.email.errors).map(field => ***REMOVED***
-			return ***REMOVED***field, message: state.email.errors[field]***REMOVED***;
-		***REMOVED***);
-	***REMOVED***
-	return ***REMOVED***
+	if (state.email.errors) {
+		errors = Object.keys(state.email.errors).map(field => {
+			return {field, message: state.email.errors[field]};
+		});
+	}
+	return {
 		errors, 
 		isSending: state.email.isSending,
 		user_message: state.email.user_message
-	***REMOVED***;
-***REMOVED***
+	};
+}
 
-const mapDispatchToProps = dispatch => ***REMOVED***
-	return ***REMOVED***
-		sendContactEmail: (name, reply, message, captcha) => ***REMOVED***
+const mapDispatchToProps = dispatch => {
+	return {
+		sendContactEmail: (name, reply, message, captcha) => {
 			return dispatch(email.sendContactEmail(name, reply, message, captcha));
-		***REMOVED***
-	***REMOVED***;
-***REMOVED***
+		}
+	};
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Contact);

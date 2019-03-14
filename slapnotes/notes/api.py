@@ -29,7 +29,7 @@ class ContactEmailAPI(generics.GenericAPIView):
         name = serializer.validated_data['name']
         email = serializer.validated_data['reply']
         message = serializer.validated_data['message']
-        email_text = "You received a message from ***REMOVED***name***REMOVED*** at ***REMOVED***email***REMOVED***: ***REMOVED***message***REMOVED***".format(
+        email_text = "You received a message from {name} at {email}: {message}".format(
                 name=name, email=email, message=message)
         send_mail("Contact email from Second Moon Records", email_text, getattr(settings, 'DEFAULT_FROM_EMAIL'), [getattr(settings, 'DEFAULT_FROM_EMAIL')])
         return Response(serializer.data)

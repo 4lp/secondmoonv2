@@ -2,15 +2,15 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans:300');
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,400,700');
 
-:root ***REMOVED***
+:root {
 	--accent: #DCAE1D;
 	--primary: #00303F;
 	--secondary: #7A9D96;
 	--tertiary: #CAE4DB;
 	--accenttwo: #F7F9FB;
-***REMOVED***
+}
 
-body ***REMOVED***
+body {
 	height: 100vh;
 	margin: 0;
 	padding: 0;
@@ -20,124 +20,124 @@ body ***REMOVED***
 	color: #010;
 	font-size: 1.1em;
 	/* background: linear-gradient(-45deg, var(--accent),var(--accenttwo)); */
-***REMOVED***
+}
 
-h1,h2,h3,h4,h5,h6***REMOVED***
+h1,h2,h3,h4,h5,h6{
 	color: black;
 	font-family: 'Roboto', sans-serif;
-***REMOVED***
+}
 
-a ***REMOVED***
+a {
 	color: black; 
-***REMOVED***
+}
 
-a:hover ***REMOVED***
+a:hover {
 	color: var(--secondary);
 	text-decoration: none;
 	transition: .5s;
-***REMOVED***
+}
 
-input ***REMOVED***
+input {
 	border: none;
 	font-size: 1.5em !important;
-***REMOVED***
+}
 
-svg ***REMOVED***
+svg {
 	color: gray
-***REMOVED***
+}
 
-ul ***REMOVED***
+ul {
 	list-style: none;
-***REMOVED***
+}
 
-a svg:hover***REMOVED***
+a svg:hover{
 	color: black;
 	transition: 1s;
-***REMOVED***
+}
 
-button, input, textarea***REMOVED***
+button, input, textarea{
 	border-radius: 0 !important;
-***REMOVED***
+}
 
 /* header */
 
-#header img***REMOVED***
+#header img{
 	height: 50px;
 	display: inline;
-***REMOVED***
+}
 
-#header***REMOVED***
+#header{
 	font-weight: 100;
 	background-color: white;
-***REMOVED***
+}
 
-.navbar-toggler***REMOVED***
+.navbar-toggler{
 	border: none !important;
-***REMOVED***
+}
 
-#header h3***REMOVED***
+#header h3{
 	font-weight: 100;
 	display: inline;
 	white-space: nowrap;
-***REMOVED***
+}
 
 /* helper classes */
 
-.m0***REMOVED***
+.m0{
 	margin: 0;
-***REMOVED***
+}
 
-.p0***REMOVED***
+.p0{
 	padding: 0;
-***REMOVED***
+}
 
 /* details page */
-.posts-image img***REMOVED***
+.posts-image img{
 	max-width: 1000px;
-***REMOVED***
+}
 
-.posts-header***REMOVED***
+.posts-header{
 	margin-bottom: 20px;
-***REMOVED***
+}
 
-.posts-image-container***REMOVED***
+.posts-image-container{
 	margin-bottom: 40px;
-***REMOVED***
+}
 
 /* >:( stupid recaptcha lib... */
-.recaptcha-wrapper > div > div > div ***REMOVED***
+.recaptcha-wrapper > div > div > div {
 	height: auto !important;
 	width: auto !important;
-***REMOVED***
+}
 
-.tag-link***REMOVED***
+.tag-link{
 	text-decoration: underline;	
-***REMOVED***
+}
 /* main page masonry images */
 
-.main-masonry***REMOVED***
+.main-masonry{
 	max-width: 100% !important;
-***REMOVED***
+}
 
-/* .main-masonry div***REMOVED*** */
+/* .main-masonry div{ */
 /* 	max-width: 475px; */
 /* 	max-height: 475px; */
-/* ***REMOVED*** */
+/* } */
 
 
-/* .overlay-container ***REMOVED*** */
+/* .overlay-container { */
 /*   /1* position: relative; *1/ */
 /*   max-height: 475px; */
 /*   max-width: 475px; */
-/* ***REMOVED*** */
+/* } */
 
-.overlay-container img ***REMOVED***
+.overlay-container img {
   display: block;
   width: 100%;
   height: auto;
-***REMOVED***
+}
 
-.overlay ***REMOVED***
+.overlay {
   position: absolute; 
   bottom: 0; 
   background: rgb(0, 0, 0);
@@ -150,29 +150,29 @@ button, input, textarea***REMOVED***
   color: white;
   font-size: 20px;
   text-align: center;
-***REMOVED***
+}
 
-.overlay-text***REMOVED***
+.overlay-text{
 	position: absolute;
 	top: 50%;
 	left: 25%;
 	right: 25%;
-***REMOVED***
+}
 
-.overlay-container:hover .overlay ***REMOVED***
+.overlay-container:hover .overlay {
   opacity: 1;
-***REMOVED***
+}
 
 /*modal routes*/
-.react-router-modal__modal-open ***REMOVED***
+.react-router-modal__modal-open {
 	color: black;
-***REMOVED***
+}
 
-.react-router-modal__modal-open ***REMOVED***
+.react-router-modal__modal-open {
 	position: inherit;
-***REMOVED***
+}
 
-.example-modal ***REMOVED***
+.example-modal {
 	position: fixed;
 	top: 50%;
 	left: 50%;
@@ -182,19 +182,19 @@ button, input, textarea***REMOVED***
 	opacity: 0;
 	max-height: calc(100vh - 210px);
 	overflow: auto;
-***REMOVED***
+}
 
-.example-modal-in  ***REMOVED***
+.example-modal-in  {
 	transition: opacity 0.5s ease-in;
 	opacity: 1 
-***REMOVED***
+}
 
-.example-modal-out ***REMOVED***
+.example-modal-out {
 	transition: opacity 0.3s ease-out;
 	opacity: 0
-***REMOVED***
+}
 
-.example-backdrop ***REMOVED***
+.example-backdrop {
 	background-color: black;
 	opacity: 0;
 	position: fixed;
@@ -202,76 +202,76 @@ button, input, textarea***REMOVED***
 	left: 0;
 	width: 100%;
 	height: 100%;
-***REMOVED***
+}
 
-.example-backdrop-in  ***REMOVED***
+.example-backdrop-in  {
 	transition: opacity 0.3s ease-in;
 	opacity: 0.5;
-***REMOVED***
+}
 
-.example-backdrop-out  ***REMOVED***
+.example-backdrop-out  {
 	transition: opacity 1.5s ease-out;
 	opacity: 0;
-***REMOVED***
+}
 
-.react-router-modal__modal-open***REMOVED***
+.react-router-modal__modal-open{
 	width: 100%;
-***REMOVED***
+}
 
 /* fix navbar & modals */
-.fixed-top***REMOVED***
+.fixed-top{
 	z-index: 2 !important;
-***REMOVED***
+}
 
-.svg-inline--fa***REMOVED***
+.svg-inline--fa{
 	margin: 5px;
-***REMOVED***
+}
 
 /* mobile styles */
-@media (max-width: 1024px) ***REMOVED***
-	.example-modal***REMOVED***
+@media (max-width: 1024px) {
+	.example-modal{
 		width: 90%;
 		max-height: 100vh;
 		overflow-y: auto;
-	***REMOVED***
+	}
 
-	.header-text***REMOVED***
+	.header-text{
 		font-size: 1em;
-	***REMOVED***
+	}
 
-	.posts-image img***REMOVED***
+	.posts-image img{
 		max-width: 100%;
-	***REMOVED***
+	}
 
-	.nav-brand img***REMOVED***
+	.nav-brand img{
 		float: left;
-	***REMOVED***
+	}
 
-	#header h3***REMOVED***
+	#header h3{
 		line-height: 2.5;
-	***REMOVED***
+	}
 
-	.main-masonry***REMOVED***
+	.main-masonry{
 		margin-left: 0.5%;
-	***REMOVED***
-	.main-masonry div***REMOVED***
+	}
+	.main-masonry div{
 		max-width: 100%;
 		max-height: 100%;
-	***REMOVED***
+	}
 	
-	.tag-link***REMOVED***
+	.tag-link{
 		padding-bottom: 20px;
-	***REMOVED***
+	}
 
-	.overlay-container ***REMOVED***
+	.overlay-container {
 		/* position: relative; */
 		max-height: 100%;
 	  	max-width: 100%;
-	***REMOVED***
+	}
 
-	.example-modal***REMOVED***
+	.example-modal{
 		max-height: calc(100vh - 210px);
-	***REMOVED***
+	}
 
 
-***REMOVED***
+}

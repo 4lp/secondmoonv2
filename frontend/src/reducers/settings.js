@@ -1,18 +1,18 @@
-const initialState = ***REMOVED***
+const initialState = {
 	isLoading: true,
 	settings: null 
-***REMOVED***
+}
 
-export default function settings(state=initialState, action) ***REMOVED***
+export default function settings(state=initialState, action) {
 
-	switch (action.type) ***REMOVED***
+	switch (action.type) {
 		case 'SETTINGS_LOADING':
-			return ***REMOVED***...state, isLoading: true***REMOVED***
+			return {...state, isLoading: true}
 
 		case 'FETCH_SETTINGS':
-		    return ***REMOVED***...state, settings: action.settings, isLoading: false***REMOVED***;
+		    return {...state, settings: action.settings, isLoading: false};
 
 		default:
 			return state;
-	***REMOVED***
-***REMOVED***
+	}
+}

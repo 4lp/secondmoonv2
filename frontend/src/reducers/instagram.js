@@ -1,20 +1,20 @@
-const initialState = ***REMOVED***
+const initialState = {
 	isLoading: true,
 	pictures: null,
 	errors: null
-***REMOVED***
+}
 
-export default function instagram(state=initialState, action) ***REMOVED***
+export default function instagram(state=initialState, action) {
 
-	switch (action.type) ***REMOVED***
+	switch (action.type) {
 		case 'FETCH_INSTAGRAM':
-		    return ***REMOVED***...state, instagramPictures: action.pictures, errors: ***REMOVED******REMOVED***, isLoading: false***REMOVED***;
+		    return {...state, instagramPictures: action.pictures, errors: {}, isLoading: false};
 
 		case 'INSTAGRAM_ERROR':
-			console.log(***REMOVED***...state, errors: action.errors, isLoading: false***REMOVED***)
-		    return ***REMOVED***...state, errors: action.errors, isLoading: false***REMOVED***;
+			console.log({...state, errors: action.errors, isLoading: false})
+		    return {...state, errors: action.errors, isLoading: false};
 
 		default:
 			return state;
-	***REMOVED***
-***REMOVED***
+	}
+}

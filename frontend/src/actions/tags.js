@@ -1,43 +1,43 @@
-function getCookie(name) ***REMOVED***
+function getCookie(name) {
     var cookieValue = null;
-    if (document.cookie && document.cookie !== '') ***REMOVED***
+    if (document.cookie && document.cookie !== '') {
 	    var cookies = document.cookie.split(';');
-	    for (var i = 0; i < cookies.length; i++) ***REMOVED***
+	    for (var i = 0; i < cookies.length; i++) {
 		    var cookie = cookies[i].trim();
-		    if (cookie.substring(0, name.length + 1) === (name + '=')) ***REMOVED***
+		    if (cookie.substring(0, name.length + 1) === (name + '=')) {
 				cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
 				break;
-			***REMOVED***
-		***REMOVED***
-	***REMOVED***
+			}
+		}
+	}
 	return cookieValue;
-***REMOVED***
+}
 
-export const fetchTags = () => ***REMOVED***
-	return (dispatch, getState) => ***REMOVED***
+export const fetchTags = () => {
+	return (dispatch, getState) => {
 		let csrftoken = getCookie('csrftoken');
 		
-		let headers = ***REMOVED***"Content-Type": "application/json", "X-CSRFToken": csrftoken***REMOVED***;
+		let headers = {"Content-Type": "application/json", "X-CSRFToken": csrftoken};
 
-		return fetch("/api/tag/", ***REMOVED***headers, ***REMOVED***)
-			.then(res => ***REMOVED***
-				if (res.status < 499) ***REMOVED***
-					return res.json().then(data => ***REMOVED***
-						return ***REMOVED***status: res.status, data***REMOVED***;
-					***REMOVED***)
-				***REMOVED*** else ***REMOVED***
+		return fetch("/api/tag/", {headers, })
+			.then(res => {
+				if (res.status < 499) {
+					return res.json().then(data => {
+						return {status: res.status, data};
+					})
+				} else {
 					console.log("Server Error!");
 					throw res;
-				***REMOVED***
-			***REMOVED***)
-			.then(res => ***REMOVED***
-				if (res.status === 200) ***REMOVED***
-					return dispatch(***REMOVED***type: 'FETCH_TAGS', tags: res.data***REMOVED***);
-				***REMOVED*** else if (res.status === 401 || res.status === 403) ***REMOVED***
-					dispatch(***REMOVED***type: "AUTHENTICATION_ERROR", data: res.data***REMOVED***);
+				}
+			})
+			.then(res => {
+				if (res.status === 200) {
+					return dispatch({type: 'FETCH_TAGS', tags: res.data});
+				} else if (res.status === 401 || res.status === 403) {
+					dispatch({type: "AUTHENTICATION_ERROR", data: res.data});
 	  				throw res.data;
-				***REMOVED***
-			***REMOVED***)
-	***REMOVED***
-***REMOVED***
+				}
+			})
+	}
+}
 

@@ -2,68 +2,68 @@ var responseDisplay = 'data'
 var coreapi = window.coreapi
 var schema = window.schema
 
-function normalizeKeys (arr) ***REMOVED***
+function normalizeKeys (arr) {
   var _normarr = [];
-  for (var i = 0; i < arr.length; i++) ***REMOVED***
+  for (var i = 0; i < arr.length; i++) {
     _normarr = _normarr.concat(arr[i].split(' > '));
-  ***REMOVED***
+  }
   return _normarr;
-***REMOVED***
+}
 
-function normalizeHTTPHeader (str) ***REMOVED***
+function normalizeHTTPHeader (str) {
   // Capitalize HTTP headers for display.
   return (str.charAt(0).toUpperCase() + str.substring(1))
-    .replace(/-(.)/g, function ($1) ***REMOVED***
+    .replace(/-(.)/g, function ($1) {
       return $1.toUpperCase()
-    ***REMOVED***)
-    .replace(/(Www)/g, function ($1) ***REMOVED***
+    })
+    .replace(/(Www)/g, function ($1) {
       return 'WWW'
-    ***REMOVED***)
-    .replace(/(Xss)/g, function ($1) ***REMOVED***
+    })
+    .replace(/(Xss)/g, function ($1) {
       return 'XSS'
-    ***REMOVED***)
-    .replace(/(Md5)/g, function ($1) ***REMOVED***
+    })
+    .replace(/(Md5)/g, function ($1) {
       return 'MD5'
-    ***REMOVED***)
-***REMOVED***
+    })
+}
 
-function formEntries (form) ***REMOVED***
+function formEntries (form) {
   // Polyfill for new FormData(form).entries()
   var formData = new FormData(form)
-  if (formData.entries !== undefined) ***REMOVED***
+  if (formData.entries !== undefined) {
     return Array.from(formData.entries())
-  ***REMOVED***
+  }
 
   var entries = []
 
-  for (var i = 0; i < form.elements.length; i++) ***REMOVED***
+  for (var i = 0; i < form.elements.length; i++) {
     var element = form.elements[i]
 
-    if (!element.name) ***REMOVED***
+    if (!element.name) {
       continue
-    ***REMOVED***
+    }
 
-    if (element.type === 'file') ***REMOVED***
-      for (var j = 0; j < element.files.length; j++) ***REMOVED***
+    if (element.type === 'file') {
+      for (var j = 0; j < element.files.length; j++) {
         entries.push([element.name, element.files[j]])
-      ***REMOVED***
-    ***REMOVED*** else if (element.type === 'select-multiple' || element.type === 'select-one') ***REMOVED***
-      for (var j = 0; j < element.selectedOptions.length; j++) ***REMOVED***
+      }
+    } else if (element.type === 'select-multiple' || element.type === 'select-one') {
+      for (var j = 0; j < element.selectedOptions.length; j++) {
         entries.push([element.name, element.selectedOptions[j].value])
-      ***REMOVED***
-    ***REMOVED*** else if (element.type === 'checkbox') ***REMOVED***
-      if (element.checked) ***REMOVED***
+      }
+    } else if (element.type === 'checkbox') {
+      if (element.checked) {
         entries.push([element.name, element.value])
-      ***REMOVED***
-    ***REMOVED*** else ***REMOVED***
+      }
+    } else {
       entries.push([element.name, element.value])
-    ***REMOVED***
-  ***REMOVED***
+    }
+  }
 
   return entries
-***REMOVED***
+}
 
-$(function () ***REMOVED***
+$(function () {
   var $selectedAuthentication = $('#selected-authentication')
   var $authControl = $('#auth-control')
   var $authTokenModal = $('#auth_token_modal')
@@ -71,7 +71,7 @@ $(function () ***REMOVED***
   var $authSessionModal = $('#auth_session_modal')
 
   // Language Control
-  $('#language-control li').click(function (event) ***REMOVED***
+  $('#language-control li').click(function (event) {
     event.preventDefault()
     var $languageMenuItem = $(this).find('a')
     var $languageControls = $(this).closest('ul').find('li')
@@ -86,10 +86,10 @@ $(function () ***REMOVED***
     var $codeBlocks = $('pre.highlight')
     $codeBlocks.not('[data-language="' + language + '"]').addClass('hide')
     $codeBlocks.filter('[data-language="' + language + '"]').removeClass('hide')
-  ***REMOVED***)
+  })
 
   // API Explorer
-  $('form.api-interaction').submit(function (event) ***REMOVED***
+  $('form.api-interaction').submit(function (event) {
     event.preventDefault()
 
     var $form = $(this).closest('form')
@@ -103,60 +103,60 @@ $(function () ***REMOVED***
     var $responseRaw = $form.find('.response-raw')
     var $responseData = $form.find('.response-data')
     var key = normalizeKeys($form.data('key'))
-    var params = ***REMOVED******REMOVED***
+    var params = {}
     var entries = formEntries($form.get()[0])
 
-    for (var i = 0; i < entries.length; i++) ***REMOVED***
+    for (var i = 0; i < entries.length; i++) {
       var entry = entries[i]
       var paramKey = entry[0]
       var paramValue = entry[1]
       var $elem = $form.find('[name="' + paramKey + '"]')
       var dataType = $elem.data('type') || 'string'
 
-      if (dataType === 'integer' && paramValue) ***REMOVED***
+      if (dataType === 'integer' && paramValue) {
         var value = parseInt(paramValue)
-        if (!isNaN(value)) ***REMOVED***
+        if (!isNaN(value)) {
           params[paramKey] = value
-        ***REMOVED***
-      ***REMOVED*** else if (dataType === 'number' && paramValue) ***REMOVED***
+        }
+      } else if (dataType === 'number' && paramValue) {
         var value = parseFloat(paramValue)
-        if (!isNaN(value)) ***REMOVED***
+        if (!isNaN(value)) {
           params[paramKey] = value
-        ***REMOVED***
-      ***REMOVED*** else if (dataType === 'boolean' && paramValue) ***REMOVED***
-        var value = ***REMOVED***
+        }
+      } else if (dataType === 'boolean' && paramValue) {
+        var value = {
           'true': true,
           'false': false
-        ***REMOVED***[paramValue.toLowerCase()]
-        if (value !== undefined) ***REMOVED***
+        }[paramValue.toLowerCase()]
+        if (value !== undefined) {
           params[paramKey] = value
-        ***REMOVED***
-      ***REMOVED*** else if (dataType === 'array' && paramValue) ***REMOVED***
-        try ***REMOVED***
+        }
+      } else if (dataType === 'array' && paramValue) {
+        try {
           params[paramKey] = JSON.parse(paramValue)
-        ***REMOVED*** catch (err) ***REMOVED***
+        } catch (err) {
           // Ignore malformed JSON
-        ***REMOVED***
-      ***REMOVED*** else if (dataType === 'object' && paramValue) ***REMOVED***
-        try ***REMOVED***
+        }
+      } else if (dataType === 'object' && paramValue) {
+        try {
           params[paramKey] = JSON.parse(paramValue)
-        ***REMOVED*** catch (err) ***REMOVED***
+        } catch (err) {
           // Ignore malformed JSON
-        ***REMOVED***
-      ***REMOVED*** else if (dataType === 'string' && paramValue) ***REMOVED***
+        }
+      } else if (dataType === 'string' && paramValue) {
         params[paramKey] = paramValue
-      ***REMOVED***
-    ***REMOVED***
+      }
+    }
 
-    $form.find(':checkbox').each(function (index) ***REMOVED***
+    $form.find(':checkbox').each(function (index) {
       // Handle unselected checkboxes
       var name = $(this).attr('name')
-      if (!params.hasOwnProperty(name)) ***REMOVED***
+      if (!params.hasOwnProperty(name)) {
         params[name] = false
-      ***REMOVED***
-    ***REMOVED***)
+      }
+    })
 
-    function requestCallback (request) ***REMOVED***
+    function requestCallback (request) {
       // Fill in the "GET /foo/" display.
       var parser = document.createElement('a')
       parser.href = request.url
@@ -165,88 +165,88 @@ $(function () ***REMOVED***
 
       $requestMethod.text(method)
       $requestUrl.text(path)
-    ***REMOVED***
+    }
 
-    function responseCallback (response, responseText) ***REMOVED***
+    function responseCallback (response, responseText) {
       // Display the 'Data'/'Raw' control.
       $toggleView.removeClass('hide')
 
       // Fill in the "200 OK" display.
       $responseStatusCode.removeClass('label-success').removeClass('label-danger')
-      if (response.ok) ***REMOVED***
+      if (response.ok) {
         $responseStatusCode.addClass('label-success')
-      ***REMOVED*** else ***REMOVED***
+      } else {
         $responseStatusCode.addClass('label-danger')
-      ***REMOVED***
+      }
       $responseStatusCode.text(response.status)
       $meta.removeClass('hide')
 
       // Fill in the Raw HTTP response display.
       var panelText = 'HTTP/1.1 ' + response.status + ' ' + response.statusText + '\n'
-      response.headers.forEach(function (header, key) ***REMOVED***
+      response.headers.forEach(function (header, key) {
         panelText += normalizeHTTPHeader(key) + ': ' + header + '\n'
-      ***REMOVED***)
-      if (responseText) ***REMOVED***
+      })
+      if (responseText) {
         panelText += '\n' + responseText
-      ***REMOVED***
+      }
       $responseRawResponse.text(panelText)
-    ***REMOVED***
+    }
 
     // Instantiate a client to make the outgoing request.
-    var options = ***REMOVED***
+    var options = {
       requestCallback: requestCallback,
       responseCallback: responseCallback
-    ***REMOVED***
+    }
 
     // Setup authentication options.
-    if (window.auth && window.auth.type === 'token') ***REMOVED***
+    if (window.auth && window.auth.type === 'token') {
       // Header authentication
-      options.auth = new coreapi.auth.TokenAuthentication(***REMOVED***
+      options.auth = new coreapi.auth.TokenAuthentication({
         scheme: window.auth.scheme,
         token: window.auth.token
-      ***REMOVED***)
-    ***REMOVED*** else if (window.auth && window.auth.type === 'basic') ***REMOVED***
+      })
+    } else if (window.auth && window.auth.type === 'basic') {
       // Basic authentication
-      options.auth = new coreapi.auth.BasicAuthentication(***REMOVED***
+      options.auth = new coreapi.auth.BasicAuthentication({
         username: window.auth.username,
         password: window.auth.password
-      ***REMOVED***)
-    ***REMOVED*** else if (window.auth && window.auth.type === 'session') ***REMOVED***
+      })
+    } else if (window.auth && window.auth.type === 'session') {
       // Session authentication
-      options.auth = new coreapi.auth.SessionAuthentication(***REMOVED***
+      options.auth = new coreapi.auth.SessionAuthentication({
         csrfCookieName: 'csrftoken',
         csrfHeaderName: 'X-CSRFToken'
-      ***REMOVED***)
-    ***REMOVED***
+      })
+    }
 
     var client = new coreapi.Client(options)
-    client.action(schema, key, params).then(function (data) ***REMOVED***
+    client.action(schema, key, params).then(function (data) {
       var response = JSON.stringify(data, null, 2)
       $requestAwaiting.addClass('hide')
       $responseRaw.addClass('hide')
       $responseData.addClass('hide').text('').jsonView(response)
 
-      if (responseDisplay === 'data') ***REMOVED***
+      if (responseDisplay === 'data') {
         $responseData.removeClass('hide')
-      ***REMOVED*** else ***REMOVED***
+      } else {
         $responseRaw.removeClass('hide')
-      ***REMOVED***
-    ***REMOVED***).catch(function (error) ***REMOVED***
+      }
+    }).catch(function (error) {
       var response = JSON.stringify(error.content, null, 2)
       $requestAwaiting.addClass('hide')
       $responseRaw.addClass('hide')
       $responseData.addClass('hide').text('').jsonView(response)
 
-      if (responseDisplay === 'data') ***REMOVED***
+      if (responseDisplay === 'data') {
         $responseData.removeClass('hide')
-      ***REMOVED*** else ***REMOVED***
+      } else {
         $responseRaw.removeClass('hide')
-      ***REMOVED***
-    ***REMOVED***)
-  ***REMOVED***)
+      }
+    })
+  })
 
   // 'Data'/'Raw' control
-  $('.toggle-view button').click(function () ***REMOVED***
+  $('.toggle-view button').click(function () {
     var $modalContent = $(this).closest('.modal-content')
     var $modalResponseRaw = $modalContent.find('.response-raw')
     var $modalResponseData = $modalContent.find('.response-data')
@@ -255,67 +255,67 @@ $(function () ***REMOVED***
 
     $(this).removeClass('btn-default').addClass('btn-info').siblings().removeClass('btn-info')
 
-    if (responseDisplay === 'raw') ***REMOVED***
+    if (responseDisplay === 'raw') {
       $modalResponseRaw.removeClass('hide')
       $modalResponseData.addClass('hide')
-    ***REMOVED*** else ***REMOVED***
+    } else {
       $modalResponseData.removeClass('hide')
       $modalResponseRaw.addClass('hide')
-    ***REMOVED***
-  ***REMOVED***)
+    }
+  })
 
   // Authentication: none
-  $authControl.find("[data-auth='none']").click(function (event) ***REMOVED***
+  $authControl.find("[data-auth='none']").click(function (event) {
     event.preventDefault()
     window.auth = null
     $selectedAuthentication.text('none')
     $authControl.find("[data-auth]").closest('li').removeClass('active')
     $authControl.find("[data-auth='none']").closest('li').addClass('active')
-  ***REMOVED***)
+  })
 
   // Authentication: token
-  $('form.authentication-token-form').submit(function (event) ***REMOVED***
+  $('form.authentication-token-form').submit(function (event) {
     event.preventDefault()
     var $form = $(this).closest('form')
     var scheme = $form.find('input#scheme').val()
     var token = $form.find('input#token').val()
-    window.auth = ***REMOVED***
+    window.auth = {
       'type': 'token',
       'scheme': scheme,
       'token': token
-    ***REMOVED***
+    }
     $selectedAuthentication.text('token')
     $authControl.find("[data-auth]").closest('li').removeClass('active')
     $authControl.find("[data-auth='token']").closest('li').addClass('active')
     $authTokenModal.modal('hide')
-  ***REMOVED***)
+  })
 
   // Authentication: basic
-  $('form.authentication-basic-form').submit(function (event) ***REMOVED***
+  $('form.authentication-basic-form').submit(function (event) {
     event.preventDefault()
     var $form = $(this).closest('form')
     var username = $form.find('input#username').val()
     var password = $form.find('input#password').val()
-    window.auth = ***REMOVED***
+    window.auth = {
       'type': 'basic',
       'username': username,
       'password': password
-    ***REMOVED***
+    }
     $selectedAuthentication.text('basic')
     $authControl.find("[data-auth]").closest('li').removeClass('active')
     $authControl.find("[data-auth='basic']").closest('li').addClass('active')
     $authBasicModal.modal('hide')
-  ***REMOVED***)
+  })
 
   // Authentication: session
-  $('form.authentication-session-form').submit(function (event) ***REMOVED***
+  $('form.authentication-session-form').submit(function (event) {
     event.preventDefault()
-    window.auth = ***REMOVED***
+    window.auth = {
       'type': 'session'
-    ***REMOVED***
+    }
     $selectedAuthentication.text('session')
     $authControl.find("[data-auth]").closest('li').removeClass('active')
     $authControl.find("[data-auth='session']").closest('li').addClass('active')
     $authSessionModal.modal('hide')
-  ***REMOVED***)
-***REMOVED***)
+  })
+})
