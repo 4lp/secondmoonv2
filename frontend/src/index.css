@@ -214,6 +214,10 @@ button, input, textarea{
 	opacity: 0;
 }
 
+.react-router-modal__modal-open{
+	width: 100%;
+}
+
 /* fix navbar & modals */
 .fixed-top{
 	z-index: 2 !important;
