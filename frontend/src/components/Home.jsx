@@ -15,7 +15,7 @@ class Home extends Component {
 		hasMore: false,
 		tagname: '',
 		width: '',
-		columns: ''
+		columns: 1 
 	}
 
 	componentDidMount() {
@@ -81,11 +81,12 @@ class Home extends Component {
 		let params = new URLSearchParams(window.location.search);
 		const sizes = [
 		  { columns: 1, gutter: 0 },
-		  { mq: '768px', columns: 2, gutter: 0 },
+		  { mq: '786px', columns: 2, gutter: 0 },
 		  { mq: '922px', columns: 3, gutter: 0 },
 		  { mq: '1024px', columns: 4, gutter: 0 }
 		]
 		let divWidth = this.state.width/this.state.columns - 4 
+		console.log(this.state.width/this.state.columns)
 		{/* need to block render on posts page but keep it for modals */}
 		if (pathre.test(this.props.props.location.pathname)){
 			return(<div></div>)
@@ -110,8 +111,8 @@ class Home extends Component {
 										return (
 											<div key={post[0].id} style={{width: divWidth}}>
 												<Link className="overlay-container" to={"/post/"+post[0].path} style={{width: divWidth}}>
-													<img src={post[0].image}/>
-													<div className="overlay"><div className="overlay-text">{post[0].name}</div></div>
+													<img style={{width: divWidth}} src={post[0].image}/>
+													<div className="overlay" style={{width: divWidth}}><div className="overlay-text">{post[0].name}</div></div>
 												</Link>
 											</div>
 										)
