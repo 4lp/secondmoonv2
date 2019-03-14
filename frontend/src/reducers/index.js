@@ -1,14 +1,11 @@
 import { combineReducers } from 'redux';
-import blogposts from "./blogposts";
-import blogcategories from "./blogcategories";
 import posts from "./posts";
 import tags from "./tags";
 import email from "./email";
 import settings from "./settings";
-import instagram from "./instagram"
 
 const gaiasApp = combineReducers({
-	blogposts, email, posts, settings, blogcategories, instagram, tags
+	email, posts, settings, tags
 })
 
 const rootReducer = (state, action) => {

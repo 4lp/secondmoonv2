@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {carouselImages} from "../actions";
 import {settings} from "../actions";
-import {instagram} from "../actions";
 import {posts} from "../actions";
 import MasonryInfiniteScroller from 'react-masonry-infinite';
 import Header from "./Header";
@@ -132,18 +130,17 @@ class Home extends Component {
 
 const mapStateToProps = state => {
 	let errors = [];
-	{/*if (state.instagramPictures.errors) {
-		errors = Object.keys(state.instagramPictures.errors).map(field => {
-			return {field, message: state.instagramPictures.errors[field]};
+	if (state.postsPictures.errors) {
+		errors = Object.keys(state.posts.errors).map(field => {
+			return {field, message: state.posts.errors[field]};
 		});
-	} */}
+	} 
 	if (state.settings.errors) {
 		errors = [...errors, Object.keys(state.settings.errors).map(field => {
 			return {field, message: state.settings.errors[field]};
 		})];
 	}
 	return {
-		instagram: state.instagram,
 		settings: state.settings,
 		posts: state.posts,
 		errors
@@ -152,9 +149,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		fetchInstagram: () => {
-			dispatch(instagram.fetchInstagram());
-	    },
 		fetchSettings: () => {
 			dispatch(settings.fetchSettings());
 	    },
