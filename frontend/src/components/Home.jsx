@@ -15,7 +15,7 @@ class Home extends Component ***REMOVED***
 		hasMore: false,
 		tagname: '',
 		width: '',
-		columns: ''
+		columns: 1 
 	***REMOVED***
 
 	componentDidMount() ***REMOVED***
@@ -81,11 +81,12 @@ class Home extends Component ***REMOVED***
 		let params = new URLSearchParams(window.location.search);
 		const sizes = [
 		  ***REMOVED*** columns: 1, gutter: 0 ***REMOVED***,
-		  ***REMOVED*** mq: '768px', columns: 2, gutter: 0 ***REMOVED***,
+		  ***REMOVED*** mq: '786px', columns: 2, gutter: 0 ***REMOVED***,
 		  ***REMOVED*** mq: '922px', columns: 3, gutter: 0 ***REMOVED***,
 		  ***REMOVED*** mq: '1024px', columns: 4, gutter: 0 ***REMOVED***
 		]
 		let divWidth = this.state.width/this.state.columns - 4 
+		console.log(this.state.width/this.state.columns)
 		***REMOVED***/* need to block render on posts page but keep it for modals */***REMOVED***
 		if (pathre.test(this.props.props.location.pathname))***REMOVED***
 			return(<div></div>)
@@ -110,8 +111,8 @@ class Home extends Component ***REMOVED***
 										return (
 											<div key=***REMOVED***post[0].id***REMOVED*** style=***REMOVED******REMOVED***width: divWidth***REMOVED******REMOVED***>
 												<Link className="overlay-container" to=***REMOVED***"/post/"+post[0].path***REMOVED*** style=***REMOVED******REMOVED***width: divWidth***REMOVED******REMOVED***>
-													<img src=***REMOVED***post[0].image***REMOVED***/>
-													<div className="overlay"><div className="overlay-text">***REMOVED***post[0].name***REMOVED***</div></div>
+													<img style=***REMOVED******REMOVED***width: divWidth***REMOVED******REMOVED*** src=***REMOVED***post[0].image***REMOVED***/>
+													<div className="overlay" style=***REMOVED******REMOVED***width: divWidth***REMOVED******REMOVED***><div className="overlay-text">***REMOVED***post[0].name***REMOVED***</div></div>
 												</Link>
 											</div>
 										)
