@@ -130,7 +130,7 @@ class Home extends Component {
 
 const mapStateToProps = state => {
 	let errors = [];
-	if (state.postsPictures.errors) {
+	if (state.posts.errors) {
 		errors = Object.keys(state.posts.errors).map(field => {
 			return {field, message: state.posts.errors[field]};
 		});
