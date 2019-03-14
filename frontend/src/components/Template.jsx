@@ -1,6 +1,5 @@
 import React, ***REMOVED***Component***REMOVED*** from 'react';
 import Header from "./Header";
-import Footer from "./Footer";
 
 
 export default class Template extends Component ***REMOVED***
@@ -18,7 +17,6 @@ export default class Template extends Component ***REMOVED***
 			<div>
 				<Header refreshHome=***REMOVED***this.refreshHome***REMOVED*** />
 				***REMOVED***React.cloneElement(props.component, props=***REMOVED***props***REMOVED***)***REMOVED***
-			***REMOVED***/*<Footer products=***REMOVED***this.props.products***REMOVED***/>*/***REMOVED***
 			</div>
 		)
 	***REMOVED***

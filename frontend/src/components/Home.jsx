@@ -1,9 +1,7 @@
 import React, ***REMOVED*** Component ***REMOVED*** from 'react';
 import ***REMOVED***Link***REMOVED*** from 'react-router-dom';
 import ***REMOVED***connect***REMOVED*** from 'react-redux';
-import ***REMOVED***carouselImages***REMOVED*** from "../actions";
 import ***REMOVED***settings***REMOVED*** from "../actions";
-import ***REMOVED***instagram***REMOVED*** from "../actions";
 import ***REMOVED***posts***REMOVED*** from "../actions";
 import MasonryInfiniteScroller from 'react-masonry-infinite';
 import Header from "./Header";
@@ -132,18 +130,17 @@ class Home extends Component ***REMOVED***
 
 const mapStateToProps = state => ***REMOVED***
 	let errors = [];
-	***REMOVED***/*if (state.instagramPictures.errors) ***REMOVED***
-		errors = Object.keys(state.instagramPictures.errors).map(field => ***REMOVED***
-			return ***REMOVED***field, message: state.instagramPictures.errors[field]***REMOVED***;
+	if (state.postsPictures.errors) ***REMOVED***
+		errors = Object.keys(state.posts.errors).map(field => ***REMOVED***
+			return ***REMOVED***field, message: state.posts.errors[field]***REMOVED***;
 		***REMOVED***);
-	***REMOVED*** */***REMOVED***
+	***REMOVED*** 
 	if (state.settings.errors) ***REMOVED***
 		errors = [...errors, Object.keys(state.settings.errors).map(field => ***REMOVED***
 			return ***REMOVED***field, message: state.settings.errors[field]***REMOVED***;
 		***REMOVED***)];
 	***REMOVED***
 	return ***REMOVED***
-		instagram: state.instagram,
 		settings: state.settings,
 		posts: state.posts,
 		errors
@@ -152,9 +149,6 @@ const mapStateToProps = state => ***REMOVED***
 
 const mapDispatchToProps = dispatch => ***REMOVED***
 	return ***REMOVED***
-		fetchInstagram: () => ***REMOVED***
-			dispatch(instagram.fetchInstagram());
-	    ***REMOVED***,
 		fetchSettings: () => ***REMOVED***
 			dispatch(settings.fetchSettings());
 	    ***REMOVED***,
