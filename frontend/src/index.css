@@ -214,6 +214,10 @@ button, input, textarea***REMOVED***
 	opacity: 0;
 ***REMOVED***
 
+.react-router-modal__modal-open***REMOVED***
+	width: 100%;
+***REMOVED***
+
 /* fix navbar & modals */
 .fixed-top***REMOVED***
 	z-index: 2 !important;
