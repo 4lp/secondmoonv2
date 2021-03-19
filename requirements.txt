@@ -9,7 +9,7 @@ django-filter==2.1.0
 django-rest-knox==3.1.5
 django-tinymce==2.8.0
 django-webpack-loader==0.6.0
-djangorestframework==3.8.2
+djangorestframework==3.11.2
 idna==2.7
 persisting-theory==0.2.1
 pycparser==2.18
